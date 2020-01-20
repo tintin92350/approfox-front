@@ -1,0 +1,9 @@
+<span *ngIf="msg">{{msg.content}}</span>
+<button *ngIf="islogged()" (click)="logout()">LOGOUT</button>
+<button *ngIf="!islogged()" (click)="login()">LOGIN</button>
+<span *ngIf="islogged()">
+    je suis connecté
+</span>
+<br>
+Roles:
+{{roles}}

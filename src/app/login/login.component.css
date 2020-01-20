@@ -1,0 +1,101 @@
+.wrapper::before {
+    z-index: 1;
+    content:'';
+    position:absolute;
+    background: rgb(79,0,188);
+    background: -moz-linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+    background: -webkit-linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+    background: linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4f00bc",endColorstr="#29abe2",GradientType=1);
+    
+    width:100%;
+    height:200%;
+    top:0;
+    left:0;
+    border-radius:50%;
+    transform:translatex(-50%) translateY(-25%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+.logo {
+    z-index: 10;
+    position: absolute;
+    width: 25%;
+}
+
+.login-space {
+    display: block;
+    width: 50%;
+    right: 0;
+    position: absolute;
+}
+
+.login-space > h1 {
+    font-size: 42px;
+    color: #1e1e1e;
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.login-space > p {
+    font-size: 16px;
+    color: #1e1e1e;
+    text-align: center;
+}
+
+.login-space .input-group {
+    width: 600px;
+    max-width: calc(100% - 4em);
+    height: 72px;
+    background-color: #eeeeee;
+    border-radius: 50px;
+    padding: 0.75em;
+    position: relative;
+    margin: auto;
+}
+.login-space .input-group label {
+    color: #7e7e7e;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0.25em 0 0em 1.5em;
+    text-transform: uppercase;
+    display: block;
+}
+.login-space .input-group input {
+    color: #4b4b4b;
+    font-size: 18px;
+    margin-left: 1.4em;
+    width: calc(100% - 2em);
+    background-color: transparent;
+    border: 0;
+    display: block;
+}
+.login-space input[type="submit"] {
+    width: 600px;
+    max-width: calc(100% - 4em);
+    height: 72px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #29abe2;
+    border-radius: 50px;
+    padding: 0.75em;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    border: 0;
+    cursor: pointer;
+}
+.login-space .input-group input:active,
+.login-space .input-group input:focus {
+    border: 0;
+    outline: none;
+}

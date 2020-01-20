@@ -1,0 +1,28 @@
+
+<div class="wrapper" >
+
+<img src="assets/img/logo.png" alt="" class="logo" id="logo">
+
+<div class="login-space" id="loginForm">
+    <h1>ACCOUNT LOGIN</h1>
+    <p>Please enter your credentials to access to the application</p>
+
+    <br>
+    <a routerLink="/token">Token access</a>
+    <span *ngIf="stringService">{{stringService.content}} généré le {{stringService.date | date:'dd/MM/yyyy à hh:mm'}}</span>
+    <br>
+    <form action="/" method="POST">
+        <div class="input-group">
+            <label for="username">username</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <br>
+        <div class="input-group">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <br>
+        <input type="submit" value="LOGIN">
+    </form>
+
+</div>
