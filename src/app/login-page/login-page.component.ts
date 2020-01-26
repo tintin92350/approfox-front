@@ -20,14 +20,11 @@ export class LoginPageComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.setElementRightPlace();
   }
 
   @HostListener('window:load', ['$event'])
   onLoad(event) {
-    /** 
     this.setElementRightPlace();
-     */
   }
 
   setElementRightPlace() {
