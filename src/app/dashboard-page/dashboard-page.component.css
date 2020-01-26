@@ -1,0 +1,112 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.5fr 2.0fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "Left-Panel Right-Panel";
+    height: 100%;
+    width: 100%;
+}
+
+  
+.Left-Panel { 
+    grid-area: Left-Panel; 
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    background: rgb(79,0,188);
+    background: -moz-linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+    background: -webkit-linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+    background: linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4f00bc",endColorstr="#29abe2",GradientType=1);
+}
+
+.Right-Panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 48px 100%;
+  grid-template-areas: "Top-Panel" "Center-Panel";
+  grid-area: Right-Panel;
+}
+
+.Center-Panel { grid-area: Center-Panel; padding: 2em; }
+
+.Top-Panel { 
+    grid-area: Top-Panel;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #eee;
+}
+
+
+.Left-Panel img {
+    position: absolute;
+    min-width: 280px;
+    max-width: 360px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 120px;    
+}
+
+.Left-Panel > nav#main-navigation {
+    min-width: 320px;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+}
+
+.Left-Panel > nav#main-navigation > a {
+    padding: 0.5em 1em 0.5em 0.5em;
+    margin: 0.25em 0;
+    text-decoration: none;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 32px;
+    color: #fff;
+    transition: 250ms ease-in-out;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.Left-Panel > nav#main-navigation > a.active {
+    color: #3b57cf;
+    background-color: #fff; 
+    font-weight: bold;
+}
+
+.Left-Panel > nav#main-navigation > a:hover {
+    color: #3b57cf;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.Top-Panel a {
+    color: gray;
+    font-size: 24px;
+    line-height: 48px;
+    padding: 0 0.5em;
+    height: 100%;
+}
+
+#page-title {
+    font-size: 60px;
+    text-transform: uppercase;
+    color: rgb(40, 40, 40);
+}
+
+.section {
+    margin-top: 1em;
+}
+
+.section .section-header {
+    border-bottom: 3px solid #eee;
+    padding: 0.5em 0;
+}
+
+.section .section-header .section-title {
+    font-size: 32px;
+    color: rgb(40, 40, 40);
+}

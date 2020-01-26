@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 export class LoginPageComponent implements OnInit {
 
   document: any;
-  
+
   constructor(@Inject(DOCUMENT) document) {
     this.document = document;
    }
@@ -20,11 +20,11 @@ export class LoginPageComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
+    this.setElementRightPlace();
   }
 
   @HostListener('window:load', ['$event'])
   onLoad(event) {
-    this.setElementRightPlace();
   }
 
   setElementRightPlace() {
