@@ -7,17 +7,21 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { TagComponent } from './tag/tag.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { StudentModule } from './student/student.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    TagComponent
+    TagComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StudentModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy}

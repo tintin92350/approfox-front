@@ -90,23 +90,3 @@
     padding: 0 0.5em;
     height: 100%;
 }
-
-#page-title {
-    font-size: 60px;
-    text-transform: uppercase;
-    color: rgb(40, 40, 40);
-}
-
-.section {
-    margin-top: 1em;
-}
-
-.section .section-header {
-    border-bottom: 3px solid #eee;
-    padding: 0.5em 0;
-}
-
-.section .section-header .section-title {
-    font-size: 32px;
-    color: rgb(40, 40, 40);
-}

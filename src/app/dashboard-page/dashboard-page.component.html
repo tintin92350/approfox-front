@@ -4,9 +4,10 @@
         <img src="assets/img/logo.png" alt="" id="approfox-logo">
 
         <nav id="main-navigation" #mainNavigation>
-            <a href="/dashboard" class="active">dashboard</a>
-            <a href="/cv">Mon cv</a>
-            <a href="/tags">Mes tags</a>
+            <a [routerLink]="['/dashboard/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+                true}" >dashboard</a>
+            <a [routerLink]="['/dashboard/cv']" [routerLinkActive]="['active']">Mon cv</a>
+            <a [routerLink]="['/dashboard/tags']" [routerLinkActive]="['active']">Mes tags</a>
         </nav>
 
     </div>
@@ -17,42 +18,10 @@
             <a href="/account"><i class="fas fa-user-circle"></i></a>
         </div>
         <div class="Center-Panel">
-            <h1 id="page-title">
-                Dashboard
-            </h1>
-
-            <div class="section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        MON CV
-                    </h2>
-                </div>
-                <div class="section-content">
-                    Vous n'avez pas encore soumis de CV
-                </div>
+            <div *ngIf="router.url === '/dashboard'">
+               <app-dashboard></app-dashboard>
             </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        MES TAGS
-                    </h2>
-                </div>
-                <div class="section-content">
-                    Vous n'avez aucun tag
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        EMPLOI DU TEMPS DE LA JOURNÉE
-                    </h2>
-                </div>
-                <div class="section-content">
-                    Aucun emploi du temps pour l'apprentis-dating n'a été publié
-                </div>
-            </div>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

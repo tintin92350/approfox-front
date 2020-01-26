@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, HostListener, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -12,7 +13,7 @@ export class DashboardPageComponent implements OnInit {
 
   @ViewChild('mainNavigation', {read: ElementRef, static:false}) mainNavigation: ElementRef;
 
-  constructor(@Inject(DOCUMENT) document) {
+  constructor(@Inject(DOCUMENT) document, public router: Router) {
     this.document = document;
    }
 
