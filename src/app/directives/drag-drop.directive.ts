@@ -7,9 +7,9 @@ export class DragDropDirective {
 
   @Output() fileDropped: EventEmitter<any> = new EventEmitter();
 
-  @HostBinding('style.background-color') private background = '#EEE';
-  @HostBinding('style.border-color') private border = '#CCC';
-  @HostBinding('style.opacity') private opacity = '1';
+  @HostBinding('style.background-color') public background = '#EEE';
+  @HostBinding('style.border-color') public border = '#CCC';
+  @HostBinding('style.opacity') public opacity = '1';
 
   // Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt) {

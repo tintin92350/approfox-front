@@ -16,12 +16,11 @@ export class UploadFileComponent implements OnInit {
 
 
   uploadFile(event) {
-    console.log('File uploaded');
     for (const element of event) {
       this.file = element.name;
     }
   }
-  deleteAttachment(index) {
+  deleteAttachment() {
     this.file = null;
   }
 

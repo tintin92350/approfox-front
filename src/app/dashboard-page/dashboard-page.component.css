@@ -1,6 +1,6 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 0.5fr 2.0fr;
+    grid-template-columns: 0.5fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "Left-Panel Right-Panel";
     height: 100%;
