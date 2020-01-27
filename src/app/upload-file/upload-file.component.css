@@ -1,0 +1,43 @@
+.uploadfilecontainer {
+    background-image: url("../../assets/img/cloud.png");
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: center;
+    height: 250px;
+    width: 100%;
+    margin: 20px auto;
+    border: 3px dashed #CCC;
+    border-radius: 10px;
+}
+
+.uploadfilecontainer:hover {
+    cursor: pointer;
+    background-color: #EEE !important;
+    opacity: 0.8;
+}
+
+.files-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px auto;
+    background: #ffffff;
+    border: 1px solid #CCC;
+    padding: 1em;
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+.files-list .delete-file {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #E93D3D;
+    font-size: 20px;
+    transition: 250ms ease-in-out;
+}
+
+.files-list .delete-file:hover {
+    transform: rotateZ(360deg);
+}

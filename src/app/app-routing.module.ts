@@ -12,7 +12,8 @@ const routes: Routes = [
     { path: 'cv', component: CvComponent},
     { path: 'dashboard', component: DashboardComponent }
   ] },
-  { path: 'login', component: LoginPageComponent }
+  { path: 'login', component: LoginPageComponent },
+  { path: '**', redirectTo: '/dashboard' }
 ];
 
 @NgModule({

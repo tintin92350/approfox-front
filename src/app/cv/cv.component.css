@@ -17,3 +17,20 @@
     font-size: 32px;
     color: rgb(40, 40, 40);
 }
+
+.submit-btn.disabled {
+    background-color: gray;
+    color: #404040;
+} 
+
+.submit-btn {
+    display: block;
+    padding: 1em;
+    border: 0;
+    background-color: #26A2B7;
+    border-radius: 0;
+    width: 100%;
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+}
