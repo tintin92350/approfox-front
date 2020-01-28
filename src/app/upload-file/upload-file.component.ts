@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-upload-file',
@@ -8,16 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class UploadFileComponent implements OnInit {
 
   file: any;
+  size: number;
 
   constructor() { }
+
+  @Output() emitFileUpload: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
   }
 
-
   uploadFile(event) {
     for (const element of event) {
       this.file = element.name;
+      this.size = Math.floor(element.size / 1000.0);
+
+      this.emitFileUpload.emit(element.name);
     }
   }
   deleteAttachment() {

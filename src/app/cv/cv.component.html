@@ -6,6 +6,24 @@
         La démarche s'effectue via la section <a [routerLink]="['dashboard/cv']" >'mon cv'</a> où vous pouvez accéder à un formulaire.</p>
 </div>
 
-<app-upload-file></app-upload-file>
+<div id="upload-section">  
+<app-upload-file (emitFileUpload)="changeOnUpload($event)" ></app-upload-file>
+<div>
+    <h1>IMPORTATION DU CV</h1>
+    <p>Veuillez glisser-déposer votre cv dans le cadre prévu à cet effet situé à gauche ou cliquer sur celui-ci pour ouvrir une boite de dialogue et selectionner votre document.</p>
 
-<button class="submit-btn disabled" >Soumettre le CV</button>
+    <br>
+    <div class="uploadedFileForm" *ngIf="fileUploaded">
+        <div class="input-group">
+            <label for="filename">Nom du fichier</label>
+            <input type="text" id="filename" [value]="filename">
+        </div>
+        <div class="button-group">
+            <button class="valid-btn" >Valider</button>
+            <button class="cancel-btn" >Annuler</button>
+        </div>
+    </div>
+
+
+</div>
+</div>

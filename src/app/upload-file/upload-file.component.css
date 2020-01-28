@@ -1,13 +1,14 @@
 .uploadfilecontainer {
-    background-image: url("../../assets/img/cloud.png");
+    background-color: #eee;
+    border: 3px dashed #b3b3b3;
+    width: 300px;
+    height: 450px;
+    margin: auto;
+
+    background-image: url("../../assets/img/file.png");
     background-repeat: no-repeat;
-    background-size: 100px;
+    background-size: 25%;
     background-position: center;
-    height: 250px;
-    width: 100%;
-    margin: 20px auto;
-    border: 3px dashed #CCC;
-    border-radius: 10px;
 }
 
 .uploadfilecontainer:hover {
@@ -21,12 +22,11 @@
     justify-content: space-between;
     width: 100%;
     margin: 10px auto;
-    background: #ffffff;
-    border: 1px solid #CCC;
+    background-color: #eee;
+    border: 3px solid #b3b3b3;
     padding: 1em;
     font-size: 20px;
-    color: #000;
-    font-weight: bold;
+    color: #1a1a1a;
 }
 
 .files-list .delete-file {

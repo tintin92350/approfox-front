@@ -1,6 +1,6 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 0.5fr 1fr;
+    grid-template-columns: minmax(350px, 25%) 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "Left-Panel Right-Panel";
     height: 100%;
@@ -22,19 +22,27 @@
 }
 
 .Right-Panel {
-  display: grid;
+  /*display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 48px 100%;
   grid-template-areas: "Top-Panel" "Center-Panel";
-  grid-area: Right-Panel;
+  grid-area: Right-Panel;*/
+  overflow: auto;
+  position: relative;
 }
 
-.Center-Panel { grid-area: Center-Panel; padding: 2em; }
+.Center-Panel { 
+    grid-area: Center-Panel;
+    padding: 2em;
+}
 
 .Top-Panel { 
     grid-area: Top-Panel;
     width: 100%;
     display: flex;
+    position: sticky;
+    top: 0;
+    right: 0;
     justify-content: flex-end;
     background-color: #eee;
 }
