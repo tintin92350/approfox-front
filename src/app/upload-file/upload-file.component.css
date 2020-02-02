@@ -1,8 +1,7 @@
 .uploadfilecontainer {
     background-color: #eee;
     border: 3px dashed #b3b3b3;
-    width: 300px;
-    height: 450px;
+    height: 100%;
     margin: auto;
 
     background-image: url("../../assets/img/file.png");

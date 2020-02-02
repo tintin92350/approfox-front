@@ -22,7 +22,7 @@ export class UploadFileComponent implements OnInit {
       this.file = element.name;
       this.size = Math.floor(element.size / 1000.0);
 
-      this.emitFileUpload.emit(element.name);
+      this.emitFileUpload.emit(element);
     }
   }
   deleteAttachment() {

@@ -1,10 +1,10 @@
 <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (fileDropped)="uploadFile($event)">
     <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
 </div>
-<div  class="files-list" *ngIf="file != null">
+<!--<div  class="files-list" *ngIf="file != null">
     <p> {{ file }} ... <b>{{ size }}</b> KO </p>
     
     <button class="delete-file" (click)="deleteAttachment()">
         <span class="far fa-trash-alt"></span>
     </button>
-</div>  
+</div>-->

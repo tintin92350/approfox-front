@@ -10,20 +10,19 @@
 <app-upload-file (emitFileUpload)="changeOnUpload($event)" ></app-upload-file>
 <div>
     <h1>IMPORTATION DU CV</h1>
+
+
     <p>Veuillez glisser-déposer votre cv dans le cadre prévu à cet effet situé à gauche ou cliquer sur celui-ci pour ouvrir une boite de dialogue et selectionner votre document.</p>
+    <br/>
+    <app-error-box [message]="'Le fichier doit &ecirc;tre au format PDF seulement !'" *ngIf="error === 1"></app-error-box>
 
     <br>
-    <div class="uploadedFileForm" *ngIf="fileUploaded">
-        <div class="input-group">
-            <label for="filename">Nom du fichier</label>
-            <input type="text" id="filename" [value]="filename">
-        </div>
+    <div class="uploadedFileForm" *ngIf="file != null && error == null">
+        <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ></app-textbox>
         <div class="button-group">
-            <button class="valid-btn" >Valider</button>
-            <button class="cancel-btn" >Annuler</button>
+            <app-button [label]="'Valider'" [type]="'primary'" [fullSize]="true" (click)="validateCvImport($event)" ></app-button>    
+            <app-button [label]="'Annuler'" [type]="'danger'" [fullSize]="true" (click)="cancelCvImport($event)" ></app-button>
         </div>
     </div>
-
-
 </div>
 </div>

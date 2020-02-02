@@ -49,7 +49,6 @@
 
 
 .Left-Panel img {
-    position: absolute;
     width: 80%;
     margin-left: 10%;
     margin-top: 120px;    
@@ -58,10 +57,10 @@
 .Left-Panel > nav#main-navigation {
     min-width: auto;
     display: flex;
-    position: absolute;
     flex-direction: column;
-    top: 0;
-    right: 0;
+    margin-top: 1em;
+    margin-left: 25%;
+    width: 75%;
 }
 
 .Left-Panel > nav#main-navigation > a {
@@ -95,4 +94,17 @@
     line-height: 48px;
     padding: 0 0.5em;
     height: 100%;
+}
+
+
+#logo path:nth-child(1){
+    stroke-dasharray: 4506.0703125px;
+    stroke-dashoffset:4506.0703125px;
+    fill:#E6B22C;
+}
+
+#logo path:nth-child(2){
+    stroke-dasharray: 4085.047119140625px;
+    stroke-dashoffset:4085.047119140625px;
+    fill:#FFFFFF;
 }

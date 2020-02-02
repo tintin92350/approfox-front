@@ -9,6 +9,7 @@ import { TagComponent } from './tag/tag.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { StudentModule } from './student/student.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SharedModule } from './app-shared.module';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StudentModule
+    StudentModule,
+    SharedModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy}
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
