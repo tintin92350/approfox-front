@@ -11,7 +11,7 @@ export class DashboardPageComponent implements OnInit {
 
   document: any;
 
-  @ViewChild('mainNavigation', {read: ElementRef, static:false}) mainNavigation: ElementRef;
+  @ViewChild('mainNavigation', {read: ElementRef, static: false}) mainNavigation: ElementRef;
 
   constructor(@Inject(DOCUMENT) document, public router: Router) {
     this.document = document;

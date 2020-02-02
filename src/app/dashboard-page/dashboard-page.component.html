@@ -27,7 +27,7 @@
         <nav id="main-navigation" #mainNavigation>
             <a [routerLink]="['/dashboard/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                 true}" >dashboard</a>
-            <a [routerLink]="['/dashboard/cv']" [routerLinkActive]="['active']">Mon cv</a>
+            <a [routerLink]="['/dashboard/my-cv']" [routerLinkActive]="['active']">Mon cv</a>
             <a [routerLink]="['/dashboard/tags']" [routerLinkActive]="['active']">Mes tags</a>
         </nav>
 
@@ -43,6 +43,9 @@
                <app-dashboard></app-dashboard>
             </div>
             <router-outlet></router-outlet>
+            
         </div>
     </div>
+    
 </div>
+

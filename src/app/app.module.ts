@@ -10,6 +10,8 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
 import { StudentModule } from './student/student.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './app-shared.module';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

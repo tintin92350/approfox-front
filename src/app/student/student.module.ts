@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+
 import { StudentRoutingModule } from './student-routing.module';
-import { CvComponent } from '../cv/cv.component';
+import { MyCvComponent } from '../my-cv/my-cv.component';
 import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { DragDropDirective } from '../directives/drag-drop.directive';
-import { ButtonComponent } from '../UI/button/button.component';
-import { AppModule } from '../app.module';
 import { SharedModule } from '../app-shared.module';
+import { FormsModule } from '@angular/forms';
+import { CvComponent } from '../Resources/cv/cv.component';
 
 @NgModule({
-  declarations: [CvComponent, UploadFileComponent, DragDropDirective ],
+  declarations: [MyCvComponent, UploadFileComponent, DragDropDirective, CvComponent ],
   imports: [
     CommonModule,
     StudentRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    NgxExtendedPdfViewerModule
   ]
 })
 export class StudentModule { }

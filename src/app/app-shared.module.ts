@@ -7,11 +7,12 @@ import { InfoBoxComponent } from './UI/MessageBox/info-box/info-box.component';
 import { SuccessBoxComponent } from './UI/MessageBox/success-box/success-box.component';
 import { WarningBoxComponent } from './UI/MessageBox/warning-box/warning-box.component';
 import { ErrorBoxComponent } from './UI/MessageBox/error-box/error-box.component';
+import { CvComponent } from './Resources/cv/cv.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule 
+        FormsModule
     ],
     declarations: [
         ButtonComponent,

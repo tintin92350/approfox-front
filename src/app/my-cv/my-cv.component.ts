@@ -3,11 +3,11 @@ import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { CV } from '../Models/cv.model';
 
 @Component({
-  selector: 'app-cv',
-  templateUrl: './cv.component.html',
-  styleUrls: ['./cv.component.css']
+  selector: 'app-my-cv',
+  templateUrl: './my-cv.component.html',
+  styleUrls: ['./my-cv.component.css']
 })
-export class CvComponent implements OnInit {
+export class MyCvComponent implements OnInit {
 
   file: any;
 
