@@ -3,19 +3,19 @@ import { TagService } from '../services/resources/tag.service';
 import { Tag } from '../Models/tag.model';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-my-tags',
+  templateUrl: './my-tags.component.html',
+  styleUrls: ['./my-tags.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class MyTagsComponent implements OnInit {
 
-  private textboxData: string;
   private myTags: Tag[];
 
   constructor(private tagService: TagService) {
     this.tagService = tagService;
     this.myTags = this.tagService.getTagListOfUser(1);
   }
+
 
   ngOnInit() {
   }

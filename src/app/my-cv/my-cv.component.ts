@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { CV } from '../Models/cv.model';
+import { AuthService } from '../services/security/auth.service';
 
 @Component({
   selector: 'app-my-cv',
@@ -17,6 +18,10 @@ export class MyCvComponent implements OnInit {
 
   @Input('app-upload-file') uploadFile: UploadFileComponent;
 
+  constructor(private authService: AuthService) {
+    this.authService = authService;
+  }
+
   ngOnInit() {
     this.error = null;
   }
@@ -32,11 +37,13 @@ export class MyCvComponent implements OnInit {
   }
 
   validateCvImport(event) {
-    console.log('importing cv to database...');
+    this.error = -1; // Success
+    this.authService.uploadCv();
   }
 
   cancelCvImport(event: MouseEvent) {
     this.file = null;
+    this.authService.removeCv();
   }
 
 }

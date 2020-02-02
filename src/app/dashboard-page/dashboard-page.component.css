@@ -45,6 +45,7 @@
     right: 0;
     justify-content: flex-end;
     background-color: #eee;
+    position: relative;
 }
 
 
@@ -107,4 +108,24 @@
     stroke-dasharray: 4085.047119140625px;
     stroke-dashoffset:4085.047119140625px;
     fill:#FFFFFF;
+}
+
+.accountPanel {
+    position: absolute;
+    right: 8px;
+    top: 54px;
+    background-color: #eeeeee;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.accountPanel a {
+    font-size: 16px;
+    color: #3b57cf;
+    text-decoration: none;
+    display: block;
+    color: gray;
+}
+.accountPanel a:hover {
+    color: #3b57cf;
 }

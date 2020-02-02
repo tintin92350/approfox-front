@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AuthService } from '../services/security/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +11,10 @@ export class LoginPageComponent implements OnInit {
 
   document: any;
 
-  constructor(@Inject(DOCUMENT) document) {
+  @Input() private username: string;
+  @Input() private password: string;
+
+  constructor(@Inject(DOCUMENT) document, private authService: AuthService) {
     this.document = document;
    }
 
@@ -25,6 +29,7 @@ export class LoginPageComponent implements OnInit {
 
   @HostListener('window:load', ['$event'])
   onLoad(event) {
+    this.setElementRightPlace();
   }
 
   setElementRightPlace() {
@@ -37,7 +42,11 @@ export class LoginPageComponent implements OnInit {
 
     this.document.getElementById('logo').style.left = ((documentWidth / 4.0) - (imgWidth / 2.0)) + 'px';
     this.document.getElementById('logo').style.top = ((documentHeight / 2.0) - imgHeight / 2.0) + 'px';
-    this.document.getElementById('loginForm').style.top = ((documentHeight / 2.0) - (loginHeight / 2.0)) + 'px';    
+    this.document.getElementById('loginForm').style.top = ((documentHeight / 2.0) - (loginHeight / 2.0)) + 'px';
+  }
+
+  login() {
+    this.authService.auth(this.username, this.password);
   }
 
 }

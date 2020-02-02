@@ -8,6 +8,7 @@ import { SuccessBoxComponent } from './UI/MessageBox/success-box/success-box.com
 import { WarningBoxComponent } from './UI/MessageBox/warning-box/warning-box.component';
 import { ErrorBoxComponent } from './UI/MessageBox/error-box/error-box.component';
 import { CvComponent } from './Resources/cv/cv.component';
+import { TagComponent } from './Resources/tag/tag.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { CvComponent } from './Resources/cv/cv.component';
         InfoBoxComponent,
         SuccessBoxComponent,
         WarningBoxComponent,
-        ErrorBoxComponent
+        ErrorBoxComponent,
+        TagComponent
     ],
     exports: [
         ButtonComponent,
@@ -28,7 +30,8 @@ import { CvComponent } from './Resources/cv/cv.component';
         InfoBoxComponent,
         SuccessBoxComponent,
         WarningBoxComponent,
-        ErrorBoxComponent
+        ErrorBoxComponent,
+        TagComponent
     ]
 })
 export class SharedModule {}

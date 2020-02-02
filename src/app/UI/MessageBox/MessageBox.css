@@ -14,10 +14,12 @@
     font-size: 32px;
     padding: 0.25em;
     text-align: center;
+    margin: auto 0;
 }
 
 .box .content {
     margin-left: 1em;
+    margin-right: 1em;
 }
 
 .box .content h3 {

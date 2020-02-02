@@ -5,27 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { TagComponent } from './tag/tag.component';
+import { TagComponent } from './Resources/tag/tag.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { StudentModule } from './student/student.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from './app-shared.module';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
+import { LogoutPageComponent } from './logout-page/logout-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    TagComponent,
-    DashboardComponent
+    DashboardComponent,
+    LogoutPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StudentModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy}

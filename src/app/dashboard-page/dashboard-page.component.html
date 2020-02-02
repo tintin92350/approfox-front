@@ -28,7 +28,7 @@
             <a [routerLink]="['/dashboard/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                 true}" >dashboard</a>
             <a [routerLink]="['/dashboard/my-cv']" [routerLinkActive]="['active']">Mon cv</a>
-            <a [routerLink]="['/dashboard/tags']" [routerLinkActive]="['active']">Mes tags</a>
+            <a [routerLink]="['/dashboard/my-tags']" [routerLinkActive]="['active']">Mes tags</a>
         </nav>
 
     </div>
@@ -36,7 +36,11 @@
         <div class="Top-Panel">
             <a href="/account"><i class="fas fa-comments"></i></a>
             <a href="/notifications"><i class="fas fa-bell"></i></a>
-            <a href="/account"><i class="fas fa-user-circle"></i></a>
+            <a (click)="accountButton()"><i class="fas fa-user-circle"></i></a>
+            <div class="accountPanel" *ngIf="accountMenuShowed">
+                <a href="#">Mon compte</a>
+                <a [routerLink]="['/logout']">Se déconnecter</a>
+            </div>
         </div>
         <div class="Center-Panel">
             <div *ngIf="router.url === '/dashboard'">

@@ -10,7 +10,7 @@
     </div>
     <div class="section-content">
         <br>
-        <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à vitre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans lsection dédiée mon cv.'"></app-warning-box>
+        <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
     </div>
 </div>
 
@@ -21,7 +21,8 @@
         </h2>
     </div>
     <div class="section-content">
-        Vous n'avez aucun tag
+        <span *ngIf="myTags.length == 0">Vous n'avez aucun tag</span>
+        <app-tag *ngFor="let tag of myTags" [name]="tag.name"></app-tag>
     </div>
 </div>
 

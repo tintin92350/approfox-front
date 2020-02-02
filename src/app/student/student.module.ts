@@ -10,9 +10,10 @@ import { DragDropDirective } from '../directives/drag-drop.directive';
 import { SharedModule } from '../app-shared.module';
 import { FormsModule } from '@angular/forms';
 import { CvComponent } from '../Resources/cv/cv.component';
+import { MyTagsComponent } from '../my-tags/my-tags.component';
 
 @NgModule({
-  declarations: [MyCvComponent, UploadFileComponent, DragDropDirective, CvComponent ],
+  declarations: [MyCvComponent, UploadFileComponent, DragDropDirective, CvComponent, MyTagsComponent ],
   imports: [
     CommonModule,
     StudentRoutingModule,

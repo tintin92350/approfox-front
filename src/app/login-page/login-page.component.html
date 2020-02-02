@@ -8,18 +8,17 @@
 
         <br>
         <br>
-        <form action="/" method="POST">
+        <div class="form">
             <div class="input-group">
                 <label for="username">username</label>
-                <input type="text" name="username" id="username">
+                <input type="text" name="username" id="username" [(ngModel)]="username">
             </div>
             <br>
             <div class="input-group">
                 <label for="password">password</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" [(ngModel)]="password">
             </div>
             <br>
-            <input type="submit" value="Se connecter">
-        </form>
-
+            <input type="submit" value="Se connecter" (click)="login()">
+        </div>
 </div>

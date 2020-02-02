@@ -1,0 +1,15 @@
+<h1 id="page-title">MES TAGS</h1>
+
+<app-info-box [message]="'Les tags qui vous sont attribués peuvent ne pas correspondre à vos attentes. Si vous souhaitez changer, veuillez en informer votre professeur via la messagerie interne de l\'application ou directement.'"></app-info-box>
+
+
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">
+            LISTE DE MES TAGS
+        </h2>
+    </div>
+    <div class="section-content">
+        <app-tag *ngFor="let tag of myTags" [name]="tag.name"></app-tag>
+    </div>
+</div>
