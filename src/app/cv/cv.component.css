@@ -40,6 +40,10 @@ app-upload-file {
     padding: 0 1.5em;
 }
 
+#upload-section > div p {
+    text-align: justify;
+}
+
 .input-group {
     display: block;
 }
@@ -71,4 +75,27 @@ app-upload-file {
 .button-group > app-button {
     margin: 1em;
     width: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+    
+    #upload-section {
+        display: flex;  
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border: 0;
+        padding: 0;
+        margin: 1em auto;
+    }
+
+    #upload-section > div {
+        padding: 0 0;
+    }
+    
+    app-upload-file {
+        width: 100%;
+        height: 225px;
+    }   
 }

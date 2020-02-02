@@ -26,4 +26,5 @@
 .box .content p {
     color: #999;
     line-height: 1.5;
+    text-align: justify;
 }
