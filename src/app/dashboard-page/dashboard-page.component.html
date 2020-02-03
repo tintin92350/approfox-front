@@ -37,7 +37,7 @@
             <a href="/account"><i class="fas fa-comments"></i></a>
             <a href="/notifications"><i class="fas fa-bell"></i></a>
             <a (click)="accountButton()"><i class="fas fa-user-circle"></i></a>
-            <div class="accountPanel" *ngIf="accountMenuShowed">
+            <div class="accountPanel" *ngIf="isAccountMenuShowed()">
                 <a href="#">Mon compte</a>
                 <a [routerLink]="['/logout']">Se déconnecter</a>
             </div>

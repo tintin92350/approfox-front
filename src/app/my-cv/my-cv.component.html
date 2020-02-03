@@ -1,7 +1,7 @@
 <h1 id="page-title">MON CV</h1> 
-<app-button [label]="'Annuler'" [fullSize]="true" (click)="cancelCvImport($event)" *ngIf="authService.isCvUploaded()" ></app-button>
+<app-button [label]="'Annuler'" [fullSize]="true" (click)="cancelCvImport($event)" *ngIf="cvUploaded()" ></app-button>
 
-<div *ngIf="!authService.isCvUploaded()">
+<div *ngIf="!cvUploaded()">
     <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
 
     <div id="upload-section">  
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div *ngIf="authService.isCvUploaded()" >
+<div *ngIf="cvUploaded()" >
     <div class="section">
         <div class="section-header">
             <h2 class="section-title">

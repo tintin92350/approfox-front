@@ -16,6 +16,9 @@ export class MyTagsComponent implements OnInit {
     this.myTags = this.tagService.getTagListOfUser(1);
   }
 
+  getMyTags(): Tag[] {
+    return this.myTags;
+  }
 
   ngOnInit() {
   }

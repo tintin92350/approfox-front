@@ -22,6 +22,10 @@ export class MyCvComponent implements OnInit {
     this.authService = authService;
   }
 
+  public cvUploaded() {
+    return this.authService.isCvUploaded();
+  }
+
   ngOnInit() {
     this.error = null;
   }

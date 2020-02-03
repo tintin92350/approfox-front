@@ -21,8 +21,8 @@
         </h2>
     </div>
     <div class="section-content">
-        <span *ngIf="myTags.length == 0">Vous n'avez aucun tag</span>
-        <app-tag *ngFor="let tag of myTags" [name]="tag.name"></app-tag>
+        <span *ngIf="getMyTags().length == 0">Vous n'avez aucun tag</span>
+        <app-tag *ngFor="let tag of getMyTags()" [name]="tag.name"></app-tag>
     </div>
 </div>
 

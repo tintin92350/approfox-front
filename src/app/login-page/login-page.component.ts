@@ -11,8 +11,8 @@ export class LoginPageComponent implements OnInit {
 
   document: any;
 
-  @Input() private username: string;
-  @Input() private password: string;
+  @Input() public username: string;
+  @Input() public password: string;
 
   constructor(@Inject(DOCUMENT) document, private authService: AuthService) {
     this.document = document;

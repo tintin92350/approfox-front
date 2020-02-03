@@ -21,4 +21,8 @@ export class DashboardPageComponent implements OnInit {
     this.accountMenuShowed = (this.accountMenuShowed) ? false : true;
   }
 
+  isAccountMenuShowed(): boolean {
+    return this.accountMenuShowed;
+  }
+
 }
