@@ -48,6 +48,10 @@
     position: relative;
 }
 
+.Top-Panel a {
+    cursor: pointer;
+}
+
 
 .Left-Panel img {
     width: 80%;
@@ -112,9 +116,9 @@
 
 .accountPanel {
     position: absolute;
-    right: 8px;
-    top: 54px;
-    background-color: #eeeeee;
+    right: 0px;
+    top: 48px;
+    background-color: #ccc;
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -123,8 +127,9 @@
     font-size: 16px;
     color: #3b57cf;
     text-decoration: none;
+    text-align: center;
     display: block;
-    color: gray;
+    color: #fff;
 }
 .accountPanel a:hover {
     color: #3b57cf;

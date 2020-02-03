@@ -9,13 +9,13 @@
 #logo path:nth-child(1){
     stroke-dasharray: 4506.0703125px;
     stroke-dashoffset:4506.0703125px;
-    animation: line-anim 2s ease forwards 0.7s, fill1 0.5s ease forwards 2s;
+    animation: line-anim 1200ms ease forwards 0.5s, fill1 0.5s ease forwards 750ms;
 }
 
 #logo path:nth-child(2){
     stroke-dasharray: 4085.047119140625px;
     stroke-dashoffset:4085.047119140625px;
-    animation: line-anim 2s ease forwards 0.1s, fill2 0.5s ease forwards 2s;
+    animation: line-anim 1200ms ease forwards 500ms, fill2 0.5s ease forwards 800ms;
 }
 
 @keyframes line-anim{

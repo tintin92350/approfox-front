@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardPageComponent } from '../dashboard-page/dashboard-page.component';
 
 
 const routes: Routes = [
-  { path: 'students', component: DashboardPageComponent }
 ];
 
 @NgModule({

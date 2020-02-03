@@ -3,11 +3,11 @@ import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard-page',
-  templateUrl: './dashboard-page.component.html',
-  styleUrls: ['./dashboard-page.component.css']
+  selector: 'app-page',
+  templateUrl: './app-page.component.html',
+  styleUrls: ['./app-page.component.css']
 })
-export class DashboardPageComponent implements OnInit {
+export class AppPageComponent implements OnInit {
 
   private accountMenuShowed = false;
 
@@ -23,6 +23,11 @@ export class DashboardPageComponent implements OnInit {
 
   isAccountMenuShowed(): boolean {
     return this.accountMenuShowed;
+  }
+
+  navigateTo(to: string) {
+    this.accountMenuShowed = false;
+    this.router.navigate([to]);
   }
 
 }

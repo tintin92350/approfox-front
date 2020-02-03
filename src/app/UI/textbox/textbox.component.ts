@@ -13,6 +13,7 @@ export class TextboxComponent implements OnInit {
   @Input() label: string;
   @Input() placeholder: string;
   @Input() fullSize: boolean;
+  @Input() disabled = false;
 
   @Output() inputModelChange = new EventEmitter<string>();
 
@@ -30,7 +31,7 @@ export class TextboxComponent implements OnInit {
     }
   }
 
-  textChange(){
+  textChange() {
     this.inputModelChange.emit(this.inputModel);
     this.textCount = this.inputModel.length;
   }

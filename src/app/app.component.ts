@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  splashScreen = false;
+  splashScreen = true;
   title = 'approfox-dev';
 
   constructor()  {
-    /*setTimeout(() => {
+    setTimeout(() => {
       this.splashScreen = false;
-    }, 32);*/
+    }, 1800);
   }
 }

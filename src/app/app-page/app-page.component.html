@@ -25,10 +25,10 @@
             
 
         <nav id="main-navigation" #mainNavigation>
-            <a [routerLink]="['/dashboard/']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+            <a [routerLink]="['/app/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                 true}" >dashboard</a>
-            <a [routerLink]="['/dashboard/my-cv']" [routerLinkActive]="['active']">Mon cv</a>
-            <a [routerLink]="['/dashboard/my-tags']" [routerLinkActive]="['active']">Mes tags</a>
+            <a [routerLink]="['/app/my-cv']" [routerLinkActive]="['active']">Mon cv</a>
+            <a [routerLink]="['/app/my-tags']" [routerLinkActive]="['active']">Mes tags</a>
         </nav>
 
     </div>
@@ -38,8 +38,8 @@
             <a href="/notifications"><i class="fas fa-bell"></i></a>
             <a (click)="accountButton()"><i class="fas fa-user-circle"></i></a>
             <div class="accountPanel" *ngIf="isAccountMenuShowed()">
-                <a href="#">Mon compte</a>
-                <a [routerLink]="['/logout']">Se déconnecter</a>
+                <a (click)="navigateTo('/app/account')">Mon compte</a>
+                <a (click)="navigateTo('/logout')">Se déconnecter</a>
             </div>
         </div>
         <div class="Center-Panel">

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { AppPageComponent } from './app-page/app-page.component';
 import { TagComponent } from './Resources/tag/tag.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { StudentModule } from './student/student.module';
@@ -13,14 +13,16 @@ import { SharedModule } from './app-shared.module';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    DashboardPageComponent,
+    AppPageComponent,
     DashboardComponent,
-    LogoutPageComponent
+    LogoutPageComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,
