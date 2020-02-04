@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AppPageComponent } from './app-page/app-page.component';
-import { TagComponent } from './Resources/tag/tag.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { StudentModule } from './student/student.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -14,6 +13,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { TagComponent } from './Resources/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { MyAccountComponent } from './my-account/my-account.component';
     AppPageComponent,
     DashboardComponent,
     LogoutPageComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,

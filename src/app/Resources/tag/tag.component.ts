@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Tag } from 'src/app/Models/tag.model';
+import { TagService } from 'src/app/services/resources/tag.service';
 
 @Component({
   selector: 'app-tag',
@@ -7,11 +10,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TagComponent implements OnInit {
 
-  @Input() name: string;
+  private tag: Tag;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private tagService: TagService) {
+    this.route = route;
+    this.tag = null;
+  }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const tagId = params.get('id');
+      this.tagService.getTag(parseInt(tagId)).subscribe(tag => {
+        this.tag = tag;
+      });
+    });
   }
 
 }

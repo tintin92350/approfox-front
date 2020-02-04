@@ -14,7 +14,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private tagService: TagService) {
     this.tagService = tagService;
-    this.myTags = this.tagService.getTagListOfUser(1);
+    this.tagService.getTags().subscribe(tags => {
+      this.myTags = tags;
+    });
   }
 
   getMyTags(): Tag[] {

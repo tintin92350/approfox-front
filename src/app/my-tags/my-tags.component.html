@@ -10,6 +10,6 @@
         </h2>
     </div>
     <div class="section-content">
-        <app-tag *ngFor="let tag of getMyTags()" [name]="tag.name"></app-tag>
+        <app-tag-badge *ngFor="let tag of getMyTags()" [tag]="tag"></app-tag-badge>
     </div>
 </div>

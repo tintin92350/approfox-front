@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './UI/button/button.component';
@@ -8,12 +9,13 @@ import { SuccessBoxComponent } from './UI/MessageBox/success-box/success-box.com
 import { WarningBoxComponent } from './UI/MessageBox/warning-box/warning-box.component';
 import { ErrorBoxComponent } from './UI/MessageBox/error-box/error-box.component';
 import { CvComponent } from './Resources/cv/cv.component';
-import { TagComponent } from './Resources/tag/tag.component';
+import { TagBadgeComponent } from './Resources/tagBadge/tag-badge.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     declarations: [
         ButtonComponent,
@@ -22,7 +24,7 @@ import { TagComponent } from './Resources/tag/tag.component';
         SuccessBoxComponent,
         WarningBoxComponent,
         ErrorBoxComponent,
-        TagComponent
+        TagBadgeComponent
     ],
     exports: [
         ButtonComponent,
@@ -31,7 +33,7 @@ import { TagComponent } from './Resources/tag/tag.component';
         SuccessBoxComponent,
         WarningBoxComponent,
         ErrorBoxComponent,
-        TagComponent
+        TagBadgeComponent
     ]
 })
 export class SharedModule {}

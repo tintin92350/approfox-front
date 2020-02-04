@@ -9,6 +9,7 @@ import { AuthGuardService } from './services/security/auth-guard.service';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { MyTagsComponent } from './my-tags/my-tags.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { TagComponent } from './Resources/tag/tag.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'my-tags', component: MyTagsComponent},
     { path: 'dashboard', component: DashboardComponent },
     { path: 'account', component: MyAccountComponent },
-    { path: 'cv/:id', component: CvComponent }
+    { path: 'cv/:id', component: CvComponent },
+    { path: 'resources/tag/:id', component: TagComponent },
   ] },
   { path: 'login', component: LoginPageComponent },
   { path: 'logout', component: LogoutPageComponent },
