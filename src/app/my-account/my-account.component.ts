@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAccountComponent implements OnInit {
 
-  private firstname: string;
-  private lastname: string;
+  public firstname: string;
+  public lastname: string;
 
   constructor() {
   }
