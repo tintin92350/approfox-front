@@ -18,6 +18,11 @@ export class AuthService {
   public auth(username: string, password: string) {
     if (username === 'etude' && password === 'etude') {
       localStorage.setItem('auth', 'true');
+      localStorage.setItem('role', 'student');
+      this.router.navigate(['/dashboard']);
+    } else if (username === 'toto' && password === 'toto') {
+      localStorage.setItem('auth', 'true');
+      localStorage.setItem('role', 'responsible');
       this.router.navigate(['/dashboard']);
     } else {
       localStorage.setItem('auth', 'false');
@@ -38,5 +43,9 @@ export class AuthService {
 
   public logout() {
     localStorage.setItem('auth', 'false');
+  }
+
+  public getRole(): string {
+    return localStorage.getItem('role');
   }
 }

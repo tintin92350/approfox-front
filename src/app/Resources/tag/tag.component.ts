@@ -26,4 +26,8 @@ export class TagComponent implements OnInit {
     });
   }
 
+  getTag() {
+    return this.tag;
+  }
+
 }

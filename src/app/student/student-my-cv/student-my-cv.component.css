@@ -77,6 +77,16 @@ app-upload-file {
     width: 100%;
 }
 
+.cvBlock {
+    display: flex;
+}
+.cvBlock .document {
+    width: 50%;
+}
+.cvBlock .informations {
+    display: flex;
+    flex-direction: column;
+}
 @media screen and (max-width: 1200px) {
     
     #upload-section {

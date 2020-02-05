@@ -23,8 +23,11 @@
             <path d="M1299.72 1482.88H1692.38V1512.88H1299.72V1482.88Z" fill="#E6B22C"/>
             </svg>
             
-
-        <app-student-main-navigation *appHasRole="'student'"></app-student-main-navigation>
+            <nav id="main-navigation" #mainNavigation>
+                <a [routerLink]="['/student/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
+                <a [routerLink]="['/student/my-cv']" [routerLinkActive]="['active']">Mon cv</a>
+                <a [routerLink]="['/student/my-tags']" [routerLinkActive]="['active']">Mes tags</a>
+            </nav>
     </div>
     <div class="Right-Panel">
         <div class="Top-Panel">
@@ -32,7 +35,7 @@
             <a href="/notifications"><i class="fas fa-bell"></i></a>
             <a (click)="accountButton()"><i class="fas fa-user-circle"></i></a>
             <div class="accountPanel" *ngIf="isAccountMenuShowed()">
-                <a (click)="navigateTo('/app/account')">Mon compte</a>
+                <a (click)="navigateTo('/student/account')">Mon compte</a>
                 <a (click)="navigateTo('/logout')">Se déconnecter</a>
             </div>
         </div>

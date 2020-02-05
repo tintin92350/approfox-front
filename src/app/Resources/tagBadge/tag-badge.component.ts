@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Tag } from 'src/app/Models/tag.model';
 
@@ -10,14 +10,15 @@ import { Tag } from 'src/app/Models/tag.model';
 export class TagBadgeComponent implements OnInit {
 
   @Input() tag: Tag;
+  @Output() functionOnClick: EventEmitter<Tag> = new EventEmitter<any>();
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  navigateToTagResource() {
-    this.router.navigate(['/app/resources/tag/' + this.tag.tagId]);
+  clickOnBadge(event) {
+    this.functionOnClick.emit(this.tag);
   }
 
 }

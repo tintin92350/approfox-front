@@ -10,6 +10,7 @@ import { WarningBoxComponent } from './UI/MessageBox/warning-box/warning-box.com
 import { ErrorBoxComponent } from './UI/MessageBox/error-box/error-box.component';
 import { CvComponent } from './Resources/cv/cv.component';
 import { TagBadgeComponent } from './Resources/tagBadge/tag-badge.component';
+import { HasRoleDirective } from './directives/has-role.directive';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { TagBadgeComponent } from './Resources/tagBadge/tag-badge.component';
         SuccessBoxComponent,
         WarningBoxComponent,
         ErrorBoxComponent,
-        TagBadgeComponent
+        TagBadgeComponent,
+        HasRoleDirective
     ],
     exports: [
         ButtonComponent,
@@ -33,7 +35,8 @@ import { TagBadgeComponent } from './Resources/tagBadge/tag-badge.component';
         SuccessBoxComponent,
         WarningBoxComponent,
         ErrorBoxComponent,
-        TagBadgeComponent
+        TagBadgeComponent,
+        HasRoleDirective
     ]
 })
 export class SharedModule {}

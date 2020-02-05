@@ -100,3 +100,37 @@
 .accountPanel a:hover {
     color: #3b57cf;
 }
+
+nav#main-navigation {
+    min-width: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    margin-left: 25%;
+    width: 75%;
+}
+
+nav#main-navigation a {
+    padding: 0.5em 1em 0.5em 1.5em;
+    margin: 0.25em 0;
+    text-decoration: none;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 24px;
+    color: #fff;
+    transition: 250ms ease-in-out;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+nav#main-navigation a.active {
+    color: #3b57cf;
+    background-color: #fff; 
+    font-weight: bold;
+}
+
+nav#main-navigation a:hover {
+    color: #3b57cf;
+    background-color: #fff;
+    font-weight: bold;
+}

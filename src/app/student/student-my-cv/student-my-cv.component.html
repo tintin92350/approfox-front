@@ -30,12 +30,21 @@
     <div class="section">
         <div class="section-header">
             <h2 class="section-title">
-                STATUE
+                INFORMATIONS SUR LE DOCUMENT
             </h2>
         </div>
         <div class="section-content">
             <br>
-            <app-info-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-info-box>
+            <div class="cvBlock">
+                <div class="document">
+
+                </div>
+                <div class="informations">
+                    <span><b>Nom du fichier :</b> {{getCvModel().filename}}</span>
+                    <span><b>Date de soumission :</b> {{getCvModel().dateOfUpload | date:'dd/MM/y à HH:mm'}}</span>
+                    <span><b>Status :</b> {{getCvModel().status}}</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
