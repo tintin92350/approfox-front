@@ -21,8 +21,8 @@ import { ResponsibleDashboardComponent } from './responsible/responsible-dashboa
 
 const routes: Routes = [
   { path: '', redirectTo: '/app', pathMatch: 'full'},
-  { path: 'app', component: RoleRedirectingComponent },
-  { path: 'student', component: StudentPageComponent, canActivate: [RoleGuard], data: { roles: 'student'}, children: [
+  { path: 'app', component: RoleRedirectingComponent, canActivate: [AuthGuardService] },
+  { path: 'student', component: StudentPageComponent, canActivate: [RoleGuard, AuthGuardService], data: { roles: 'student'}, children: [
     { path: 'my-cv', component: StudentMyCvComponent},
     { path: 'my-tags', component: StudentMyTagsComponent},
     { path: 'dashboard', component: StudentDashboardComponent},
@@ -36,7 +36,7 @@ const routes: Routes = [
     { path: 'cv/:id', component: CvComponent },
     { path: 'tag/:id', component: TagComponent },
   ] },*/
-  { path: 'responsible', component: ResponsiblePageComponent, canActivate: [RoleGuard], data: { roles: 'responsible'}, children: [
+  { path: 'responsible', component: ResponsiblePageComponent, canActivate: [RoleGuard, AuthGuardService], data: { roles: 'responsible'}, children: [
     { path: 'dashboard', component: ResponsibleDashboardComponent},
     { path: 'tag/:id', component: TagComponent },
     { path: 'account', component: MyAccountComponent },

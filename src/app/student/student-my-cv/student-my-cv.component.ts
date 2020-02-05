@@ -57,7 +57,7 @@ export class StudentMyCvComponent implements OnInit {
 
   getCvModel(): CV {
     const cv = JSON.parse(localStorage.getItem('cvModel'));
-    this.cv = new CV(cv.filename, cv.data, cv.dateOfUpload, cv.status);
+    this.cv = new CV(cv.filename, cv.data, cv.dateOfUpload, cv.status) as CV;
     return this.cv;
   }
 
