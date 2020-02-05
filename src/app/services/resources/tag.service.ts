@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Tag } from 'src/app/Models/tag.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TagService {
-
-  private api = 'http://www.approfox.space:8080/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,21 +28,21 @@ export class TagService {
    * @param tagid Tag id
    */
   getTag(tagid: number): Observable<Tag> {
-    return this.httpClient.get<Tag>(this.api + 'tag?id=' + tagid);
+    return this.httpClient.get<Tag>(environment.apiUrl + 'tag?id=' + tagid);
   }
 
   /**
    * Returns the entire tag as list
    */
   getTags(): Observable<Tag[]> {
-    return this.httpClient.get<Tag[]>(this.api + 'tags');
+    return this.httpClient.get<Tag[]>(environment.apiUrl + 'tags');
   }
 
   /**
    * Returns the entire tag that a student has
    */
   getTagsOfStudent(studentid: number): Observable<Tag> {
-    return this.httpClient.get<Tag>(this.api + 'student/' + studentid + '/tags');
+    return this.httpClient.get<Tag>(environment.apiUrl + 'student/' + studentid + '/tags');
   }
 
 }
