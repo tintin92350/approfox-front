@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TextboxComponent implements OnInit {
 
   @Input() inputModel: string;
+  @Input() valueString: string;
   @Input() maxLength: number;
   @Input() isNumeric: boolean;
   @Input() label: string;

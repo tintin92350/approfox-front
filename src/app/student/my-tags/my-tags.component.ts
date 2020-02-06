@@ -11,11 +11,15 @@ import {Tag} from '../../models/tag.model';
 export class MyTagsComponent implements OnInit {
 
   private tags: Tag[];
+  private tagServiceStatus: number;
 
   constructor(private router: Router, private tagService: TagService) {
     this.tagService = tagService;
     this.tagService.getTags().subscribe(tagCollection => {
       this.tags = tagCollection;
+      this.tagServiceStatus = 1;
+    }, error => {
+      this.tagServiceStatus = error.status;
     });
   }
 
@@ -28,6 +32,10 @@ export class MyTagsComponent implements OnInit {
 
   hasNoTagAssigned(): boolean {
     return this.tags != null && this.tags.length === 0;
+  }
+
+  errorOnTagService(): boolean {
+    return this.tagServiceStatus <= 0;
   }
 
   visualiseTag(tag: Tag) {

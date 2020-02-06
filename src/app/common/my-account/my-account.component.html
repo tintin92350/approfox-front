@@ -1,0 +1,56 @@
+<h1 id="page-title">
+  Mon compte
+</h1>
+
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">
+      Mes informations personnelles
+    </h2>
+  </div>
+  <div class="section-content">
+    <br>
+    <div class="data-table">
+      <div class="data">
+        <div class="label">
+          Prénom
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="firstname" [disabled]="true"></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          Nom de famille
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="lastname" [disabled]="true"></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          e-mail
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="email" [disabled]="true"></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          département de rattachement
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [valueString]="departmentString()" [disabled]="true"></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          Type de compte
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [valueString]="accountTypeString()" [disabled]="true"></app-textbox>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

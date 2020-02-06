@@ -1,4 +1,4 @@
 <div class="textbox" [class.block]="fullSize" >
   <label>{{label}}</label>
-  <input type="text" (keypress)="numberOnly($event)" [(ngModel)]="inputModel" (ngModelChange)="textChange()" [maxlength]="maxLength" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
+  <input type="text" (keypress)="numberOnly($event)" [(ngModel)]="inputModel != null ? inputModel : valueString" (ngModelChange)="textChange()" [maxlength]="maxLength" placeholder="{{placeholder}}" disabled="{{disabled}}" />
 </div>

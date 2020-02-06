@@ -1,2 +1,4 @@
-<app-logo [animated]="true" *ngIf="isSplashScreen()"></app-logo>
+<div class="splashscreen" *ngIf="isSplashScreen()">
+  <app-logo [animated]="true" ></app-logo>
+</div>
 <router-outlet *ngIf="!isSplashScreen()" ></router-outlet>

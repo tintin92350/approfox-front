@@ -15,6 +15,7 @@ import * as StudentDashboard from './student/dashboard/dashboard.component';
 import * as AdminDashboard from './admin/dashboard/dashboard.component';
 import * as ATCDashboard from './apprentice-training-center/dashboard/dashboard.component';
 import * as ResponsibleDashboard from './responsible/dashboard/dashboard.component';
+import {MyAccountComponent} from './common/my-account/my-account.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
       {
         path: 'mon-cv',
         component: MyCvComponent,
+      },
+      {
+        path: 'mon-compte',
+        component: MyAccountComponent,
       }
     ]
   },
@@ -60,6 +65,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: AdminDashboard.DashboardComponent,
+      },
+      {
+        path: 'mon-compte',
+        component: MyAccountComponent,
       }
     ]
   },
@@ -72,6 +81,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: ATCDashboard.DashboardComponent,
+      },
+      {
+        path: 'mon-compte',
+        component: MyAccountComponent,
       }
     ]
   },
@@ -84,6 +97,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: ResponsibleDashboard.DashboardComponent,
+      },
+      {
+        path: 'mon-compte',
+        component: MyAccountComponent,
       }
     ]
   },

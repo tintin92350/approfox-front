@@ -31,6 +31,7 @@ import { MyCvComponent } from './student/my-cv/my-cv.component';
 import { MyTagsComponent } from './student/my-tags/my-tags.component';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { DashboardComponent } from './responsible/dashboard/dashboard.component';
+import { MyAccountComponent } from './common/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DashboardComponent } from './responsible/dashboard/dashboard.component'
     MyCvComponent,
     MyTagsComponent,
     DragDropDirective,
-    DashboardComponent
+    DashboardComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

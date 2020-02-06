@@ -11,11 +11,16 @@ import {Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   private tags: Tag[];
+  private tagServiceStatus: number;
 
   constructor(private router: Router, private tagService: TagService) {
     this.tagService = tagService;
+    this.tags = null;
     this.tagService.getTags().subscribe(tagCollection => {
       this.tags = tagCollection;
+      this.tagServiceStatus = 1;
+    }, error => {
+      this.tagServiceStatus = error.status;
     });
   }
 
@@ -27,7 +32,11 @@ export class DashboardComponent implements OnInit {
   }
 
   hasNoTagAssigned(): boolean {
-    return this.tags != null && this.tags.length === 0;
+    return (this.tags != null && this.tags.length === 0);
+  }
+
+  errorOnTagService(): boolean {
+    return this.tagServiceStatus <= 0;
   }
 
   visualiseTag(tag: Tag) {

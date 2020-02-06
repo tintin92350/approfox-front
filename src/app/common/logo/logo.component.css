@@ -1,27 +1,26 @@
-#logo path:nth-child(1){
-  stroke-dasharray: 4506.0703125px;
-  stroke-dashoffset: 0;
-  fill:#E6B22C;
-  stroke: #E6B22C;
-}
-
-#logo path:nth-child(2){
-  stroke-dasharray: 4085.047119140625px;
-  stroke-dashoffset: 0;
-  stroke: #E6B22C;
-  fill:#FFFFFF;
-}
-
 #logo.animated path:nth-child(1){
   stroke-dashoffset:4506.0703125px;
+  stroke-dasharray: 4506.0703125px;
   animation: line-anim 1200ms ease forwards 0.5s, fill1 0.5s ease forwards 750ms;
+  stroke: #E6B22C;
 }
-
 #logo.animated path:nth-child(2){
   stroke-dashoffset:4085.047119140625px;
+  stroke-dasharray: 4085.047119140625px;
+  stroke: #FFFFFF;
   animation: line-anim 1200ms ease forwards 500ms, fill2 0.5s ease forwards 800ms;
 }
 
+#logo.no-animated path:nth-child(1){
+  stroke-dashoffset: 0;
+  stroke: #E6B22C;
+  fill:#E6B22C;
+}
+#logo.no-animated path:nth-child(2){
+  stroke-dashoffset: 0;
+  stroke: #FFFFFF;
+  fill:#FFFFFF;
+}
 @keyframes line-anim{
   to{
     stroke-dashoffset: 0;
