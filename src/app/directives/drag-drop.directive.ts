@@ -20,7 +20,7 @@ export class DragDropDirective {
     this.opacity = '0.8';
   }
 
-  //Dragleave listener
+  // Dragleave listener
   @HostListener('dragleave', ['$event']) public onDragLeave(evt) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -29,14 +29,14 @@ export class DragDropDirective {
     this.opacity = '1';
   }
 
-  //Drop listener
+  // Drop listener
   @HostListener('drop', ['$event']) public ondrop(evt) {
     evt.preventDefault();
     evt.stopPropagation();
     this.background = '#EEE';
     this.border = '#26A2B7';
     this.opacity = '1'
-    let files = evt.dataTransfer.files;
+    const files = evt.dataTransfer.files;
     if (files.length > 0) {
       this.fileDropped.emit(files);
     }

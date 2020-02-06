@@ -1,0 +1,15 @@
+<app-error-box [message]="'Le tag demandé est inexistant dans la base de donnée !'" *ngIf="isLoaded() && getTag() == null"></app-error-box>
+
+<h1 id="page-title" *ngIf="getTag() != null">
+  TAG
+  <span class="id">#{{getTag().tagId}}</span>
+</h1>
+
+<div class="section" *ngIf="getTag() != null">
+  <div class="section-header">
+    <h2 class="section-title">INFORMATION</h2>
+  </div>
+  <div class="section-content">
+    Nom du tag : {{getTag().name}}
+  </div>
+</div>

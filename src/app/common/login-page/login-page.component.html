@@ -1,0 +1,24 @@
+<div class="wrapper" >
+
+  <app-logo class="logo" id="logo" [width]="500" [height]="500"></app-logo>
+
+  <div class="login-space" id="loginForm">
+    <h1>CONNEXION APPROFOX</h1>
+    <p>Veuillez entrer vos informations de connexion afin de vous authentifier sur le serveur</p>
+
+    <br>
+    <br>
+    <div class="form">
+      <div class="input-group">
+        <label for="username">username</label>
+        <input type="text" name="username" id="username" [(ngModel)]="username">
+      </div>
+      <br>
+      <div class="input-group">
+        <label for="password">password</label>
+        <input type="password" name="password" id="password" [(ngModel)]="password">
+      </div>
+      <br>
+      <input type="submit" value="Se connecter" (click)="login()">
+    </div>
+  </div>

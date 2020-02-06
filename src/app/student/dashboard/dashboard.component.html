@@ -1,0 +1,38 @@
+<h1 id="page-title">
+  Dashboard
+</h1>
+
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">
+      MON CV
+    </h2>
+  </div>
+  <div class="section-content">
+    <br>
+    <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">
+      MES TAGS
+    </h2>
+  </div>
+  <div class="section-content">
+    <app-info-box [message]="'Auncun tag ne vous a ete assignes pour le moment'" *ngIf="hasNoTagAssigned()" ></app-info-box>
+    <app-tag-badge *ngFor="let tag of getTags()" [tag]="tag" (click)="visualiseTag(tag)"></app-tag-badge>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">
+      EMPLOI DU TEMPS DE LA JOURNÉE
+    </h2>
+  </div>
+  <div class="section-content">
+    Aucun emploi du temps pour l'apprentis-dating n'a été publié
+  </div>
+</div>

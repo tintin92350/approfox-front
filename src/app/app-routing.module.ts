@@ -1,53 +1,100 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { AppPageComponent } from './app-page/app-page.component';
-import { StudentMyCvComponent } from './student/student-my-cv/student-my-cv.component';
-import { CvComponent } from './Resources/cv/cv.component';
-import { AuthGuardService } from './services/security/auth-guard.service';
-import { LogoutPageComponent } from './logout-page/logout-page.component';
-import { StudentMyTagsComponent } from './student/student-my-tags/student-my-tags.component';
-import { MyAccountComponent } from './my-account/my-account.component';
-import { TagComponent } from './Resources/tag/tag.component';
-import { StudentMainNavigationComponent } from './student/student-main-navigation/student-main-navigation.component';
-import { StudentModule } from './student/student.module';
-import { StudentPageComponent } from './student/student-page/student-page.component';
-import { RoleGuard } from './services/security/role.guard';
-import { RoleRedirectingComponent } from './role-redirecting/role-redirecting.component';
-import { ResponsiblePageComponent } from './responsible/responsible-page/responsible-page.component';
-import { StudentDashboardComponent } from './student/student-dashboard/student-dashboard.component';
-import { ResponsibleDashboardComponent } from './responsible/responsible-dashboard/responsible-dashboard.component';
+import { RouterModule, Routes } from '@angular/router';
+import {LoginPageComponent} from './common/login-page/login-page.component';
+import {AuthGuard} from './guards/auth.guard';
+import {RedirectAuthGuard} from './guards/redirect-auth.guard';
+import {TagPageComponent} from './common/tag-page/tag-page.component';
+import {MyCvComponent} from './student/my-cv/my-cv.component';
+import {MyTagsComponent} from './student/my-tags/my-tags.component';
 
+import * as StudentPage from './student/page/page.component';
+import * as AdminPage from './admin/page/page.component';
+import * as ATCPage from './apprentice-training-center/page/page.component';
+import * as ResponsiblePage from './responsible/page/page.component';
+import * as StudentDashboard from './student/dashboard/dashboard.component';
+import * as AdminDashboard from './admin/dashboard/dashboard.component';
+import * as ATCDashboard from './apprentice-training-center/dashboard/dashboard.component';
+import * as ResponsibleDashboard from './responsible/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/app', pathMatch: 'full'},
-  { path: 'app', component: RoleRedirectingComponent, canActivate: [AuthGuardService] },
-  { path: 'student', component: StudentPageComponent, canActivate: [RoleGuard, AuthGuardService], data: { roles: 'student'}, children: [
-    { path: 'my-cv', component: StudentMyCvComponent},
-    { path: 'my-tags', component: StudentMyTagsComponent},
-    { path: 'dashboard', component: StudentDashboardComponent},
-    { path: 'cv/:id', component: CvComponent },
-    { path: 'tag/:id', component: TagComponent },
-    { path: 'account', component: MyAccountComponent },
-  ] },
-  /*{ path: 'responsible', component: ResponsiblePageComponent, canActivate: [RoleGuard], data: { roles: 'responsible'}, children: [
-    { path: 'dashboard', component: ResponsibleDashboardComponent},
-    { path: 'account', component: MyAccountComponent },
-    { path: 'cv/:id', component: CvComponent },
-    { path: 'tag/:id', component: TagComponent },
-  ] },*/
-  { path: 'responsible', component: ResponsiblePageComponent, canActivate: [RoleGuard, AuthGuardService], data: { roles: 'responsible'}, children: [
-    { path: 'dashboard', component: ResponsibleDashboardComponent},
-    { path: 'tag/:id', component: TagComponent },
-    { path: 'account', component: MyAccountComponent },
-  ] },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'logout', component: LogoutPageComponent },
-  { path: '**', redirectTo: '/app' }
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+    canActivate: [RedirectAuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'etudiant',
+    component: StudentPage.PageComponent,
+    //canActivate: [AuthGuard],
+    data: { role: 'student' },
+    children: [
+      {
+        path: 'dashboard',
+        component: StudentDashboard.DashboardComponent,
+      },
+      {
+        path: 'tag/:id',
+        component: TagPageComponent,
+      },
+      {
+        path: 'mes-tags',
+        component: MyTagsComponent,
+      },
+      {
+        path: 'mon-cv',
+        component: MyCvComponent,
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminPage.PageComponent,
+    //canActivate: [AuthGuard],
+    data: { role: 'admin' },
+    children: [
+      {
+        path: 'dashboard',
+        component: AdminDashboard.DashboardComponent,
+      }
+    ]
+  },
+  {
+    path: 'cfa',
+    component: ATCPage.PageComponent,
+    //canActivate: [AuthGuard],
+    data: { role: 'admin' },
+    children: [
+      {
+        path: 'dashboard',
+        component: ATCDashboard.DashboardComponent,
+      }
+    ]
+  },
+  {
+    path: 'responsable',
+    component: ResponsiblePage.PageComponent,
+    //canActivate: [AuthGuard],
+    data: { role: 'admin' },
+    children: [
+      {
+        path: 'dashboard',
+        component: ResponsibleDashboard.DashboardComponent,
+      }
+    ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

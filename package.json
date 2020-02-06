@@ -1,5 +1,5 @@
 {
-  "name": "approfox-dev",
+  "name": "test-angular-application",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,24 +19,18 @@
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
-    "@ckeditor/ckeditor5-angular": "^1.1.2",
-    "@ckeditor/ckeditor5-build-decoupled-document": "^16.0.0",
-    "iv-viewer": "^2.0.1",
-    "ng2-image-viewer": "^3.0.5",
-    "ng2-pdf-viewer": "^6.0.2",
-    "ngx-extended-pdf-viewer": "^2.0.0-alpha.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.23",
+    "@angular-devkit/build-angular": "~0.803.9",
     "@angular/cli": "~8.3.9",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~8.2.9",
+    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",

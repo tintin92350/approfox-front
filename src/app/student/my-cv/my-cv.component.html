@@ -1,0 +1,49 @@
+<h1 id="page-title">MON CV</h1>
+<app-button [label]="'Annuler'" [fullSize]="true" (click)="cancelCvImport($event)" *ngIf="isCvUploaded()" ></app-button>
+
+<div *ngIf="!isCvUploaded()">
+  <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
+
+  <div id="upload-section">
+    <app-file-upload (emitFileUpload)="changeOnUpload($event)" ></app-file-upload>
+    <div>
+      <h1>IMPORTATION DU CV</h1>
+
+      <p>Veuillez glisser-déposer votre cv dans le cadre prévu à cet effet ou cliquer sur celui-ci pour ouvrir une boite de dialogue et selectionner votre document.</p>
+      <br/>
+      <app-error-box [message]="'Le fichier doit &ecirc;tre au format PDF seulement !'" *ngIf="error === 1"></app-error-box>
+      <app-success-box [message]="'Votre CV a bien été enregistré'" *ngIf="error === -1" ></app-success-box>
+
+      <br>
+      <div class="uploadedFileForm" *ngIf="file != null && error == null">
+        <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ></app-textbox>
+        <div class="button-group">
+          <app-button [label]="'Valider'" [type]="'primary'" [fullSize]="true" (click)="validateCvImport($event)" ></app-button>
+          <app-button [label]="'Annuler'" [type]="'danger'" [fullSize]="true" (click)="cancelCvImport($event)" ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isCvUploaded()" >
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">
+        INFORMATIONS SUR LE DOCUMENT
+      </h2>
+    </div>
+    <div class="section-content">
+      <br>
+      <div class="cvBlock">
+        <div class="document">
+
+        </div>
+        <div class="informations">
+          <span><b>Nom du fichier :</b> {{getCvModel().filename}}</span>
+          <span><b>Date de soumission :</b> {{getCvModel().dateOfUpload | date:'dd/MM/y à HH:mm'}}</span>
+          <span><b>Status :</b> {{getCvModel().status}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

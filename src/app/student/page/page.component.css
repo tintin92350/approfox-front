@@ -1,0 +1,137 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "Left-Panel Right-Panel";
+  height: 100%;
+  width: 100%;
+}
+
+
+.Left-Panel {
+  grid-area: Left-Panel;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  background: rgb(79,0,188);
+  background: -moz-linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+  background: -webkit-linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+  background: linear-gradient(60deg, rgba(79,0,188,1) 0%, rgba(41,171,226,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4f00bc",endColorstr="#29abe2",GradientType=1);
+}
+
+.Right-Panel {
+  /*display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 48px 100%;
+  grid-template-areas: "Top-Panel" "Center-Panel";
+  grid-area: Right-Panel;*/
+  overflow: auto;
+  position: relative;
+}
+
+.Center-Panel {
+  grid-area: Center-Panel;
+  padding: 2em;
+}
+
+.Top-Panel {
+  grid-area: Top-Panel;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  right: 0;
+  justify-content: flex-end;
+  background-color: #eee;
+  position: relative;
+}
+
+.Top-Panel a {
+  cursor: pointer;
+}
+
+
+.Left-Panel img {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 120px;
+}
+
+.Top-Panel a {
+  color: gray;
+  font-size: 24px;
+  line-height: 48px;
+  padding: 0 0.5em;
+  height: 100%;
+}
+
+
+#logo path:nth-child(1){
+  stroke-dasharray: 4506.0703125px;
+  stroke-dashoffset:4506.0703125px;
+  fill:#E6B22C;
+}
+
+#logo path:nth-child(2){
+  stroke-dasharray: 4085.047119140625px;
+  stroke-dashoffset:4085.047119140625px;
+  fill:#FFFFFF;
+}
+
+.accountPanel {
+  position: absolute;
+  right: 0px;
+  top: 48px;
+  background-color: #ccc;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.accountPanel a {
+  font-size: 16px;
+  color: #3b57cf;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  color: #fff;
+}
+.accountPanel a:hover {
+  color: #3b57cf;
+}
+
+nav#main-navigation {
+  min-width: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  margin-left: 25%;
+  width: 75%;
+}
+
+nav#main-navigation a {
+  padding: 0.5em 1em 0.5em 1.5em;
+  margin: 0.25em 0;
+  text-decoration: none;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: #fff;
+  transition: 250ms ease-in-out;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  cursor: pointer;
+}
+
+nav#main-navigation a.active {
+  color: #3b57cf;
+  background-color: #fff;
+  font-weight: bold;
+}
+
+nav#main-navigation a:hover {
+  color: #3b57cf;
+  background-color: #fff;
+  font-weight: bold;
+}
