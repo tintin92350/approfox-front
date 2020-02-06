@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   visualiseTag(tag: Tag) {
-    this.router.navigate(['/student/tag/' + tag.tagId]);
+    this.router.navigate(['/etudiant/tag/' + tag.tagId]);
   }
 
 }

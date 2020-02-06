@@ -10,6 +10,15 @@
     <h2 class="section-title">INFORMATION</h2>
   </div>
   <div class="section-content">
-    Nom du tag : {{getTag().name}}
+    <div class="data-table">
+      <div class="data">
+        <div class="label">
+          Nom du tag
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [valueString]="getTag().name" [disabled]="true"></app-textbox>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
