@@ -39,7 +39,9 @@
   top: 0;
   right: 0;
   justify-content: flex-end;
-  background-color: #ddd;
+  background-color: #eee;
+  height: 48px;
+  align-items: center;
 }
 
 .Top-Panel a {

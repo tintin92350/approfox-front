@@ -4,7 +4,6 @@ import {LoginPageComponent} from './common/login-page/login-page.component';
 import {AuthGuard} from './guards/auth.guard';
 import {RedirectAuthGuard} from './guards/redirect-auth.guard';
 import {TagPageComponent} from './common/tag-page/tag-page.component';
-import {MyCvComponent} from './student/my-cv/my-cv.component';
 import {MyTagsComponent} from './student/my-tags/my-tags.component';
 
 import * as StudentPage from './student/page/page.component';
@@ -15,6 +14,10 @@ import * as StudentDashboard from './student/dashboard/dashboard.component';
 import * as AdminDashboard from './admin/dashboard/dashboard.component';
 import * as ATCDashboard from './apprentice-training-center/dashboard/dashboard.component';
 import * as ResponsibleDashboard from './responsible/dashboard/dashboard.component';
+
+import * as StudentCv from './student/my-cv/my-cv.component';
+import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
+
 import {MyAccountComponent} from './common/my-account/my-account.component';
 
 const routes: Routes = [
@@ -48,7 +51,7 @@ const routes: Routes = [
       },
       {
         path: 'mon-cv',
-        component: MyCvComponent,
+        component: StudentCv.MyCvComponent,
       },
       {
         path: 'mon-compte',
@@ -101,6 +104,10 @@ const routes: Routes = [
       {
         path: 'mon-compte',
         component: MyAccountComponent,
+      },
+      {
+        path: 'mes-cv',
+        component: ResponsibleCv.MyCvComponent,
       }
     ]
   },

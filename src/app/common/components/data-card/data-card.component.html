@@ -1,5 +1,8 @@
 <div class="data-card" (click)="clickOnCard($event)">
-  <h2 class="title">{{title}}</h2>
-  <h4 class="number">{{number}}</h4>
-  <i [ngClass]="icon != null ? icon : ''"></i>
+  <div class="icon">
+    <i [ngClass]="icon != null ? icon : ''"></i>
+    <h2 class="title">{{title}}</h2></div>
+  <div class="text">
+    <h4 class="number">{{number}}</h4>
+  </div>
 </div>

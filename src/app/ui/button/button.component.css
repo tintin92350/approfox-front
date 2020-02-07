@@ -3,7 +3,7 @@ button {
   padding: 0.75em 2em;
   border: 0;
   border-radius: 4px;
-  width: 120px;
+  min-width: 120px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -17,6 +17,7 @@ button.block {
 button.primary {
   color: #fff;
   background-color: #359eec;
+  border: 2px solid #359eec;
 }
 button.primary:hover {
   background-color: #2d87cc;
@@ -46,17 +47,21 @@ button.tertiary:hover {
 button.danger {
   color: #fff;
   background-color: #dc2828;
+  border: 2px solid #dc2828;
 }
 button.danger:hover {
   background-color: #d71a1a;
+  border-color: #d71a1a;
 }
 
 button.warning {
   color: #fff;
   background-color: #ffbd29;
+  border: 2px solid #ffbd29;
 }
 button.warning:hover {
   background-color: #e5a825;
+  border-color: #e5a825;
 }
 
 button:focus, button:active {

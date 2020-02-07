@@ -27,12 +27,14 @@ import { FileUploadComponent } from './ui/file-upload/file-upload.component';
 import {HttpClientModule} from '@angular/common/http';
 import { TagBadgeComponent } from './common/components/tag-badge/tag-badge.component';
 import { TagPageComponent } from './common/tag-page/tag-page.component';
-import { MyCvComponent } from './student/my-cv/my-cv.component';
 import { MyTagsComponent } from './student/my-tags/my-tags.component';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { DashboardComponent } from './responsible/dashboard/dashboard.component';
 import { MyAccountComponent } from './common/my-account/my-account.component';
 import { DataCardComponent } from './common/components/data-card/data-card.component';
+
+import * as StudentCv from './student/my-cv/my-cv.component';
+import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { DataCardComponent } from './common/components/data-card/data-card.compo
     FileUploadComponent,
     TagBadgeComponent,
     TagPageComponent,
-    MyCvComponent,
+    StudentCv.MyCvComponent,
+    ResponsibleCv.MyCvComponent,
     MyTagsComponent,
     DragDropDirective,
     DashboardComponent,

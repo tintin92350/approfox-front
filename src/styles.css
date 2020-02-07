@@ -23,16 +23,3 @@ html, body {
   background-color: #fff;
   overflow: hidden;
 }
-
-.warning-block {
-  padding: 1em;
-  background-color: #E93D3D;
-  color: #fff;
-}
-
-.warning-block a {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: large;
-  line-height: 1.5em;
-}
