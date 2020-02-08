@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { Tag } from 'src/app/Models/tag.model';
+import { Tag } from 'src/app/models/tag.model';
 
 @Component({
   selector: 'app-tag-badge',
