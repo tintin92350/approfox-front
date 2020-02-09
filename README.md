@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.9.
 
+## Deployment on dev server status
+
+[![buddy pipeline](https://app.buddy.works/rodicquentincorporation/approfox-front/pipelines/pipeline/238130/badge.svg?token=86ebf2054274d8a9c97cfee320f6466fc06a812785aeaa73ee3806378951a952 "buddy pipeline")](https://app.buddy.works/rodicquentincorporation/approfox-front/pipelines/pipeline/238130)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -26,4 +30,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-[![buddy pipeline](https://app.buddy.works/rodicquentincorporation/approfox-front/pipelines/pipeline/238130/badge.svg?token=86ebf2054274d8a9c97cfee320f6466fc06a812785aeaa73ee3806378951a952 "buddy pipeline")](https://app.buddy.works/rodicquentincorporation/approfox-front/pipelines/pipeline/238130)
