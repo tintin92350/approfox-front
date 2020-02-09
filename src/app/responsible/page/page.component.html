@@ -13,9 +13,9 @@
     <div class="Top-Panel">
       <a href="/account"><i class="fas fa-comments"></i></a>
       <a href="/notifications"><i class="fas fa-bell"></i></a>
-      <a (click)="openUserMenu()"><i class="fas fa-user-circle"></i></a>
-      <div class="accountPanel" *ngIf="isUserMenuOpened()">
-        <a [routerLink]="['/responsable/mon-compte']">Mon compte</a>
+      <a (click)="openUserMenu()" #accountMenuLink ><i class="fas fa-user-circle"></i></a>
+      <div class="accountPanel" *ngIf="isUserMenuOpened()" (clickOutside)="closeUserMenu($event)" >
+        <a [routerLink]="['/admin/mon-compte']">Mon compte</a>
         <a [routerLink]="['/etudiant/dashboard']">Se déconnecter</a>
       </div>
     </div>

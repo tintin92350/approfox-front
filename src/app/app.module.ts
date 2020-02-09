@@ -35,6 +35,8 @@ import { DataCardComponent } from './common/components/data-card/data-card.compo
 
 import * as StudentCv from './student/my-cv/my-cv.component';
 import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
+import {ClickOutsideModule} from 'ng-click-outside';
+import { PageMemberBaseComponent } from './common/page-member-base/page-member-base.component';
 
 @NgModule({
   declarations: [
@@ -65,13 +67,15 @@ import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
     DragDropDirective,
     DashboardComponent,
     MyAccountComponent,
-    DataCardComponent
+    DataCardComponent,
+    PageMemberBaseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]
