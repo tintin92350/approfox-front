@@ -16,16 +16,17 @@ export class RedirectAuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (!this.auth.isAuthenticated()) {
-      this.router.navigate(['/login']);
+      return false;
     }
 
-    console.log(next.data);
     if (next.data.common) {
       return true;
     }
 
+    console.log('authenticated : ' + this.auth.isAuthenticated());
+
     // check if route is restricted by role
-    if ((next.data.role && next.data.role !== this.auth.getRole()) || next.routeConfig.path === '') {
+    if ((next.data.role && this.auth.getRole() && next.data.role !== this.auth.getRole()) || next.routeConfig.path === '') {
       const roleDashboard = '/' + this.auth.getRole() + '/dashboard';
       console.log('redirecting to role dashboard : ' + roleDashboard);
 
