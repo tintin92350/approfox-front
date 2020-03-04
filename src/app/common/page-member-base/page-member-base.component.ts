@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-page-member-base',
@@ -12,7 +13,7 @@ export class PageMemberBaseComponent implements OnInit {
 
   @ViewChild('accountMenuLink', { static: false }) element: ElementRef<any>;
 
-  constructor(protected router: Router) {
+  constructor(protected router: Router, protected authService: AuthService) {
     this.userMenuOpened = false;
   }
 
@@ -29,5 +30,10 @@ export class PageMemberBaseComponent implements OnInit {
 
   public closeUserMenu(event: any) {
     this.userMenuOpened = event.composedPath().includes(this.element.nativeElement);
+  }
+
+  public logout() {
+    this.authService.logout();
+    console.log('logged out');
   }
 }

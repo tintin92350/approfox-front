@@ -1,6 +1,7 @@
 import {Component, HostListener, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {LogoComponent} from '../logo/logo.component';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -14,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   @Input() public username: string;
   @Input() public password: string;
 
-  constructor(@Inject(DOCUMENT) document) {
+  constructor(@Inject(DOCUMENT) document, private authService: AuthService) {
     this.document = document;
   }
 
@@ -46,6 +47,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-
+    console.log('authentication...');
+    this.authService.auth(this.username, this.password);
   }
 }
