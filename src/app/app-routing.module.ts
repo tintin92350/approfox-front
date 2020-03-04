@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginPageComponent} from './common/login-page/login-page.component';
-import {AuthGuard} from './guards/auth.guard';
-import {RedirectAuthGuard} from './guards/redirect-auth.guard';
 import {TagPageComponent} from './common/tag-page/tag-page.component';
 import {MyTagsComponent} from './student/my-tags/my-tags.component';
 
@@ -19,13 +17,15 @@ import * as StudentCv from './student/my-cv/my-cv.component';
 import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
 
 import {MyAccountComponent} from './common/my-account/my-account.component';
+import {AuthGuard} from './guards/auth.guard';
+import {RedirectAuthGuard} from './guards/redirect-auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: '',
     pathMatch: 'full',
-    canActivate: [RedirectAuthGuard]
+    canActivate: [AuthGuard, RedirectAuthGuard]
   },
   {
     path: 'login',
@@ -34,8 +34,8 @@ const routes: Routes = [
   {
     path: 'etudiant',
     component: StudentPage.PageComponent,
-    //canActivate: [AuthGuard],
-    data: { role: 'student' },
+    canActivate: [AuthGuard, RedirectAuthGuard],
+    data: { role: 'etudiant' },
     children: [
       {
         path: 'dashboard',
@@ -56,13 +56,14 @@ const routes: Routes = [
       {
         path: 'mon-compte',
         component: MyAccountComponent,
+        data: { common: true }
       }
     ]
   },
   {
     path: 'admin',
     component: AdminPage.PageComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RedirectAuthGuard],
     data: { role: 'admin' },
     children: [
       {
@@ -72,42 +73,45 @@ const routes: Routes = [
       {
         path: 'mon-compte',
         component: MyAccountComponent,
+        data: { common: true }
       }
     ]
   },
   {
     path: 'cfa',
     component: ATCPage.PageComponent,
-    //canActivate: [AuthGuard],
-    data: { role: 'admin' },
+    canActivate: [AuthGuard, RedirectAuthGuard],
+    data: { role: 'cfa' },
     children: [
       {
         path: 'dashboard',
-        component: ATCDashboard.DashboardComponent,
+        component: ATCDashboard.DashboardComponent
       },
       {
         path: 'mon-compte',
         component: MyAccountComponent,
+        data: { common: true }
       }
     ]
   },
   {
     path: 'responsable',
     component: ResponsiblePage.PageComponent,
-    //canActivate: [AuthGuard],
-    data: { role: 'admin' },
+    canActivate: [RedirectAuthGuard],
+    data: { role: 'responsable' },
     children: [
       {
         path: 'dashboard',
-        component: ResponsibleDashboard.DashboardComponent,
+        component: ResponsibleDashboard.DashboardComponent
       },
       {
         path: 'mon-compte',
         component: MyAccountComponent,
+        data: { common: true }
       },
       {
         path: 'mes-cv',
-        component: ResponsibleCv.MyCvComponent,
+        component: ResponsibleCv.MyCvComponent
       }
     ]
   },
