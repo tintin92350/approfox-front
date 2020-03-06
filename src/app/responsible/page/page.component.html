@@ -1,6 +1,8 @@
 <div class="grid-container">
   <div class="Left-Panel">
-    <app-logo [width]="100" [height]="20" [percentages]="true"></app-logo>
+    <div class="top">
+      <app-logo [width]="100" [height]="100" [percentages]="true"></app-logo>
+    </div>
 
     <nav id="main-navigation" #mainNavigation>
       <a [routerLink]="['/responsable/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
