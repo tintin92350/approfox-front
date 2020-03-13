@@ -46,6 +46,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .login-space > h1 {
   font-size: 42px;
+  font-weight: bold;
   color: #1e1e1e;
   text-align: center;
   padding-bottom: 0.5em;

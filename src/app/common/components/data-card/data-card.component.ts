@@ -12,6 +12,7 @@ export class DataCardComponent implements OnInit {
   @Input() title: string;
   @Input() number: number;
   @Input() icon: string;
+  @Input() status: string;
 
   constructor() { }
 

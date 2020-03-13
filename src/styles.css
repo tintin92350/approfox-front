@@ -23,3 +23,7 @@ html, body {
   background-color: #f4f7ff;
   overflow: hidden;
 }
+
+.col.main {
+  margin: 1em 0;
+}
