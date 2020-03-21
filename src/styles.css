@@ -20,6 +20,10 @@ html, body {
   width: 100%;
   height: 100%;
 
-  background-color: #fff;
+  background-color: #f4f7ff;
   overflow: hidden;
+}
+
+.col.main {
+  margin: 1em 0;
 }

@@ -5,24 +5,24 @@
 <div class="section">
   <div class="section-header">
     <h2 class="section-title">
-      MON CV
+      Mon CV
     </h2>
   </div>
   <div class="section-content">
     <br>
-    <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
+    <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée &quot;Mon CV&quot;.'"></app-warning-box>
   </div>
 </div>
 
 <div class="section">
   <div class="section-header">
     <h2 class="section-title">
-      MES TAGS
+      Mes tags
     </h2>
   </div>
   <div class="section-content">
-    <app-info-box [message]="'Auncun tag ne vous a ete assignes pour le moment'" *ngIf="hasNoTagAssigned()" ></app-info-box>
-    <app-error-box [message]="'Une erreur est survenue lors du contact avec le serveur'" *ngIf="errorOnTagService()" ></app-error-box>
+    <app-info-box [message]="'Auncun tag ne vous a été assigné pour le moment'" *ngIf="hasNoTagAssigned()" ></app-info-box>
+    <app-error-box [message]="'Une erreur est survenue lors du contact avec le serveur.'" *ngIf="errorOnTagService()" ></app-error-box>
     <app-tag-badge *ngFor="let tag of getTags()" [tag]="tag" (click)="visualiseTag(tag)"></app-tag-badge>
   </div>
 </div>
@@ -30,10 +30,10 @@
 <div class="section">
   <div class="section-header">
     <h2 class="section-title">
-      EMPLOI DU TEMPS DE LA JOURNÉE
+      Emploi du temps de la journée
     </h2>
   </div>
   <div class="section-content">
-    Aucun emploi du temps pour l'apprentis-dating n'a été publié
+    Aucun emploi du temps pour l'apprenti-dating n'a été publié.
   </div>
 </div>

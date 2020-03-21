@@ -16,8 +16,10 @@
 .section .section-header .section-title {
   font-size: 32px;
   color: rgb(40, 40, 40);
+  text-transform: uppercase;
 }
 
 .section .section-content {
   padding: 1em 0;
 }
+

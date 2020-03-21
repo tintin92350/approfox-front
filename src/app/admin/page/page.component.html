@@ -1,11 +1,14 @@
 <div class="grid-container">
   <div class="Left-Panel">
-    <app-logo [width]="100" [height]="20" [percentages]="true"></app-logo>
+    <div class="top">
+      <app-logo [width]="100" [height]="100" [percentages]="true"></app-logo>
+    </div>
 
     <nav id="main-navigation" #mainNavigation>
       <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
       <a [routerLink]="['/admin/representants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >representants</a>
       <a [routerLink]="['/admin/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >etudiants</a>
+      <a [routerLink]="['/admin/tags']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >tags</a>
     </nav>
   </div>
   <div class="Right-Panel">
@@ -20,7 +23,6 @@
     </div>
     <div class="Center-Panel">
       <router-outlet></router-outlet>
-
     </div>
   </div>
 

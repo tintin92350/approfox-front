@@ -19,6 +19,7 @@ import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
 import {MyAccountComponent} from './common/my-account/my-account.component';
 import {AuthGuard} from './guards/auth.guard';
 import {RedirectAuthGuard} from './guards/redirect-auth.guard';
+import {LoginRedirectAuthGuard} from './guards/login-redirect.guard';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate: [LoginRedirectAuthGuard]
   },
   {
     path: 'etudiant',
