@@ -47,7 +47,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    console.log('authentication...');
-    this.authService.auth(this.username, this.password);
+    console.log('Authentication...');
+    this.authService.auth(this.username.toLocaleLowerCase(), this.password);
   }
 }
