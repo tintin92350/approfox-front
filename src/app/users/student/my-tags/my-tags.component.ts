@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {TagService} from '../../services/tag.service';
-import {Tag} from '../../models/tag.model';
+import {TagService} from '../../../services/tag.service';
+import {Tag} from '../../../models/tag.model';
 
 @Component({
   selector: 'app-my-tags',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TagService} from '../../services/tag.service';
-import {Tag} from '../../models/tag.model';
+import {TagService} from '../../../services/tag.service';
+import {Tag} from '../../../models/tag.model';
 import {Router} from '@angular/router';
 
 @Component({

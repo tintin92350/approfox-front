@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CV} from '../../models/cv.model';
-import {FileUploadComponent} from '../../ui/file-upload/file-upload.component';
+import {CV} from '../../../models/cv.model';
+import {FileUploadComponent} from '../../../ui/file-upload/file-upload.component';
 
 @Component({
   selector: 'app-my-cv',

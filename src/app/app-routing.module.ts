@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginPageComponent} from './common/login-page/login-page.component';
 import {TagPageComponent} from './common/tag-page/tag-page.component';
-import {MyTagsComponent} from './student/my-tags/my-tags.component';
+import {MyTagsComponent} from './users/student/my-tags/my-tags.component';
 
-import * as StudentPage from './student/page/page.component';
-import * as AdminPage from './admin/page/page.component';
-import * as ATCPage from './apprentice-training-center/page/page.component';
-import * as ResponsiblePage from './responsible/page/page.component';
-import * as StudentDashboard from './student/dashboard/dashboard.component';
-import * as AdminDashboard from './admin/dashboard/dashboard.component';
-import * as ATCDashboard from './apprentice-training-center/dashboard/dashboard.component';
-import * as ResponsibleDashboard from './responsible/dashboard/dashboard.component';
+import * as StudentPage from './users/student/page/page.component';
+import * as AdminPage from './users/admin/page/page.component';
+import * as ATCPage from './users/apprentice-training-center/page/page.component';
+import * as ResponsiblePage from './users/responsible/page/page.component';
+import * as StudentDashboard from './users/student/dashboard/dashboard.component';
+import * as AdminDashboard from './users/admin/dashboard/dashboard.component';
+import * as ATCDashboard from './users/apprentice-training-center/dashboard/dashboard.component';
+import * as ResponsibleDashboard from './users/responsible/dashboard/dashboard.component';
 
-import * as StudentCv from './student/my-cv/my-cv.component';
-import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
+import * as StudentCv from './users/student/my-cv/my-cv.component';
+import * as ResponsibleCv from './users/responsible/my-cv/my-cv.component';
 
 import {MyAccountComponent} from './common/my-account/my-account.component';
 import {AuthGuard} from './guards/auth.guard';

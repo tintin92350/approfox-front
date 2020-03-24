@@ -4,17 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import * as StudentDashboard from './student/dashboard/dashboard.component';
-import * as AdminDashboard from './admin/dashboard/dashboard.component';
-import * as ATCDashboard from './apprentice-training-center/dashboard/dashboard.component';
-import * as ResponsibleDashboard from './responsible/dashboard/dashboard.component';
-import * as StudentPage from './student/page/page.component';
-import * as AdminPage from './admin/page/page.component';
-import * as ATCPage from './apprentice-training-center/page/page.component';
-import * as ResponsiblePage from './responsible/page/page.component';
+import * as StudentDashboard from './users/student/dashboard/dashboard.component';
+import * as AdminDashboard from './users/admin/dashboard/dashboard.component';
+import * as ATCDashboard from './users/apprentice-training-center/dashboard/dashboard.component';
+import * as ResponsibleDashboard from './users/responsible/dashboard/dashboard.component';
+import * as StudentPage from './users/student/page/page.component';
+import * as AdminPage from './users/admin/page/page.component';
+import * as ATCPage from './users/apprentice-training-center/page/page.component';
+import * as ResponsiblePage from './users/responsible/page/page.component';
 
 import { LoginPageComponent } from './common/login-page/login-page.component';
-import { PageComponent } from './student/page/page.component';
+import { PageComponent } from './users/student/page/page.component';
 import { LogoComponent } from './common/logo/logo.component';
 import {FormsModule} from '@angular/forms';
 import { TextboxComponent } from './ui/textbox/textbox.component';
@@ -27,14 +27,14 @@ import { FileUploadComponent } from './ui/file-upload/file-upload.component';
 import {HttpClientModule} from '@angular/common/http';
 import { TagBadgeComponent } from './common/components/tag-badge/tag-badge.component';
 import { TagPageComponent } from './common/tag-page/tag-page.component';
-import { MyTagsComponent } from './student/my-tags/my-tags.component';
+import { MyTagsComponent } from './users/student/my-tags/my-tags.component';
 import { DragDropDirective } from './directives/drag-drop.directive';
-import { DashboardComponent } from './responsible/dashboard/dashboard.component';
+import { DashboardComponent } from './users/responsible/dashboard/dashboard.component';
 import { MyAccountComponent } from './common/my-account/my-account.component';
 import { DataCardComponent } from './common/components/data-card/data-card.component';
 
-import * as StudentCv from './student/my-cv/my-cv.component';
-import * as ResponsibleCv from './responsible/my-cv/my-cv.component';
+import * as StudentCv from './users/student/my-cv/my-cv.component';
+import * as ResponsibleCv from './users/responsible/my-cv/my-cv.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import { PageMemberBaseComponent } from './common/page-member-base/page-member-base.component';
 
