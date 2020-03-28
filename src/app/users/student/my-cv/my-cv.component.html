@@ -1,8 +1,11 @@
-<div class="row" *ngIf="!isCvUploaded()">
+<div class="row" >
   <div class="col-sm-12">
     <h1 id="page-title">MON CV</h1>
   </div>
-  <div class="col-sm-12">
+
+
+  <!--CV pas upload-->
+  <div class="col-sm-12"*ngIf="!isCvUploaded()">
     <div class="section">
       <div class="section-content">
         <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
@@ -10,7 +13,7 @@
     </div>
   </div>
 
-  <div class="col-sm-12">
+  <div class="col-sm-12" *ngIf="!isCvUploaded()">
     <div class="section">
       <div class="section-header">
         <h2 class="section-title">
@@ -42,13 +45,9 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="row" *ngIf="isCvUploaded()">
-  <div class="col-sm-12">
-    <h1 id="page-title">MON CV</h1>
-  </div>
-  <div class="col-sm-12">
+  <!--CV  upload-->
+  <div class="col-sm-12" *ngIf="isCvUploaded()">
     <div class="section">
       <div class="section-header">
         <h2 class="section-title">
@@ -62,7 +61,7 @@
     </div>
   </div>
 
-  <div class="col-sm-12">
+  <div class="col-sm-12" *ngIf="isCvUploaded()">
     <div class="section">
       <div class="section-header">
         <h2 class="section-title">
@@ -72,11 +71,11 @@
       <div class="section-content">
         <div class="cv-information">
           <app-textbox [fullSize]="true" [(inputModel)]="getCvModel().filename" [disabled]="true"></app-textbox>
-            <app-button type="normal" label="Aperçu"></app-button>
-            <app-button type="danger-revert" label="Supprimer" *ngIf="getCvModel().status === 1"></app-button>
-          </div>
+          <app-button type="normal" label="Aperçu"></app-button>
+          <app-button type="danger-revert" label="Supprimer" *ngIf="getCvModel().status === 1"></app-button>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
+
