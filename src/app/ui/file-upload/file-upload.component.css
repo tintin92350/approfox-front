@@ -1,5 +1,5 @@
 .uploadfilecontainer {
-  background-color: #eee;
+  background-color: #FFF;
   border: 3px dashed #b3b3b3;
   height: 100%;
   margin: auto;
@@ -7,7 +7,9 @@
   background-image: url("../../../assets/img/file.png");
   background-repeat: no-repeat;
   background-size: 128px;
-  background-position: center;
+  background-position: center 40%;
+
+  position: relative;
 }
 
 .uploadfilecontainer:hover {
@@ -39,4 +41,12 @@
 
 .files-list .delete-file:hover {
   transform: rotateZ(360deg);
+}
+
+h5 {
+  text-align: center;
+  bottom: 20%;
+  position: absolute;
+  left: 0;
+  right: 0;
 }

@@ -1,6 +1,7 @@
 button {
   display: block;
-  padding: 0.75em 2em;
+  height: 48px;
+  line-height: 32px;
   border: 0;
   border-radius: 4px;
   min-width: 120px;
@@ -8,6 +9,9 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: 250ms ease-in-out;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
 }
 button.block {
   display: block;
@@ -33,6 +37,16 @@ button.secondary:hover {
   border: 2px solid #2d87cc;
 }
 
+button.normal {
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  color: #2d87cc;
+}
+button.normal:hover {
+  color: #2d87cc;
+  border: 2px solid #2d87cc;
+}
+
 button.tertiary {
   color: #359eec;
   text-decoration: underline;
@@ -52,6 +66,17 @@ button.danger {
 button.danger:hover {
   background-color: #d71a1a;
   border-color: #d71a1a;
+}
+
+button.danger-revert {
+  color: #dc2828;
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+button.danger-revert:hover {
+  background-color: #d71a1a;
+  border-color: #d71a1a;
+  color: #FFFFFF;
 }
 
 button.warning {

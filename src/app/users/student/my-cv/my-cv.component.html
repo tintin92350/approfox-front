@@ -1,49 +1,82 @@
-<h1 id="page-title">MON CV</h1>
-<app-button [label]="'Annuler'" [fullSize]="true" (click)="cancelCvImport($event)" *ngIf="isCvUploaded()" ></app-button>
+<div class="row" *ngIf="!isCvUploaded()">
+  <div class="col-sm-12">
+    <h1 id="page-title">MON CV</h1>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-content">
+        <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
+      </div>
+    </div>
+  </div>
 
-<div *ngIf="!isCvUploaded()">
-  <app-warning-box [message]="'Vous devez transmettre votre CV le plus tôt possible afin de procéder à votre enregistrement pour l\'apprentis-dating. Pour cela veuillez importer votre CV dans la section dédiée mon cv.'"></app-warning-box>
-
-  <div id="upload-section">
-    <app-file-upload (emitFileUpload)="changeOnUpload($event)" ></app-file-upload>
-    <div>
-      <h1>IMPORTATION DU CV</h1>
-
-      <p>Veuillez glisser-déposer votre cv dans le cadre prévu à cet effet ou cliquer sur celui-ci pour ouvrir une boite de dialogue et selectionner votre document.</p>
-      <br/>
-      <app-error-box [message]="'Le fichier doit &ecirc;tre au format PDF seulement !'" *ngIf="error === 1"></app-error-box>
-      <app-success-box [message]="'Votre CV a bien été enregistré'" *ngIf="error === -1" ></app-success-box>
-
-      <br>
-      <div class="uploadedFileForm" *ngIf="file != null && error == null">
-        <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ></app-textbox>
-        <div class="button-group">
-          <app-button [label]="'Valider'" [type]="'primary'" [fullSize]="true" (click)="validateCvImport($event)" ></app-button>
-          <app-button [label]="'Annuler'" [type]="'danger'" [fullSize]="true" (click)="cancelCvImport($event)" ></app-button>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          Importation du CV
+        </h2>
+      </div>
+      <div class="section-content">
+        <div *ngIf="error === 1" >
+          <app-error-box [message]="'Le fichier doit &ecirc;tre au format PDF seulement !'" ></app-error-box>
+          <br>
         </div>
+
+        <div *ngIf="error === -1" >
+          <app-success-box [message]="'Votre CV a bien été enregistré'" ></app-success-box>
+          <br>
+        </div>
+
+        <div class="uploadedFileForm" *ngIf="file != null && error == null">
+          <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ></app-textbox>
+          <div class="button-group">
+            <app-button [label]="'Valider'" type="normal" [fullSize]="true" (click)="validateCvImport($event)" ></app-button>
+            <app-button [label]="'Annuler'" type="danger-revert" [fullSize]="true" (click)="cancelCvImport($event)" ></app-button>
+          </div>
+        </div>
+        <div id="upload-section" *ngIf="file == null || error === 1">
+          <app-file-upload (emitFileUpload)="changeOnUpload($event)"  ></app-file-upload>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
-<div *ngIf="isCvUploaded()" >
-  <div class="section">
-    <div class="section-header">
-      <h2 class="section-title">
-        INFORMATIONS SUR LE DOCUMENT
-      </h2>
-    </div>
-    <div class="section-content">
-      <br>
-      <div class="cvBlock">
-        <div class="document">
 
-        </div>
-        <div class="informations">
-          <span><b>Nom du fichier :</b> {{getCvModel().filename}}</span>
-          <span><b>Date de soumission :</b> {{getCvModel().dateOfUpload | date:'dd/MM/y à HH:mm'}}</span>
-          <span><b>Status :</b> {{getCvModel().status}}</span>
-        </div>
+<div class="row" *ngIf="isCvUploaded()">
+  <div class="col-sm-12">
+    <h1 id="page-title">MON CV</h1>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          État
+        </h2>
+      </div>
+      <div class="section-content">
+        <app-info-box *ngIf="getCvModel().status === 1" message="Votre CV est en cours de vérification par le pôle alternance"></app-info-box>
+        <app-success-box *ngIf="getCvModel().status === 2" message="Votre CV a bien été validé par la pôle alternance en tant que CV final"></app-success-box>
       </div>
     </div>
   </div>
+
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          APERÇU
+        </h2>
+      </div>
+      <div class="section-content">
+        <div class="cv-information">
+          <app-textbox [fullSize]="true" [(inputModel)]="getCvModel().filename" [disabled]="true"></app-textbox>
+            <app-button type="normal" label="Aperçu"></app-button>
+            <app-button type="danger-revert" label="Supprimer" *ngIf="getCvModel().status === 1"></app-button>
+          </div>
+      </div>
+    </div>
+  </div>
+
 </div>

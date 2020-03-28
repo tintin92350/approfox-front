@@ -24,6 +24,8 @@
 
 .box .content h3 {
   line-height: 1.5;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 .box .content p {
   color: #999;

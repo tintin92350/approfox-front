@@ -1,3 +1,4 @@
 <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (fileDropped)="uploadFile($event)">
   <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+  <h5>Glissez-déposez votre fichier dans ce cadre</h5>
 </div>
