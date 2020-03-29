@@ -45,4 +45,8 @@ export class PageMemberBaseComponent implements OnInit {
     const role = this.authService.getRole();
     return '/' + role + '/mon-compte';
   }
+
+  public getPageName(): string {
+    return this.pageName;
+  }
 }
