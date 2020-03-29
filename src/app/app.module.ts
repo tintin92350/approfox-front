@@ -8,13 +8,8 @@ import * as StudentDashboard from './users/student/dashboard/dashboard.component
 import * as AdminDashboard from './users/admin/dashboard/dashboard.component';
 import * as ATCDashboard from './users/apprentice-training-center/dashboard/dashboard.component';
 import * as ResponsibleDashboard from './users/responsible/dashboard/dashboard.component';
-import * as StudentPage from './users/student/page/page.component';
-import * as AdminPage from './users/admin/page/page.component';
-import * as ATCPage from './users/apprentice-training-center/page/page.component';
-import * as ResponsiblePage from './users/responsible/page/page.component';
 
 import { LoginPageComponent } from './common/login-page/login-page.component';
-import { PageComponent } from './users/student/page/page.component';
 import { LogoComponent } from './common/logo/logo.component';
 import {FormsModule} from '@angular/forms';
 import { TextboxComponent } from './ui/textbox/textbox.component';
@@ -37,6 +32,7 @@ import * as StudentCv from './users/student/my-cv/my-cv.component';
 import * as ResponsibleCv from './users/responsible/my-cv/my-cv.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import { PageMemberBaseComponent } from './common/page-member-base/page-member-base.component';
+import { NavigationComponent } from './common/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +41,7 @@ import { PageMemberBaseComponent } from './common/page-member-base/page-member-b
     AdminDashboard.DashboardComponent,
     ATCDashboard.DashboardComponent,
     ResponsibleDashboard.DashboardComponent,
-    StudentPage.PageComponent,
-    AdminPage.PageComponent,
-    ATCPage.PageComponent,
-    ResponsiblePage.PageComponent,
     LoginPageComponent,
-    PageComponent,
     LogoComponent,
     TextboxComponent,
     ButtonComponent,
@@ -68,7 +59,8 @@ import { PageMemberBaseComponent } from './common/page-member-base/page-member-b
     DashboardComponent,
     MyAccountComponent,
     DataCardComponent,
-    PageMemberBaseComponent
+    PageMemberBaseComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

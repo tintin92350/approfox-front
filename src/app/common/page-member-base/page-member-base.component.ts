@@ -4,7 +4,7 @@ import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-page-member-base',
-  template: ``,
+  templateUrl: './page-member-base.component.html',
   styleUrls: ['./page-member-base.component.css']
 })
 export class PageMemberBaseComponent implements OnInit {
@@ -35,5 +35,10 @@ export class PageMemberBaseComponent implements OnInit {
   public logout() {
     this.authService.logout();
     console.log('logged out');
+  }
+
+  public getLinkToAccount(): string {
+    const role = this.authService.getRole();
+    return '/' + role + '/mon-compte';
   }
 }

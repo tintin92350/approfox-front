@@ -1,0 +1,24 @@
+<nav id="main-navigation" #mainNavigation >
+  <div *ngIf="getRole() === 'etudiant'">
+    <a [routerLink]="['/etudiant/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
+    <a [routerLink]="['/etudiant/mon-cv']" [routerLinkActive]="['active']">Mon cv</a>
+    <a [routerLink]="['/etudiant/mes-tags']" [routerLinkActive]="['active']">Mes tags</a>
+  </div>
+  <div *ngIf="getRole() === 'responsable'">
+    <a [routerLink]="['/responsable/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
+    <a [routerLink]="['/responsable/mes-cv']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Mes CV</a>
+    <a [routerLink]="['/responsable/mes-offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Mes offres</a>
+    <a [routerLink]="['/responsable/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >etudiants</a>
+  </div>
+  <div *ngIf="getRole() === 'admin'">
+    <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
+    <a [routerLink]="['/admin/representants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >representants</a>
+    <a [routerLink]="['/admin/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >etudiants</a>
+    <a [routerLink]="['/admin/tags']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >tags</a>
+  </div>
+  <div *ngIf="getRole() === 'cfa'">
+    <a [routerLink]="['/cfa/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
+    <a [routerLink]="['/cfa/offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Offres</a>
+    <a [routerLink]="['/cfa/planning']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Planning</a>
+  </div>
+</nav>

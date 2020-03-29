@@ -22,6 +22,8 @@ html, body {
 
   background-color: #f4f7ff;
   overflow: hidden;
+
+  font-family: 'Montserrat', serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
