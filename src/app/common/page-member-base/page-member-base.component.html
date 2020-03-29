@@ -7,6 +7,9 @@
   </div>
   <div class="Right-Panel">
     <div class="Top-Panel">
+      <h3 class="page-name">
+        {{ this.pageName ? this.pageName: '' }}
+      </h3>
       <a href="/account"><i class="fas fa-comments"></i></a>
       <a href="/notifications"><i class="fas fa-bell"></i></a>
       <a (click)="openUserMenu()" #accountMenuLink ><i class="fas fa-user-circle"></i></a>

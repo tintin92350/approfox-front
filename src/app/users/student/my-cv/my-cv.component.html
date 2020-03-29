@@ -1,9 +1,4 @@
 <div class="row" >
-  <div class="col-sm-12">
-    <h1 id="page-title">MON CV</h1>
-  </div>
-
-
   <!--CV pas upload-->
   <div class="col-sm-12"*ngIf="!isCvUploaded()">
     <div class="section">
@@ -34,8 +29,8 @@
         <div class="uploadedFileForm" *ngIf="file != null && error == null">
           <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ></app-textbox>
           <div class="button-group">
-            <app-button [label]="'Valider'" type="normal" [fullSize]="true" (click)="validateCvImport($event)" ></app-button>
-            <app-button [label]="'Annuler'" type="danger-revert" [fullSize]="true" (click)="cancelCvImport($event)" ></app-button>
+            <app-button type="normal" [fullSize]="true" (click)="validateCvImport($event)" >Valider</app-button>
+            <app-button type="danger-revert" [fullSize]="true" (click)="cancelCvImport($event)" >Annuler</app-button>
           </div>
         </div>
         <div id="upload-section" *ngIf="file == null || error === 1">

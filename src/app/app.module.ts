@@ -29,10 +29,11 @@ import { MyAccountComponent } from './common/my-account/my-account.component';
 import { DataCardComponent } from './common/components/data-card/data-card.component';
 
 import * as StudentCv from './users/student/my-cv/my-cv.component';
-import * as ResponsibleCv from './users/responsible/my-cv/my-cv.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import { PageMemberBaseComponent } from './common/page-member-base/page-member-base.component';
 import { NavigationComponent } from './common/navigation/navigation.component';
+import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
+import { OffersComponent } from './users/responsible/offers/offers.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +54,15 @@ import { NavigationComponent } from './common/navigation/navigation.component';
     TagBadgeComponent,
     TagPageComponent,
     StudentCv.MyCvComponent,
-    ResponsibleCv.MyCvComponent,
+    MyStudentComponent,
     MyTagsComponent,
     DragDropDirective,
     DashboardComponent,
     MyAccountComponent,
     DataCardComponent,
     PageMemberBaseComponent,
-    NavigationComponent
+    NavigationComponent,
+    OffersComponent,
   ],
   imports: [
     BrowserModule,

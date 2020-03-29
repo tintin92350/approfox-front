@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -10,11 +10,15 @@ import {AuthService} from '../../services/auth.service';
 export class PageMemberBaseComponent implements OnInit {
 
   private userMenuOpened: boolean;
+  private pageName: string;
 
   @ViewChild('accountMenuLink', { static: false }) element: ElementRef<any>;
 
-  constructor(protected router: Router, protected authService: AuthService) {
+  constructor(protected router: Router, protected authService: AuthService, private route: ActivatedRoute) {
     this.userMenuOpened = false;
+    route.url.subscribe(() => {
+      this.pageName = route.snapshot.firstChild.data.name;
+    });
   }
 
   ngOnInit() {

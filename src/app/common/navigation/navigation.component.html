@@ -6,9 +6,8 @@
   </div>
   <div *ngIf="getRole() === 'responsable'">
     <a [routerLink]="['/responsable/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
-    <a [routerLink]="['/responsable/mes-cv']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Mes CV</a>
-    <a [routerLink]="['/responsable/mes-offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Mes offres</a>
-    <a [routerLink]="['/responsable/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >etudiants</a>
+    <a [routerLink]="['/responsable/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >étudiants</a>
+    <a [routerLink]="['/responsable/offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >offres</a>
   </div>
   <div *ngIf="getRole() === 'admin'">
     <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>

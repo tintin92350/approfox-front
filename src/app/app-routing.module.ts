@@ -9,13 +9,14 @@ import * as ATCDashboard from './users/apprentice-training-center/dashboard/dash
 import * as ResponsibleDashboard from './users/responsible/dashboard/dashboard.component';
 
 import * as StudentCv from './users/student/my-cv/my-cv.component';
-import * as ResponsibleCv from './users/responsible/my-cv/my-cv.component';
 
 import {MyAccountComponent} from './common/my-account/my-account.component';
 import {AuthGuard} from './guards/auth.guard';
 import {RedirectAuthGuard} from './guards/redirect-auth.guard';
 import {LoginRedirectAuthGuard} from './guards/login-redirect.guard';
 import {PageMemberBaseComponent} from './common/page-member-base/page-member-base.component';
+import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
+import {OffersComponent} from './users/responsible/offers/offers.component';
 
 const routes: Routes = [
   {
@@ -38,23 +39,36 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: StudentDashboard.DashboardComponent,
+        data: {
+          name: 'Dashboard'
+        }
       },
       {
         path: 'tag/:id',
         component: TagPageComponent,
+        data: {
+          name: 'Tag'
+        }
       },
       {
         path: 'mes-tags',
         component: MyTagsComponent,
+        data: {
+          name: 'Mes tags'
+        }
       },
       {
         path: 'mon-cv',
         component: StudentCv.MyCvComponent,
+        data: {
+          name: 'Mon cv'
+        }
       },
       {
         path: 'mon-compte',
         component: MyAccountComponent,
-        data: { common: true }
+        data: { common: true,
+          name: 'Mon compte'},
       }
     ]
   },
@@ -67,11 +81,14 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: AdminDashboard.DashboardComponent,
+        data: {
+          name: 'Dashboard'
+        }
       },
       {
         path: 'mon-compte',
         component: MyAccountComponent,
-        data: { common: true }
+        data: { common: true, name: 'Mon compte'}
       }
     ]
   },
@@ -83,12 +100,15 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: ATCDashboard.DashboardComponent
+        component: ATCDashboard.DashboardComponent,
+        data: {
+          name: 'Dashboard'
+        }
       },
       {
         path: 'mon-compte',
         component: MyAccountComponent,
-        data: { common: true }
+        data: { common: true, name: 'Mon compte' }
       }
     ]
   },
@@ -100,16 +120,29 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: ResponsibleDashboard.DashboardComponent
+        component: ResponsibleDashboard.DashboardComponent,
+        data: {
+          name: 'Dashboard'
+        }
       },
       {
         path: 'mon-compte',
         component: MyAccountComponent,
-        data: { common: true }
+        data: { common: true, name: 'Mon compte' }
       },
       {
-        path: 'mes-cv',
-        component: ResponsibleCv.MyCvComponent
+        path: 'etudiants',
+        component: MyStudentComponent,
+        data: {
+          name: 'Étudiants'
+        }
+      },
+      {
+        path: 'offres',
+        component: OffersComponent,
+        data: {
+          name: 'Offres'
+        }
       }
     ]
   },

@@ -61,6 +61,15 @@
   z-index: 2;
 }
 
+.Top-Panel .page-name {
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  padding-left: 1em;
+  color: #4b4b4b;
+  text-transform: uppercase;
+}
+
 .Top-Panel a {
   cursor: pointer;
 }
