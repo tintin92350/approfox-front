@@ -1,0 +1,15 @@
+<!--
+<div class="box" [class.error]="getToast().type == 'error'">
+  <div class="icon">
+    <i class="fas fa-times-circle"></i>
+  </div>
+  <div class="content">
+    <h3>{{getToast().type}}</h3>
+    <p>{{getToast().message}}</p>
+  </div>
+  <span (click)="close()" class="close-btn">x</span>
+</div>
+-->
+<div [class]="'my-toast ' + this.toastMessage.type" (click)="close()">
+  {{this.toastMessage.message}}
+</div>

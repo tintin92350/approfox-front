@@ -1,0 +1,33 @@
+.banner {
+  display: flex;
+  width: 100%;
+  height: 32px;
+  background-color: #eeeeee;
+  color: #1a1a1a;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.banner .icon {
+  font-size: 12px;
+  line-height: 32px;
+  padding-right: 0.5em;
+}
+.banner p {
+  line-height: 32px;
+  font-size: 12px;
+}
+
+.banner.error {
+  background-color: #dc2828;
+  color: #FFFFFF;
+}
+.banner.announcement {
+  background-color: #3b57cf;
+  color: #FFFFFF;
+}
+.banner.warning {
+  background-color: #E6B22C;
+  color: #FFFFFF;
+}

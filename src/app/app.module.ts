@@ -34,6 +34,10 @@ import { PageMemberBaseComponent } from './common/page-member-base/page-member-b
 import { NavigationComponent } from './common/navigation/navigation.component';
 import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
 import { OffersComponent } from './users/responsible/offers/offers.component';
+import {ToastService} from './services/toast.service';
+import { ToastComponent } from './common/toast/toast.component';
+import { BannerComponent } from './ui/banner/banner.component';
+import {BannerService} from './services/banner.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,8 @@ import { OffersComponent } from './users/responsible/offers/offers.component';
     PageMemberBaseComponent,
     NavigationComponent,
     OffersComponent,
+    ToastComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +77,10 @@ import { OffersComponent } from './users/responsible/offers/offers.component';
     HttpClientModule,
     ClickOutsideModule
   ],
-  providers: [],
+  providers: [
+    ToastService,
+    BannerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

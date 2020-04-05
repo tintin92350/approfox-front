@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ToastService} from './services/toast.service';
+import {ToastMessage} from './models/ToastMessage.model';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,7 @@ export class AppComponent {
   constructor()  {
     setTimeout(() => {
       this.splashScreen = false;
-    }, 1800);
+    }, 5);
   }
 
   isSplashScreen(): boolean {

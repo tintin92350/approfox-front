@@ -6,7 +6,7 @@ import {AuthService} from '../../services/auth.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css', '../logo/logo.component.css']
 })
 export class LoginPageComponent implements OnInit {
 
@@ -41,9 +41,10 @@ export class LoginPageComponent implements OnInit {
       const imgHeight = this.document.getElementById('logo').height;
       const loginHeight = this.document.getElementById('loginForm').clientHeight;
 
-      this.document.getElementById('logo').style.left = ((documentWidth / 4.0) - (250.0)) + 'px';
-      this.document.getElementById('logo').style.top = ((documentHeight / 2.0) - (250.0)) + 'px';
-      this.document.getElementById('loginForm').style.top = ((documentHeight / 2.0) - (loginHeight / 2.0)) + 'px';
+      //this.document.getElementById('logo').style.left = ((documentWidth / 4.0) - (250.0)) + 'px';
+      //this.document.getElementById('logo').style.top = ((documentHeight / 2.0) - (250.0)) + 'px';
+      if (documentWidth >= 800)
+        this.document.getElementById('loginForm').style.top = ((documentHeight / 2.0) - (loginHeight / 2.0)) + 'px';
   }
 
   login() {
