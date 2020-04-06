@@ -27,14 +27,10 @@ export class PageMemberBaseComponent implements OnInit {
     route.url.subscribe(() => {
       this.pageName = route.snapshot.firstChild.data.name;
     });
-
-    this.bannerService.pushMessage(new BannerMessage('this is a normal message', ''));
-    this.bannerService.pushMessage(new BannerMessage('this is an error message', 'error'));
-    this.bannerService.pushMessage(new BannerMessage('this is an error message', 'warning'));
-    this.bannerService.pushMessage(new BannerMessage('this is an announcement message', 'announcement'));
   }
 
   ngOnInit() {
+    this.bannerService.release();
   }
 
   public isUserMenuOpened(): boolean {

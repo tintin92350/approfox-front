@@ -10,6 +10,6 @@
   <span (click)="close()" class="close-btn">x</span>
 </div>
 -->
-<div [class]="'my-toast ' + this.toastMessage.type" (click)="close()">
+<div [class]="'my-toast animated ' + (this.toastMessage.closed ? 'fadeOut ' : 'fadeIn ') + this.toastMessage.type" (click)="close()">
   {{this.toastMessage.message}}
 </div>

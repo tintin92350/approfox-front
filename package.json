@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
+    "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "ng-click-outside": "^6.0.0",

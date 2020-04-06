@@ -9,5 +9,6 @@ export class ToastMessage {
   constructor(message: string, type: string) {
     this.message = message;
     this.type = type;
+    this.delay = 4000;
   }
 }

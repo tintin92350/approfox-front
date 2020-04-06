@@ -66,6 +66,8 @@
   display: flex;
   cursor: pointer;
   width: 100%;
+
+  transition: 250ms;
 }
 
 .my-toast.error {

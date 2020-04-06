@@ -1,3 +1,25 @@
+/* Move it (define the animation) */
+@-moz-keyframes demo-1 {
+  0%   { -moz-transform: translateX(100%); }
+  100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes demo-1 {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes demo-1 {
+  0%   {
+    -moz-transform: translateX(100%); /* Firefox bug fix */
+    -webkit-transform: translateX(100%); /* Firefox bug fix */
+    transform: translateX(100%);
+  }
+  100% {
+    -moz-transform: translateX(-100%); /* Firefox bug fix */
+    -webkit-transform: translateX(-100%); /* Firefox bug fix */
+    transform: translateX(-100%);
+  }
+}
+
 .banner {
   display: flex;
   width: 100%;
@@ -14,9 +36,19 @@
   line-height: 32px;
   padding-right: 0.5em;
 }
-.banner p {
+.banner .scrolling p {
   line-height: 32px;
   font-size: 12px;
+}
+.banner .scrolling {
+  display: flex;
+  /*-moz-transform:translateX(100%);
+  -webkit-transform:translateX(100%);
+  transform:translateX(100%);
+  /* Apply animation to this element
+  -moz-animation: demo-1 30s linear infinite;
+  -webkit-animation: demo-1 30s linear infinite;
+  animation: demo-1 30s linear infinite;*/
 }
 
 .banner.error {

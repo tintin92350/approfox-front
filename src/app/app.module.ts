@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {forwardRef, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +11,7 @@ import * as ResponsibleDashboard from './users/responsible/dashboard/dashboard.c
 
 import { LoginPageComponent } from './common/login-page/login-page.component';
 import { LogoComponent } from './common/logo/logo.component';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import { TextboxComponent } from './ui/textbox/textbox.component';
 import { ButtonComponent } from './ui/button/button.component';
 import { ErrorBoxComponent } from './ui/message-box/error-box/error-box.component';
@@ -35,9 +35,11 @@ import { NavigationComponent } from './common/navigation/navigation.component';
 import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
 import { OffersComponent } from './users/responsible/offers/offers.component';
 import {ToastService} from './services/toast.service';
-import { ToastComponent } from './common/toast/toast.component';
+import { ToastComponent } from './ui/toast/toast.component';
 import { BannerComponent } from './ui/banner/banner.component';
 import {BannerService} from './services/banner.service';
+import {AnnouncementApiService} from './services/announcement-api.service';
+import { ServerConfigurationComponent } from './users/admin/server-configuration/server-configuration.component';
 
 @NgModule({
   declarations: [
@@ -69,17 +71,26 @@ import {BannerService} from './services/banner.service';
     OffersComponent,
     ToastComponent,
     BannerComponent,
+    ServerConfigurationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    ReactiveFormsModule
   ],
   providers: [
     ToastService,
-    BannerService
+    BannerService,
+    AnnouncementApiService,
+    FormBuilder,
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => TextboxComponent),
+    }
   ],
   bootstrap: [AppComponent]
 })

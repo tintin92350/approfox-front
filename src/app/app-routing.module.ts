@@ -17,6 +17,7 @@ import {LoginRedirectAuthGuard} from './guards/login-redirect.guard';
 import {PageMemberBaseComponent} from './common/page-member-base/page-member-base.component';
 import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
 import {OffersComponent} from './users/responsible/offers/offers.component';
+import {ServerConfigurationComponent} from './users/admin/server-configuration/server-configuration.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,13 @@ const routes: Routes = [
         component: AdminDashboard.DashboardComponent,
         data: {
           name: 'Dashboard'
+        }
+      },
+      {
+        path: 'outils-serveur',
+        component: ServerConfigurationComponent,
+        data: {
+          name: 'Outils serveur'
         }
       },
       {

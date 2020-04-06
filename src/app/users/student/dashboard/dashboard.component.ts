@@ -18,19 +18,13 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private tagService: TagService, private toastService: ToastService) {
     this.tagService = tagService;
     this.tags = null;
-    const toast1 = new ToastMessage( 'An error occurred when contacting the API', 'error');
-    const toast2 = new ToastMessage( 'An fucking warning has occurred', 'warning');
-    const toast3 = new ToastMessage( 'this is a success !', 'success');
-
-    this.toastService.pushToast(toast1);
-    this.toastService.pushToast(toast2);
-    this.toastService.pushToast(toast3);
     this.tagService.getTags().subscribe(tagCollection => {
       this.tags = tagCollection;
       this.tagServiceStatus = 1;
     }, error => {
       this.tagServiceStatus = error.status;
       console.log('test');
+      this.toastService.pushToast(new ToastMessage('Une erreur est survenue lors de l\'appel à l\'API', 'error'));
     });
   }
 
