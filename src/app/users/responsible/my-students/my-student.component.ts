@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {User} from '../../../models/User.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-student',
@@ -10,9 +12,12 @@ export class MyStudentComponent implements OnInit {
   private addingStudentFile: boolean;
   private addingStudent: boolean;
 
-  constructor() {
+  public newUserInformation: User;
+
+  constructor(private router: Router) {
     this.addingStudent = false;
     this.addingStudentFile = false;
+    this.newUserInformation = new User();
   }
 
   ngOnInit() {
@@ -39,5 +44,15 @@ export class MyStudentComponent implements OnInit {
   public cancel() {
     this.addingStudent = false;
     this.addingStudentFile = false;
+  }
+
+  public generateLogin() {
+    const firstNameConcate = this.newUserInformation.firstname !== undefined ? this.newUserInformation.firstname.toLocaleLowerCase() : '';
+    const lastNameConcate = this.newUserInformation.lastname !== undefined ? this.newUserInformation.lastname.toLocaleLowerCase() : '';
+    this.newUserInformation.login = firstNameConcate + '.' + lastNameConcate;
+  }
+
+  public viewStudentProfile(studentID) {
+    this.router.navigate(['/responsable/etudiant/' + studentID]);
   }
 }

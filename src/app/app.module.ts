@@ -40,6 +40,8 @@ import { BannerComponent } from './ui/banner/banner.component';
 import {BannerService} from './services/banner.service';
 import {AnnouncementApiService} from './services/announcement-api.service';
 import { ServerConfigurationComponent } from './users/admin/server-configuration/server-configuration.component';
+import { StudentViewComponent } from './users/responsible/student-view/student-view.component';
+import { OfferViewComponent } from './users/responsible/offer-view/offer-view.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { ServerConfigurationComponent } from './users/admin/server-configuration
     OffersComponent,
     ToastComponent,
     BannerComponent,
-    ServerConfigurationComponent
+    ServerConfigurationComponent,
+    StudentViewComponent,
+    OfferViewComponent
   ],
   imports: [
     BrowserModule,
