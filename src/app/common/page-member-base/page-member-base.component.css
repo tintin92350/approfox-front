@@ -1,16 +1,13 @@
 .grid-container {
   display: flex;
-  grid-template-columns: 350px 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "Left-Panel Right-Panel";
   height: 100%;
+  max-width: 100%;
   width: 100%;
 }
 
-
 .Left-Panel {
   grid-area: Left-Panel;
-  width: 320px;
+  width: 300px;
   height: 100%;
   position: relative;
 
@@ -22,7 +19,7 @@
 }
 
 .Right-Panel {
-  width: calc(100% - 320px);
+  width: 100%;
   position: relative;
 }
 
@@ -31,6 +28,7 @@
   overflow: auto;
   width: 100%;
   height: calc(100% - 64px);
+  position: relative;
 }
 
 .top {
@@ -108,3 +106,15 @@
   color: #3b57cf;
 }
 
+
+.toast-group {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 1em;
+  z-index: 3;
+  width: 350px;
+}
+.toast-group app-toast {
+  margin: 1em;
+}

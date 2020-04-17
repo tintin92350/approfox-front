@@ -14,6 +14,7 @@
     <a [routerLink]="['/admin/representants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >representants</a>
     <a [routerLink]="['/admin/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >etudiants</a>
     <a [routerLink]="['/admin/tags']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >tags</a>
+    <a [routerLink]="['/admin/outils-serveur']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Outils serveur</a>
   </div>
   <div *ngIf="getRole() === 'cfa'">
     <a [routerLink]="['/cfa/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>

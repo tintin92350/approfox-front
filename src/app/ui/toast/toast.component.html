@@ -1,0 +1,3 @@
+<div [class]="'my-toast animated ' + (this.toastMessage.closed ? 'fadeOut ' : 'fadeIn ') + this.toastMessage.type" (click)="close()" (mouseenter)="onHover()" (mouseleave)="onLeave()">
+  {{this.toastMessage.message}}
+</div>

@@ -27,7 +27,7 @@
         </div>
 
         <div class="uploadedFileForm" *ngIf="file != null && error == null">
-          <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ></app-textbox>
+          <app-textbox [(inputModel)]="fileName" [label]="'Nom du fichier'" [fullSize]="true" ngDefaultControl name="filename" ></app-textbox>
           <div class="button-group">
             <app-button type="normal" [fullSize]="true" (click)="validateCvImport($event)" >Valider</app-button>
             <app-button type="danger-revert" [fullSize]="true" (click)="cancelCvImport($event)" >Annuler</app-button>
@@ -65,7 +65,7 @@
       </div>
       <div class="section-content">
         <div class="cv-information">
-          <app-textbox [fullSize]="true" [(inputModel)]="getCvModel().filename" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [(ngModel)]="getCvModel().filename" [disabled]="true" ngDefaultControl></app-textbox>
           <app-button type="normal" label="Aperçu"></app-button>
           <app-button type="danger-revert" label="Supprimer" *ngIf="getCvModel().status === 1"></app-button>
         </div>

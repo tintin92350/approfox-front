@@ -1,0 +1,6 @@
+<div [class]="'banner ' + banner.type" (click)="close()" >
+  <div class="scrolling">
+    <i [class]="'fas icon ' + getIcon()"></i>
+    <p>{{banner.message}}</p>
+  </div>
+</div>

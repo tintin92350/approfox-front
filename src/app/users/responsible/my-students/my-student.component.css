@@ -48,3 +48,11 @@ table tbody tr td {
   background-color: #d8dce2;
   margin-top: 0.5em;
 }
+
+.form-group {
+  display: flex;
+}
+.form-group > app-textbox {
+  width: 100%;
+  padding: 0.5em;
+}

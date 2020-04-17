@@ -1,3 +1,4 @@
+<app-banner *ngIf="getLastBanner() !== null" [banner]="getLastBanner()"></app-banner>
 <div class="grid-container">
   <div class="Left-Panel">
     <div class="top">
@@ -19,6 +20,10 @@
       </div>
     </div>
     <div class="Center-Panel container-fluid">
+
+      <div class="toast-group">
+        <app-toast *ngFor="let toast of getToasts()" [toastMessage]="toast"></app-toast>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </div>

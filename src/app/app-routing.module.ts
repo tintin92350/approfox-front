@@ -17,6 +17,9 @@ import {LoginRedirectAuthGuard} from './guards/login-redirect.guard';
 import {PageMemberBaseComponent} from './common/page-member-base/page-member-base.component';
 import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
 import {OffersComponent} from './users/responsible/offers/offers.component';
+import {ServerConfigurationComponent} from './users/admin/server-configuration/server-configuration.component';
+import {StudentViewComponent} from './users/responsible/student-view/student-view.component';
+import {OfferViewComponent} from './users/responsible/offer-view/offer-view.component';
 
 const routes: Routes = [
   {
@@ -86,6 +89,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'outils-serveur',
+        component: ServerConfigurationComponent,
+        data: {
+          name: 'Outils serveur'
+        }
+      },
+      {
         path: 'mon-compte',
         component: MyAccountComponent,
         data: { common: true, name: 'Mon compte'}
@@ -138,10 +148,24 @@ const routes: Routes = [
         }
       },
       {
+        path: 'etudiant/:id',
+        component: StudentViewComponent,
+        data: {
+          name: 'Étudiant'
+        }
+      },
+      {
         path: 'offres',
         component: OffersComponent,
         data: {
           name: 'Offres'
+        }
+      },
+      {
+        path: 'offer/:id',
+        component: OfferViewComponent,
+        data: {
+          name: 'Offre'
         }
       }
     ]
