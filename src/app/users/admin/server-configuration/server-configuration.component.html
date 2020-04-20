@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">
+          Annonce
+        </h2>
+      </div>
+      <div class="section-content">
+        Vous pouvez déclarer une annonce à l'aide du formulaire ci-dessous :
+          <app-textbox [(ngModel)]="announcement.message" name="message" ngDefaultControl fullSize="true" ></app-textbox>
+          <div class="input-group">
+            <app-button type="normal" (click)="onSubmit()">Envoyer</app-button>
+            <app-button type="danger-revert">Annuler</app-button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
