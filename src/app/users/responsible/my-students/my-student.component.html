@@ -15,7 +15,7 @@
         </div>
 
         <div class="button-tab">
-          <app-button type="normal" (click)="cancel()" >Valider</app-button>
+          <app-button type="normal" (click)="validate()" >Valider</app-button>
           <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
         </div>
       </div>
@@ -28,15 +28,15 @@
       </div>
       <div class="section-content">
         <div class="form-group">
-          <app-textbox label="Firstname" fullSize="true" [(inputModel)]="newUserInformation.firstname" #newUserFirstName (inputModelChange)="generateLogin()"></app-textbox>
-          <app-textbox label="Lastname" fullSize="true" [(inputModel)]="newUserInformation.lastname" (inputModelChange)="generateLogin()"></app-textbox>
+          <app-textbox label="Firstname" fullSize="true" [(inputModel)]="newUserInformation.name" #newUserFirstName (inputModelChange)="generateLogin()"></app-textbox>
+          <app-textbox label="Lastname" fullSize="true" [(inputModel)]="newUserInformation.surname" (inputModelChange)="generateLogin()"></app-textbox>
           <app-textbox label="login (auto-generated)" fullSize="true" [(inputModel)]="newUserInformation.login" disabled="true"></app-textbox>
         </div>
         <div class="form-group">
           <app-textbox label="Mail" fullSize="true" [(inputModel)]="newUserInformation.mail"></app-textbox>
         </div>
         <div class="button-tab">
-          <app-button type="normal" (click)="cancel()" >Valider</app-button>
+          <app-button type="normal" (click)="validate()" >Valider</app-button>
           <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
         </div>
       </div>
@@ -56,15 +56,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>1</td>
-            <td><a href="#" >Colline THIRION-DEBIEN</a></td>
-            <td>22/06/2020 à 16H30</td>
+          <tr *ngFor="let student of myStudents">
+            <td>{{student.userId}}</td>
+            <td>{{student.name}} {{student.surname | uppercase}}</td>
+            <td>-</td>
             <td>En cours</td>
             <td>
               <div class="button-tab">
                 <app-button type="normal" >Rappel</app-button>
-                <app-button type="normal" (click)="viewStudentProfile(1)" >Consulter</app-button>
+                <app-button type="normal" (click)="viewStudentProfile(student.userId)" >Consulter</app-button>
                 <app-button type="danger-revert" >Supprimer</app-button>
               </div>
             </td>

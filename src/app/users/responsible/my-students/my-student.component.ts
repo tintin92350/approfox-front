@@ -1,6 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/User.model';
 import {Router} from '@angular/router';
+import {UserService} from '../../../services/user.service';
+import {Role} from '../../../models/Role.enum';
+import {Department} from '../../../models/Department.model';
 
 @Component({
   selector: 'app-my-student',
@@ -14,10 +17,19 @@ export class MyStudentComponent implements OnInit {
 
   public newUserInformation: User;
 
-  constructor(private router: Router) {
+  public myStudents: User[];
+
+  constructor(private router: Router, private userService: UserService) {
     this.addingStudent = false;
     this.addingStudentFile = false;
     this.newUserInformation = new User();
+    this.newUserInformation.departmentNumber = new Department();
+
+    this.userService.getAllStudentsByDepartment(1).subscribe(users => {
+      this.myStudents = users.filter(user => {
+        return user.departmentNumber.departmentId === 1 && user.role.toString() === 'STUDENT';
+      });
+    });
   }
 
   ngOnInit() {
@@ -44,15 +56,27 @@ export class MyStudentComponent implements OnInit {
   public cancel() {
     this.addingStudent = false;
     this.addingStudentFile = false;
+    this.newUserInformation = new User();
+    this.newUserInformation.departmentNumber = new Department();
   }
 
   public generateLogin() {
-    const firstNameConcate = this.newUserInformation.firstname !== undefined ? this.newUserInformation.firstname.toLocaleLowerCase() : '';
-    const lastNameConcate = this.newUserInformation.lastname !== undefined ? this.newUserInformation.lastname.toLocaleLowerCase() : '';
+    const firstNameConcate = this.newUserInformation.name !== undefined ? this.newUserInformation.name.toLocaleLowerCase() : '';
+    const lastNameConcate = this.newUserInformation.surname !== undefined ? this.newUserInformation.surname.toLocaleLowerCase() : '';
     this.newUserInformation.login = firstNameConcate + '.' + lastNameConcate;
   }
 
   public viewStudentProfile(studentID) {
     this.router.navigate(['/responsable/etudiant/' + studentID]);
+  }
+
+  public validate() {
+    this.newUserInformation.departmentNumber.departmentId = 1;
+    this.newUserInformation.role = Role.STUDENT;
+    console.log(JSON.stringify(this.newUserInformation));
+    this.userService.addUser(this.newUserInformation).subscribe(addedUser => {
+      this.myStudents.push(addedUser);
+      this.cancel();
+    });
   }
 }

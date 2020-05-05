@@ -47,12 +47,12 @@ export class PageMemberBaseComponent implements OnInit {
 
   public logout() {
     this.authService.logout();
+    this.router.navigate(['/login']);
     console.log('logged out');
   }
 
   public getLinkToAccount(): string {
-    const auth = JSON.parse(this.authService.getAuth());
-    const role = this.authService.roleApiToRoleFront(auth.roles[0]);
+    const role = this.authService.getRole();
     return '/' + role + '/mon-compte';
   }
 

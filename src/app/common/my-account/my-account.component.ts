@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../services/user.service';
+import {AuthService} from '../../services/auth.service';
+import {Observable} from 'rxjs';
+import {User} from '../../models/User.model';
 
 @Component({
   selector: 'app-my-account',
@@ -7,25 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAccountComponent implements OnInit {
 
-  public firstname: string;
-  public lastname: string;
-  public email: string;
-  public department: number;
-  public role: number;
+  public user: User;
 
-  constructor() {
-    this.firstname = 'Quentin';
-    this.lastname = 'Rodic';
-    this.email = 'quentin.rodic@ens.uvsq.fr';
-    this.department = 1;
-    this.role = 1;
+  constructor(private userService: UserService, private authService: AuthService) {
+    const id = this.authService.currentAuthInfoValue.id;
+    this.userService.getMe().subscribe(user => {
+      this.user = user;
+      console.log(user);
+    });
   }
 
   ngOnInit() {
   }
 
-  departmentString(): string {
-    switch (this.department) {
+  departmentString(department: number): string {
+    switch (department) {
       case 1:
         return 'INFO';
       case 2:
@@ -39,8 +39,8 @@ export class MyAccountComponent implements OnInit {
     return 'Aucun département de rattachement';
   }
 
-  accountTypeString(): string {
-    switch (this.role) {
+  accountTypeString(role: number): string {
+    switch (role) {
       case 1:
         return 'Étudiant';
       case 2:

@@ -17,9 +17,8 @@ export class LoginRedirectAuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (this.auth.isAuthenticated()) {
-      const auth = JSON.parse(this.auth.getAuth());
-      const role = this.auth.roleApiToRoleFront(auth.roles[0]);
+    if (this.auth.isLogged()) {
+      const role = this.auth.getRole();
       const roleDashboard = '/' + role + '/dashboard';
       this.router.navigate([roleDashboard]);
       return false;

@@ -15,7 +15,7 @@ export class RedirectAuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (!this.auth.isAuthenticated()) {
+    if (!this.auth.isLogged()) {
       return false;
     }
 
@@ -23,9 +23,7 @@ export class RedirectAuthGuard implements CanActivate {
       return true;
     }
 
-    const auth = JSON.parse(this.auth.getAuth());
-
-    const role = this.auth.roleApiToRoleFront(auth.roles[0]);
+    const role = this.auth.getRole();
 
     // check if route is restricted by role
     if ((next.data.role && role && next.data.role !== role) || next.routeConfig.path === '') {

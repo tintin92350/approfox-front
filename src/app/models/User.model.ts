@@ -2,11 +2,11 @@ import {Department} from './Department.model';
 import {Role} from './Role.enum';
 
 export class User {
-  public id: number;
+  public userId: number;
   public login: string;
   public password: string;
-  public firstname: string;
-  public lastname: string;
+  public name: string;
+  public surname: string;
   public mail: string;
   public role: Role;
   public departmentNumber: Department;

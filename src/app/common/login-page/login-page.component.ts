@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
     this.username = '';
     this.password = '';
 
-    console.log('auth : ' + this.authService.isAuthenticated());
+    console.log('auth : ' + this.authService.isLogged());
   }
 
   ngOnInit() {
@@ -56,12 +56,8 @@ export class LoginPageComponent implements OnInit {
 
   login() {
     console.log('Authentication...');
-    this.authService.auth(this.username.toLocaleLowerCase(), this.password).subscribe(result => {
-      localStorage.setItem('auth', JSON.stringify(result));
-      const role = this.authService.roleApiToRoleFront(result.roles[0]);
+    this.authService.login(this.username.toLocaleLowerCase(), this.password).subscribe(result => {
       this.router.navigate(['/']);
-
-      console.log('go to ' + role);
     }, error => {
       console.log('error during auth.');
     });
