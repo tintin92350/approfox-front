@@ -16,13 +16,13 @@ export class TagService {
    * @param tagid Tag id
    */
   getTag(tagid: number): Observable<Tag> {
-    return this.httpClient.get<Tag>(environment.api + 'tag?id=' + tagid);
+    return this.httpClient.get<Tag>(environment.api + 'tag/' + tagid);
   }
 
   /**
    * Returns the entire tag as list
    */
   getTags(): Observable<Tag[]> {
-    return this.httpClient.get<Tag[]>(environment.api + 'tags');
+    return this.httpClient.get<Tag[]>(environment.api + 'tag/all');
   }
 }

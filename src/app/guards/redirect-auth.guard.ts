@@ -23,12 +23,13 @@ export class RedirectAuthGuard implements CanActivate {
       return true;
     }
 
-    console.log('authenticated : ' + this.auth.isAuthenticated());
+    const auth = JSON.parse(this.auth.getAuth());
+
+    const role = this.auth.roleApiToRoleFront(auth.roles[0]);
 
     // check if route is restricted by role
-    if ((next.data.role && this.auth.getRole() && next.data.role !== this.auth.getRole()) || next.routeConfig.path === '') {
-      const roleDashboard = '/' + this.auth.getRole() + '/dashboard';
-      console.log('redirecting to role dashboard : ' + roleDashboard);
+    if ((next.data.role && role && next.data.role !== role) || next.routeConfig.path === '') {
+      const roleDashboard = '/' + role + '/dashboard';
 
       // role not authorised so redirect to home page
       this.router.navigate([roleDashboard]);

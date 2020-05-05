@@ -14,7 +14,9 @@ export class NavigationComponent implements OnInit {
   }
 
   getRole(): string {
-    return this.authService.getRole();
+    const auth = JSON.parse(this.authService.getAuth());
+    const role = this.authService.roleApiToRoleFront(auth.roles[0]);
+    return role;
   }
 
 }

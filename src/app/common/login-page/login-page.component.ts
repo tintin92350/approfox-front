@@ -3,6 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {LogoComponent} from '../logo/logo.component';
 import {AuthService} from '../../services/auth.service';
 import {BannerService} from '../../services/banner.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,8 +17,12 @@ export class LoginPageComponent implements OnInit {
   @Input() public username: string;
   @Input() public password: string;
 
-  constructor(@Inject(DOCUMENT) document, private authService: AuthService, private bannerService: BannerService) {
+  constructor(@Inject(DOCUMENT) document, private authService: AuthService, private bannerService: BannerService, private router: Router) {
     this.document = document;
+    this.username = '';
+    this.password = '';
+
+    console.log('auth : ' + this.authService.isAuthenticated());
   }
 
   ngOnInit() {
@@ -51,6 +56,14 @@ export class LoginPageComponent implements OnInit {
 
   login() {
     console.log('Authentication...');
-    this.authService.auth(this.username.toLocaleLowerCase(), this.password);
+    this.authService.auth(this.username.toLocaleLowerCase(), this.password).subscribe(result => {
+      localStorage.setItem('auth', JSON.stringify(result));
+      const role = this.authService.roleApiToRoleFront(result.roles[0]);
+      this.router.navigate(['/']);
+
+      console.log('go to ' + role);
+    }, error => {
+      console.log('error during auth.');
+    });
   }
 }

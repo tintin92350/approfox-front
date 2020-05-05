@@ -19,7 +19,7 @@ import { InfoBoxComponent } from './ui/message-box/info-box/info-box.component';
 import { SuccessBoxComponent } from './ui/message-box/success-box/success-box.component';
 import { WarningBoxComponent } from './ui/message-box/warning-box/warning-box.component';
 import { FileUploadComponent } from './ui/file-upload/file-upload.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TagBadgeComponent } from './common/components/tag-badge/tag-badge.component';
 import { TagPageComponent } from './common/tag-page/tag-page.component';
 import { MyTagsComponent } from './users/student/my-tags/my-tags.component';
@@ -42,6 +42,7 @@ import {AnnouncementApiService} from './services/announcement-api.service';
 import { ServerConfigurationComponent } from './users/admin/server-configuration/server-configuration.component';
 import { StudentViewComponent } from './users/responsible/student-view/student-view.component';
 import { OfferViewComponent } from './users/responsible/offer-view/offer-view.component';
+import {JwtInterceptorService} from './guards/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { OfferViewComponent } from './users/responsible/offer-view/offer-view.co
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       useExisting: forwardRef(() => TextboxComponent),
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })

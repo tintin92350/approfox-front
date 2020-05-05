@@ -1,48 +1,46 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private httpClient: HttpClient) {
     this.router = router;
   }
 
   public isAuthenticated(): boolean {
     const authValue = localStorage.getItem('auth');
-    return authValue === 'true';
+    return authValue !== null;
   }
 
   public auth(username: string, password: string) {
-    if (username === 'etude' && password === 'etude') {
-      localStorage.setItem('auth', 'true');
-      localStorage.setItem('role', 'etudiant');
-      this.router.navigate(['/']);
-    } else if (username === 'responsable' && password === 'responsable') {
-      localStorage.setItem('auth', 'true');
-      localStorage.setItem('role', 'responsable');
-      this.router.navigate(['/']);
-    } else if (username === 'admin' && password === 'admin') {
-      localStorage.setItem('auth', 'true');
-      localStorage.setItem('role', 'admin');
-      this.router.navigate(['/']);
-    } else if (username === 'cfa' && password === 'cfa') {
-      localStorage.setItem('auth', 'true');
-      localStorage.setItem('role', 'cfa');
-      this.router.navigate(['/']);
-    } else {
-      localStorage.setItem('auth', 'false');
-    }
+    return this.httpClient.post(environment.api + 'signin', { username, password });
   }
 
   public logout() {
-    localStorage.setItem('auth', 'false');
+    localStorage.removeItem('auth');
     this.router.navigate(['/login']);
   }
 
-  public getRole(): string {
-    return localStorage.getItem('role');
+  public roleApiToRoleFront(roleApi: string) {
+    if (roleApi === 'APPRENTICESHIP_MANAGER') {
+      return 'cfa';
+    } else if (roleApi === 'ADMINISTRATOR') {
+      return 'admin';
+    } else if (roleApi === 'DEPARTMENT_MANAGER') {
+      return 'responsable';
+    } else if (roleApi === 'STUDENT') {
+      return 'etudiant';
+    }
+
+    return null;
+  }
+
+  public getAuth(): string {
+    return localStorage.getItem('auth');
   }
 }

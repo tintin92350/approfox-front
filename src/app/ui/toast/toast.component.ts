@@ -30,14 +30,18 @@ export class ToastComponent implements OnInit, OnChanges {
   }
 
   public close() {
-    console.log('closing the ' + this.toastMessage.id + '-th toast');
-    this.toastMessage.closed = true;
-    setTimeout(this.realClose, 300);
+    if (this.toastMessage !== undefined && this.toastMessage) {
+      console.log('closing the ' + this.toastMessage.id + '-th toast');
+      this.toastMessage.closed = true;
+      setTimeout(this.realClose, 300);
+    }
   }
 
   private realClose() {
     console.log(this.toastMessage);
-    this.toastService.update();
+    if (this.toastService !== undefined && this.toastService) {
+      this.toastService.update();
+    }
   }
 
   private delay() {
