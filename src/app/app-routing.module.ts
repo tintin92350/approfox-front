@@ -21,6 +21,10 @@ import {ServerConfigurationComponent} from './users/admin/server-configuration/s
 import {StudentViewComponent} from './users/responsible/student-view/student-view.component';
 import {OfferViewComponent} from './users/responsible/offer-view/offer-view.component';
 
+import * as AdminResponsiblesViewComponent from './users/admin/responsibles-view/responsibles-view.component';
+import * as AdminStudentsViewComponent from './users/admin/students-view/students-view.component';
+import * as AdminTagsViewComponent from './users/admin/tags-view/tags-view.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -96,6 +100,27 @@ const routes: Routes = [
         }
       },
       {
+        path: 'representants',
+        component: AdminResponsiblesViewComponent.ResponsiblesViewComponent,
+        data: {
+          name: 'Représentants'
+        }
+      },
+      {
+        path: 'etudiants',
+        component: AdminStudentsViewComponent.StudentsViewComponent,
+        data: {
+          name: 'Étudiants'
+        }
+      },
+      {
+        path: 'tags',
+        component: AdminTagsViewComponent.TagsViewComponent,
+        data: {
+          name: 'Tags'
+        }
+      },
+      {
         path: 'mon-compte',
         component: MyAccountComponent,
         data: { common: true, name: 'Mon compte'}
@@ -148,7 +173,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'etudiant/:id',
+        path: 'etudiants/:id',
         component: StudentViewComponent,
         data: {
           name: 'Étudiant'

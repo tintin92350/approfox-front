@@ -19,6 +19,8 @@ export class MyStudentComponent implements OnInit {
 
   public myStudents: User[];
 
+  public test1 = 0;
+
   constructor(private router: Router, private userService: UserService) {
     this.addingStudent = false;
     this.addingStudentFile = false;
@@ -73,10 +75,15 @@ export class MyStudentComponent implements OnInit {
   public validate() {
     this.newUserInformation.departmentNumber.departmentId = 1;
     this.newUserInformation.role = Role.STUDENT;
-    console.log(JSON.stringify(this.newUserInformation));
+    this.newUserInformation.password = 'azerty';
+
     this.userService.addUser(this.newUserInformation).subscribe(addedUser => {
       this.myStudents.push(addedUser);
       this.cancel();
     });
+  }
+
+  test() {
+    this.test1++;
   }
 }

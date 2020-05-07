@@ -44,7 +44,7 @@
           Type de compte
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [inputModel]="user.role" [disabled]="true" ngDefaultControl></app-textbox>
+          <app-textbox [fullSize]="true" [inputModel]="accountTypeString(user.role.toString())" [disabled]="true" ngDefaultControl></app-textbox>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
 import {forwardRef, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -43,6 +43,26 @@ import { ServerConfigurationComponent } from './users/admin/server-configuration
 import { StudentViewComponent } from './users/responsible/student-view/student-view.component';
 import { OfferViewComponent } from './users/responsible/offer-view/offer-view.component';
 import {JwtInterceptorService} from './guards/jwt-interceptor.service';
+import { TagsViewComponent } from './users/admin/tags-view/tags-view.component';
+import { ResponsiblesViewComponent } from './users/admin/responsibles-view/responsibles-view.component';
+import { StudentsViewComponent } from './users/admin/students-view/students-view.component';
+
+import * as Hammer from 'hammerjs';
+import 'hammer-timejs';
+
+export class HammerConfig extends HammerGestureConfig  {
+  buildHammer(element: HTMLElement) {
+    return new Hammer.Manager(element, {
+      touchAction: 'auto',
+      inputClass: Hammer.TouchInput,
+      recognizers: [
+        [Hammer.Swipe, {
+          direction: Hammer.DIRECTION_HORIZONTAL
+        }]
+      ]
+    });
+  }
+}
 
 @NgModule({
   declarations: [
@@ -76,7 +96,10 @@ import {JwtInterceptorService} from './guards/jwt-interceptor.service';
     BannerComponent,
     ServerConfigurationComponent,
     StudentViewComponent,
-    OfferViewComponent
+    OfferViewComponent,
+    TagsViewComponent,
+    ResponsiblesViewComponent,
+    StudentsViewComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +120,10 @@ import {JwtInterceptorService} from './guards/jwt-interceptor.service';
       useExisting: forwardRef(() => TextboxComponent),
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
+    /*{
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig
+    },*/
   ],
   bootstrap: [AppComponent]
 })

@@ -58,15 +58,11 @@
           <tbody>
           <tr *ngFor="let student of myStudents">
             <td>{{student.userId}}</td>
-            <td>{{student.name}} {{student.surname | uppercase}}</td>
+            <td><a [routerLink]="'/responsable/etudiants/' + student.userId" >{{student.name}} {{student.surname | uppercase}}</a></td>
             <td>-</td>
             <td>En cours</td>
             <td>
-              <div class="button-tab">
-                <app-button type="normal" >Rappel</app-button>
-                <app-button type="normal" (click)="viewStudentProfile(student.userId)" >Consulter</app-button>
-                <app-button type="danger-revert" >Supprimer</app-button>
-              </div>
+              <app-button type="danger-revert" >Supprimer</app-button>
             </td>
           </tr>
           </tbody>

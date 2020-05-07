@@ -20,19 +20,7 @@ export class UserService {
   }
 
   public addUser(user: User): Observable<User> {
-    const another = {
-      departmentNumber: {
-        departmentId: 1
-      },
-      firstConnection: 0,
-      login: user.login,
-      mail: user.mail,
-      name: user.name,
-      password: 'azerty',
-      role: user.role.toString(),
-      surname: user.surname
-    };
-    return this.httpClient.post<any>(environment.api + 'user/', another);
+    return this.httpClient.post<any>(environment.api + 'user/', user);
   }
 
   public getMe(): Observable<User> {

@@ -8,6 +8,7 @@ export class User {
   public name: string;
   public surname: string;
   public mail: string;
-  public role: Role;
+  public role: number;
   public departmentNumber: Department;
+  public firstConnection: number;
 }

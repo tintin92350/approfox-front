@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import {ToastService} from './services/toast.service';
-import {ToastMessage} from './models/ToastMessage.model';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',

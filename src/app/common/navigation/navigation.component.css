@@ -1,4 +1,3 @@
-
 nav#main-navigation div {
   min-width: auto;
   display: flex;
@@ -33,4 +32,10 @@ nav#main-navigation div a:hover {
   color: #2087b2;
   background-color: #f4f7ff;
   font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+  nav#main-navigation div {
+    margin-top: 64px;
+  }
 }

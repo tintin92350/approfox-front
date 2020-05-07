@@ -110,6 +110,16 @@ p, h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
+.error-text {
+  color: #dc2828;
+  width: 600px;
+  max-width: calc(100% - 4em);
+  margin: auto;
+  transition: 250ms ease-in-out;
+  padding-left: 1em;
+  display: block;
+}
+
 @media screen and (max-width: 800px) {
 
   .wrapper::before {

@@ -1,9 +1,9 @@
-import {Component, HostListener, Inject, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {LogoComponent} from '../logo/logo.component';
 import {AuthService} from '../../services/auth.service';
 import {BannerService} from '../../services/banner.service';
 import {Router} from '@angular/router';
+import {BannerMessage} from '../../models/BannerMessage.model';
 
 @Component({
   selector: 'app-login-page',
@@ -14,20 +14,22 @@ export class LoginPageComponent implements OnInit {
 
   document: any;
 
-  @Input() public username: string;
-  @Input() public password: string;
+  public username: string;
+  public password: string;
+
+  public emptyUsername = false;
+  public emptyPassword = false;
+
+  public badCredentials = false;
 
   constructor(@Inject(DOCUMENT) document, private authService: AuthService, private bannerService: BannerService, private router: Router) {
     this.document = document;
     this.username = '';
     this.password = '';
-
-    console.log('auth : ' + this.authService.isLogged());
   }
 
   ngOnInit() {
     this.bannerService.release();
-    console.log(this.bannerService.getLastBanner());
     this.setElementRightPlace();
   }
 
@@ -51,15 +53,22 @@ export class LoginPageComponent implements OnInit {
 
       if (documentWidth >= 800) {
         this.document.getElementById('loginForm').style.top = ((documentHeight / 2.0) - (loginHeight / 2.0)) + 'px';
+      } else {
+        this.document.getElementById('loginForm').style.top = '0';
       }
   }
 
   login() {
-    console.log('Authentication...');
-    this.authService.login(this.username.toLocaleLowerCase(), this.password).subscribe(result => {
-      this.router.navigate(['/']);
-    }, error => {
-      console.log('error during auth.');
-    });
+
+    this.emptyUsername = (this.username === '');
+    this.emptyPassword = (this.password === '');
+
+    if (!this.emptyPassword && !this.emptyUsername) {
+      this.authService.login(this.username.toLocaleLowerCase(), this.password).subscribe(result => {
+        this.router.navigate(['/']);
+      }, error => {
+        this.badCredentials = true;
+      });
+    }
   }
 }

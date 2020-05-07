@@ -7,7 +7,7 @@
 
 .Left-Panel {
   grid-area: Left-Panel;
-  width: 300px;
+  width: 250px;
   height: 100%;
   position: relative;
 
@@ -19,7 +19,7 @@
 }
 
 .Right-Panel {
-  width: 100%;
+  width: calc(100% - 250px);
   position: relative;
 }
 
@@ -117,4 +117,34 @@
 }
 .toast-group app-toast {
   margin: 1em;
+}
+
+.collapse-menu-button {
+  cursor: pointer;
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 800px) {
+  .grid-container {
+    display: block;
+  }
+  .Left-Panel {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    z-index: 2;
+    grid-area: auto;
+    width: 100%;
+    height: calc(100% - 64px);
+    transition: 150ms ease-in-out;
+  }
+
+  .Left-Panel.collapsed {
+    left: -100%;
+  }
+
+  .Right-Panel {
+    width: 100%;
+    position: relative;
+  }
 }

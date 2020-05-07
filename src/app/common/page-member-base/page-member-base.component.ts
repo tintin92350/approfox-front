@@ -15,8 +15,11 @@ export class PageMemberBaseComponent implements OnInit {
 
   private userMenuOpened: boolean;
   private pageName: string;
+  private mainNavigationOpened: boolean;
 
-  @ViewChild('accountMenuLink', { static: false }) element: ElementRef<any>;
+  public sourceX: string;
+
+  @ViewChild('accountMenuLink', { static: false }) element: ElementRef;
 
   constructor(protected router: Router,
               protected authService: AuthService,
@@ -26,6 +29,11 @@ export class PageMemberBaseComponent implements OnInit {
     this.userMenuOpened = false;
     route.url.subscribe(() => {
       this.pageName = route.snapshot.firstChild.data.name;
+    });
+    this.mainNavigationOpened = false;
+
+    router.events.subscribe((val) => {
+      this.mainNavigationOpened = false;
     });
   }
 
@@ -48,12 +56,15 @@ export class PageMemberBaseComponent implements OnInit {
   public logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+    this.mainNavigationOpened = false;
     console.log('logged out');
   }
 
-  public getLinkToAccount(): string {
+  public goToAccount() {
     const role = this.authService.getRole();
-    return '/' + role + '/mon-compte';
+    this.router.navigate(['/' + role + '/mon-compte']);
+    this.mainNavigationOpened = false;
+    this.userMenuOpened = false;
   }
 
   public getPageName(): string {
@@ -64,12 +75,32 @@ export class PageMemberBaseComponent implements OnInit {
     return this.bannerService.getLastBanner();
   }
 
-
-  getToastService(): ToastService {
-    return this.toastService;
-  }
-
   getToasts(): ToastMessage[] {
     return this.toastService.getToasts();
+  }
+
+  openMainNavigation() {
+    this.mainNavigationOpened = !this.mainNavigationOpened;
+  }
+
+  isMainNavigationOpened(): boolean {
+    return this.mainNavigationOpened;
+  }
+
+  isSmallScreen(): boolean {
+    return window.innerWidth <= 810;
+  }
+
+
+  openMainNavigationOnSwipe(event) {
+
+    const sourceX = event.center.x;
+    if (sourceX < 300) {
+      this.mainNavigationOpened = true;
+    }
+  }
+
+  closeMainNavigationOnSwipe(event) {
+    this.mainNavigationOpened = false;
   }
 }

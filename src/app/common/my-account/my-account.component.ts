@@ -17,7 +17,6 @@ export class MyAccountComponent implements OnInit {
     const id = this.authService.currentAuthInfoValue.id;
     this.userService.getMe().subscribe(user => {
       this.user = user;
-      console.log(user);
     });
   }
 
@@ -39,15 +38,15 @@ export class MyAccountComponent implements OnInit {
     return 'Aucun département de rattachement';
   }
 
-  accountTypeString(role: number): string {
+  accountTypeString(role: string): string {
     switch (role) {
-      case 1:
+      case 'STUDENT':
         return 'Étudiant';
-      case 2:
+      case 'DEPARTMENT_MANAGER':
         return 'Responsable de département';
-      case 3:
+      case '1':
         return 'Pôle alternance - CFA';
-      case 4:
+      case 'ADMINISTRATOR':
         return 'Administrateur';
     }
 

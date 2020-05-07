@@ -1,6 +1,6 @@
 <app-banner *ngIf="getLastBanner() !== null" [banner]="getLastBanner()"></app-banner>
-<div class="grid-container">
-  <div class="Left-Panel">
+<div class="grid-container" (swiperight)="openMainNavigationOnSwipe($event)" (swipeleft)="closeMainNavigationOnSwipe($event)">
+  <div class="Left-Panel" [class.collapsed]="!isMainNavigationOpened()">
     <div class="top">
       <app-logo [width]="100" [height]="100" [percentages]="true"></app-logo>
     </div>
@@ -8,6 +8,7 @@
   </div>
   <div class="Right-Panel">
     <div class="Top-Panel">
+      <span (click)="openMainNavigation()" *ngIf="isSmallScreen()" class="collapse-menu-button"><i class="fas fa-bars"></i></span>
       <h3 class="page-name">
         {{ this.getPageName() ? this.getPageName(): '' }}
       </h3>
@@ -15,7 +16,7 @@
       <a href="/notifications"><i class="fas fa-bell"></i></a>
       <a (click)="openUserMenu()" #accountMenuLink ><i class="fas fa-user-circle"></i></a>
       <div class="accountPanel" *ngIf="isUserMenuOpened()" (clickOutside)="closeUserMenu($event)" >
-        <a [routerLink]="getLinkToAccount()">Mon compte</a>
+        <a (click)="goToAccount()">Mon compte</a>
         <a (click)="logout()" >Se déconnecter</a>
       </div>
     </div>
@@ -24,6 +25,7 @@
       <div class="toast-group">
         <app-toast *ngFor="let toast of getToasts()" [toastMessage]="toast"></app-toast>
       </div>
+      {{sourceX}}
       <router-outlet></router-outlet>
     </div>
   </div>

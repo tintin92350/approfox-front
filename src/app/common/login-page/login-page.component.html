@@ -12,13 +12,16 @@
     <br>
     <br>
     <div class="form">
+      <span class="error-text" *ngIf="badCredentials">Erreur : Mauvais nom d'utilisateur et/ou mot de passe</span>
+      <span class="error-text" *ngIf="emptyUsername">Erreur : Le nom d'utilisateur est vide</span>
       <div class="input-group">
-        <label for="username">username</label>
+        <label for="username">Nom d'utilisateur</label>
         <input type="text" name="username" id="username" [(ngModel)]="username">
       </div>
       <br>
+      <span class="error-text" *ngIf="emptyPassword">Erreur : Le mot de passe est vide</span>
       <div class="input-group">
-        <label for="password">password</label>
+        <label for="password">mot de passe</label>
         <input type="password" name="password" id="password" [(ngModel)]="password" (keyup.enter)=login()>
       </div>
       <br>
