@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {TagService} from '../../../services/tag.service';
 import {Tag} from '../../../models/tag.model';
+import {ToastService} from '../../../services/toast.service';
+import {ToastMessage} from '../../../models/ToastMessage.model';
+import {UserService} from '../../../services/user.service';
+import {ApiResponseHandlerService} from '../../../services/api-response-handler.service';
 
 @Component({
   selector: 'app-my-tags',
@@ -13,14 +17,16 @@ export class MyTagsComponent implements OnInit {
   private tags: Tag[];
   private tagServiceStatus: number;
 
-  constructor(private router: Router, private tagService: TagService) {
+  constructor( private router: Router,
+               private tagService: TagService,
+               private toastService: ToastService,
+               private userService: UserService,
+               private apiResponseHandlerService: ApiResponseHandlerService) {
     this.tagService = tagService;
     this.tagService.getTags().subscribe(tagCollection => {
       this.tags = tagCollection;
       this.tagServiceStatus = 1;
-    }, error => {
-      this.tagServiceStatus = error.status;
-    });
+    }, (err) => { this.apiResponseHandlerService.handleError(err); });
   }
 
   ngOnInit() {

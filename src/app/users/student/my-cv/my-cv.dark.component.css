@@ -1,0 +1,7 @@
+:host-context(.theme-dark) .input-group label {
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark) .input-group input {
+  border: 1px solid #eee;
+}

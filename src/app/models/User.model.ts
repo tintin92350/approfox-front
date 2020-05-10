@@ -5,8 +5,8 @@ export class User {
   public userId: number;
   public login: string;
   public password: string;
-  public name: string;
-  public surname: string;
+  public firstname: string;
+  public lastname: string;
   public mail: string;
   public role: number;
   public departmentNumber: Department;

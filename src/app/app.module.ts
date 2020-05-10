@@ -119,11 +119,9 @@ export class HammerConfig extends HammerGestureConfig  {
       multi: true,
       useExisting: forwardRef(() => TextboxComponent),
     },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
-    /*{
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: HammerConfig
-    },*/
+    [
+      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
+    ]
   ],
   bootstrap: [AppComponent]
 })

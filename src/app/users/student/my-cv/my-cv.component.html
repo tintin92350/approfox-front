@@ -66,8 +66,8 @@
       <div class="section-content">
         <div class="cv-information">
           <app-textbox [fullSize]="true" [(ngModel)]="getCvModel().filename" [disabled]="true" ngDefaultControl></app-textbox>
-          <app-button type="normal" label="Aperçu"></app-button>
-          <app-button type="danger-revert" label="Supprimer" *ngIf="getCvModel().status === 1"></app-button>
+          <app-button type="normal" >Aperçu</app-button>
+          <app-button type="danger-revert" *ngIf="getCvModel().status === 1">Supprimer</app-button>
         </div>
       </div>
     </div>

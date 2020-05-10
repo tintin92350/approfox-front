@@ -28,8 +28,8 @@
       </div>
       <div class="section-content">
         <div class="form-group">
-          <app-textbox label="Firstname" fullSize="true" [(inputModel)]="newUserInformation.name" #newUserFirstName (inputModelChange)="generateLogin()"></app-textbox>
-          <app-textbox label="Lastname" fullSize="true" [(inputModel)]="newUserInformation.surname" (inputModelChange)="generateLogin()"></app-textbox>
+          <app-textbox label="Firstname" fullSize="true" [(inputModel)]="newUserInformation.firstname" #newUserFirstName (inputModelChange)="generateLogin()"></app-textbox>
+          <app-textbox label="Lastname" fullSize="true" [(inputModel)]="newUserInformation.lastname" (inputModelChange)="generateLogin()"></app-textbox>
           <app-textbox label="login (auto-generated)" fullSize="true" [(inputModel)]="newUserInformation.login" disabled="true"></app-textbox>
         </div>
         <div class="form-group">
@@ -58,7 +58,7 @@
           <tbody>
           <tr *ngFor="let student of myStudents">
             <td>{{student.userId}}</td>
-            <td><a [routerLink]="'/responsable/etudiants/' + student.userId" >{{student.name}} {{student.surname | uppercase}}</a></td>
+            <td><a [routerLink]="'/responsable/etudiants/' + student.userId" >{{student.firstname}} {{student.lastname | uppercase}}</a></td>
             <td>-</td>
             <td>En cours</td>
             <td>

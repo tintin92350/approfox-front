@@ -1,1 +1,116 @@
-<p>Liste de tous les représentants de filière enregistrés sur le site. Vous pouvez ici administrer leur compte, en ajouter ou en supprimer.</p>
+<div class="row">
+
+  <div class="col-sm-12">
+    <p>Liste de tous les représentants de filière enregistrés sur le site. Vous pouvez ici administrer leur compte, en ajouter ou en supprimer.</p>
+  </div>
+  <div class="col-sm-12 button-tab">
+    <app-button type="primary" (click)="startAddingResponsible()"><i class="fas fa-plus"></i> Ajouter</app-button>
+  </div>
+  <div class="col-sm-12 special" *ngIf="isAddingResponsible()">
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Ajouter un résponsable</h3>
+      </div>
+      <form class="section-content" [formGroup]="this.responsibleForm">
+        <div class="form-group">
+
+          <div class="input-group">
+            <label for="firstname">
+              Prénom
+            </label>
+            <div class="input-wrapper">
+              <input id="firstname" type="text" formControlName="firstname" [class.error]="firstname.invalid && (firstname.dirty || firstname.touched)" (keydown)="generateLogin()" >
+              <div class="error-box" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="lastname">
+              Nom de famille
+            </label>
+            <div class="input-wrapper">
+              <input id="lastname" type="text" formControlName="lastname" [class.error]="lastname.invalid && (lastname.dirty || lastname.touched)" (keydown)="generateLogin()" >
+              <div class="error-box" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="login">
+              Nom d'utilisateur
+            </label>
+            <div class="input-wrapper">
+              <input id="login" type="text" formControlName="login" [class.error]="login.invalid && (login.dirty || login.touched)" >
+              <div class="error-box" *ngIf="login.invalid && (login.dirty || login.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <label for="mail">
+              Mail
+            </label>
+            <div class="input-wrapper">
+              <input id="mail" type="text" formControlName="mail" [class.error]="mail.invalid && (mail.dirty || mail.touched)" >
+              <div class="error-box" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="department">
+              Département
+            </label>
+            <div class="input-wrapper">
+              <select id="department" formControlName="department">
+                <option *ngFor="let department of getAllDepartments(); let i = index" value="{{i}}">{{department.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="button-tab">
+          <app-button type="normal" (click)="validAddingResponsible()" >Valider</app-button>
+          <app-button type="danger-revert" (click)="cancelAddingResponsible()" >Annuler</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-12">
+
+    <div class="section">
+      <div class="section-content">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom d'utilisateur</th>
+            <th>Prénom NOM</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let responsible of getResponsibles()">
+            <td>{{responsible.userId}}</td>
+            <td><a [routerLink]="'/responsable/responsables/' + responsible.userId" >{{responsible.login}}</a></td>
+            <td>{{responsible.firstname}} {{responsible.lastname | uppercase}}</td>
+            <td>
+              <app-button type="danger-revert" >Supprimer</app-button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

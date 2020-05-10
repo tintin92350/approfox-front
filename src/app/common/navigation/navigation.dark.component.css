@@ -1,0 +1,14 @@
+:host-context(.theme-dark) nav#main-navigation div a {
+  color: #f4f7ff;
+  border-bottom: 2px solid rgba(60, 60, 60, 0.8);
+}
+
+:host-context(.theme-dark) nav#main-navigation div a.active {
+  color: #1e1e1e;
+  background-color: #f4f7ff;
+}
+
+:host-context(.theme-dark) nav#main-navigation div a:hover {
+  color: #0a0a0a;
+  background-color: #f4f7ff;
+}

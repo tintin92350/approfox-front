@@ -1,165 +1,219 @@
-.wrapper::before {
-  content:'';
-  position:absolute;
+.page-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
   background: rgb(32, 135, 178);
   background: -moz-linear-gradient(60deg, rgba(32, 135, 178,1) 0%, rgba(41,171,226,1) 100%);
   background: -webkit-linear-gradient(60deg, rgba(32, 135, 178,1) 0%, rgba(41,171,226,1) 100%);
   background: linear-gradient(60deg, rgba(32, 135, 178,1) 0%, rgba(41,171,226,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4f00bc",endColorstr="#29abe2",GradientType=1);
-
-  width:100%;
-  height:200%;
-  top:0;
-  left:0;
-  border-radius:50%;
-  transform:translatex(-50%) translateY(-25%);
 }
-
-.wrapper {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #FFFFFF;
-}
-* {
-  box-sizing: border-box;
-}
-
-p, h1, h2, h3, h4, h5, h6 {
-  padding: 0;
-  margin: 0;
-}
-
-.logo {
-  display: block;
+#logo {
   position: absolute;
-  width: 25%;
-  height: 100%;
-  top: 38%;
-  left: 12.5%;
-}
-
-.login-space {
-  display: block;
-  width: 50%;
+  left: 0;
   right: 0;
-  position: absolute;
-}
-
-.login-space > h1 {
-  font-size: 42px;
-  font-weight: bold;
-  color: #1e1e1e;
-  text-align: center;
-  padding-bottom: 0.5em;
-  text-transform: uppercase;
-}
-
-.login-space > p {
-  font-size: 16px;
-  color: #1e1e1e;
-  text-align: center;
-}
-
-.login-space .input-group {
-  width: 600px;
-  max-width: calc(100% - 4em);
-  height: 72px;
-  background-color: #eeeeee;
-  border-radius: 50px;
-  padding: 0.75em;
-  position: relative;
   margin: auto;
+  display: block;
+  width: 250px;
 }
-.login-space .input-group label {
-  color: #7e7e7e;
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+form .input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+  width: 100%;
+}
+
+form .input-group label {
   font-size: 14px;
   font-weight: bold;
-  margin: 0.25em 0 0em 1.5em;
-  text-transform: uppercase;
-  display: block;
+  padding: 0.2em 0.5em;
 }
-.login-space .input-group input {
-  color: #4b4b4b;
-  font-size: 18px;
-  margin-left: 1.4em;
-  width: calc(100% - 2em);
-  background-color: transparent;
-  border: 0;
-  display: block;
-}
-.login-space input[type="submit"] {
-  width: 600px;
-  max-width: calc(100% - 4em);
-  height: 72px;
+
+form .input-group input {
   font-size: 20px;
-  color: #fff;
-  background-color: #29abe2;
-  border-radius: 50px;
-  padding: 0.75em;
-  position: relative;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
-  border: 0;
+  height: 48px;
+  border-radius: 5px;
+  text-align: left;
+  color: #141414;
+  border: 3px solid transparent;
+  width: 100%;
+  text-indent: 0.5em;
+
+  transition: 150ms ease-in-out;
+}
+form .input-group input[type="password"] {
+  -webkit-text-security: square;
+}
+
+form .button {
   cursor: pointer;
-}
-.login-space .input-group input:active,
-.login-space .input-group input:focus {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 32px;
+  width: 250px;
+  height: 32px;
+  color: #ffffff;
+  background-color: #1e1e1e;
+  text-transform: uppercase;
   border: 0;
-  outline: none;
+  border-radius: 5px;
+  margin: 1em auto auto auto;
 }
 
-.error-text {
-  color: #dc2828;
-  width: 600px;
-  max-width: calc(100% - 4em);
-  margin: auto;
-  transition: 250ms ease-in-out;
-  padding-left: 1em;
+
+.authentication-failed-box
+{
+  opacity: 0;
   display: block;
+  width: 100%;
+  background-color: #fff;
+  padding: 1em 0;
+  z-index: 1;
+  color: #dc2850;
+  border: 2px solid #dc2850;
 }
 
-@media screen and (max-width: 800px) {
+.authentication-failed-box.active {
+  opacity: 1;
+}
 
-  .wrapper::before {
-    content:'';
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    transform: initial;
-  }
 
-  .wrapper {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative !important;
-  }
+.authentication-failed-box h1 {
+  letter-spacing: 0.25em;
+  text-align: center;
+  font-size: 1em;
+}
 
-  .logo {
-    display: block;
-    position: relative;
+#uvsq_logo {
+  position: absolute;
+  width: 200px;
+  right: 1em;
+  bottom: 1em;
+}
+
+#toogle-dark-mode {
+  border: 0;
+  padding: 1em;
+  border-radius: 50px;
+  background-color: #1e1e1e;
+  color: #FFFFFF;
+  height: 24px;
+  line-height: 0;
+  font-size: 14px;
+
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+  width: 160px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper .error-box {
+  position: absolute;
+  bottom: 0;
+  right: 12px;
+  color: #dc2850;
+  height: 48px;
+  font-size: 14px;
+}
+.input-wrapper .error-box span {
+  display: inline-block;
+  margin-right: 0.5em;
+  line-height: 48px;
+  font-weight: bold;
+}
+.input-wrapper .error-box i {
+  display: inline-block;
+  line-height: 48px;
+}
+
+
+@media screen and (max-width: 500px) {
+  #logo {
+    position: inherit;
     width: 50%;
-    height: 25%;
-    top: 1em;
-    left: 30%;
+    margin: 0 auto;
+    padding: 1em;
   }
 
-  .login-space {
-    display: block;
+  form {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    position: relative;
-    z-index: 3;
-    top: 0;
     margin: 0;
-    padding: 0;
-  }
-  .login-space h1 {
-    color: #FFFFFF;
-  }
-  .login-space p {
-    color: #FFFFFF;
     padding: 1em;
+    position: inherit;
+  }
+
+  form .input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0.25em 0;
+  }
+
+  form .input-group label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  form .button {
+    width: 100%;
+  }
+
+  form span.error {
+    color: #dc2850;
+    font-size: 11px;
+    display: block;
+  }
+  form .input-group input.error {
+    border-color: #dc2850;
+  }
+
+  .authentication-failed-box
+  {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    background-color: #dc2850;
+    padding: 1em;
+    top: 0;
+  }
+
+  .authentication-failed-box h1 {
+    letter-spacing: 0.25em;
+    text-align: center;
+    display: block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  #uvsq_logo {
+    position: inherit;
+    width: 100%;
+    padding: 1em;
+  }
+
+
+  #toogle-dark-mode {
+    position: inherit;
+    width: calc(100% - 2em);
+    padding: 1em;
+    margin: 1em;
   }
 }

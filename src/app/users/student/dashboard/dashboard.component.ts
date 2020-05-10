@@ -23,8 +23,6 @@ export class DashboardComponent implements OnInit {
       this.tagServiceStatus = 1;
     }, error => {
       this.tagServiceStatus = error.status;
-      console.log('test');
-      this.toastService.pushToast(new ToastMessage('Une erreur est survenue lors de l\'appel à l\'API', 'error'));
     });
   }
 

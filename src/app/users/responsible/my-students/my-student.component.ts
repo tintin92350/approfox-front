@@ -8,7 +8,7 @@ import {Department} from '../../../models/Department.model';
 @Component({
   selector: 'app-my-student',
   templateUrl: './my-student.component.html',
-  styleUrls: ['./my-student.component.css']
+  styleUrls: ['./my-student.component.css', './my-student.dark.component.css']
 })
 export class MyStudentComponent implements OnInit {
 
@@ -63,8 +63,8 @@ export class MyStudentComponent implements OnInit {
   }
 
   public generateLogin() {
-    const firstNameConcate = this.newUserInformation.name !== undefined ? this.newUserInformation.name.toLocaleLowerCase() : '';
-    const lastNameConcate = this.newUserInformation.surname !== undefined ? this.newUserInformation.surname.toLocaleLowerCase() : '';
+    const firstNameConcate = this.newUserInformation.firstname !== undefined ? this.newUserInformation.firstname.toLocaleLowerCase() : '';
+    const lastNameConcate = this.newUserInformation.lastname !== undefined ? this.newUserInformation.lastname.toLocaleLowerCase() : '';
     this.newUserInformation.login = firstNameConcate + '.' + lastNameConcate;
   }
 

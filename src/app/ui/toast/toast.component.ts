@@ -14,6 +14,7 @@ export class ToastComponent implements OnInit, OnChanges {
   @Input() toastMessage: ToastMessage;
 
   public timeoutFunction: Timeout;
+  public closing = false;
 
   constructor(private toastService: ToastService) {
   }
@@ -30,22 +31,16 @@ export class ToastComponent implements OnInit, OnChanges {
   }
 
   public close() {
-    if (this.toastMessage !== undefined && this.toastMessage) {
-      console.log('closing the ' + this.toastMessage.id + '-th toast');
-      this.toastMessage.closed = true;
-      setTimeout(this.realClose, 300);
-    }
+    this.closing = true;
+    setTimeout(() => { this.realClose(); }, 800);
   }
 
   private realClose() {
-    console.log(this.toastMessage);
-    if (this.toastService !== undefined && this.toastService) {
+      this.toastMessage.closed = true;
       this.toastService.update();
-    }
   }
 
   private delay() {
-    console.log(this.toastMessage);
     this.toastMessage.closed = true;
     setTimeout(this.realClose, 300);
   }
@@ -56,9 +51,8 @@ export class ToastComponent implements OnInit, OnChanges {
 
   public onLeave() {
     this.timeoutFunction = setTimeout(() => {
-      this.toastMessage.closed = true;
       setTimeout(() => {
-        this.toastService.update();
+        this.close();
       }, 900);
     }, this.toastMessage.delay);
   }

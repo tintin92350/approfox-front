@@ -1,7 +1,6 @@
 #page-title {
   font-size: 60px;
   text-transform: uppercase;
-  color: rgb(40, 40, 40);
 }
 
 .section {
@@ -15,7 +14,6 @@
 
 .section .section-header .section-title {
   font-size: 32px;
-  color: rgb(40, 40, 40);
 }
 
 #page-title span {

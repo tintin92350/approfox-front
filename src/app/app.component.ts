@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Renderer2} from '@angular/core';
+import {ThemeService} from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,19 @@ export class AppComponent {
 
   private splashScreen = true;
 
-  constructor()  {
+  constructor(private themeService: ThemeService,
+              private renderer: Renderer2)  {
     setTimeout(() => {
       this.splashScreen = false;
-    }, 5);
+    }, 25);
+
+    const date = new Date();
+
+    if (date.getHours() > 20 || date.getHours() < 6) {
+      themeService.switchNoUpdate(true);
+    }
+
+    themeService.update(renderer);
   }
 
   isSplashScreen(): boolean {

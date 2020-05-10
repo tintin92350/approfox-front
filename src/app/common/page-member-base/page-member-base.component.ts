@@ -1,15 +1,16 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {BannerService} from '../../services/banner.service';
 import {BannerMessage} from '../../models/BannerMessage.model';
 import {ToastService} from '../../services/toast.service';
 import {ToastMessage} from '../../models/ToastMessage.model';
+import {ThemeService} from '../../services/theme.service';
 
 @Component({
   selector: 'app-page-member-base',
   templateUrl: './page-member-base.component.html',
-  styleUrls: ['./page-member-base.component.css']
+  styleUrls: ['./page-member-base.component.css', './page-member-base.dark.component.css']
 })
 export class PageMemberBaseComponent implements OnInit {
 
@@ -25,7 +26,9 @@ export class PageMemberBaseComponent implements OnInit {
               protected authService: AuthService,
               private route: ActivatedRoute,
               private bannerService: BannerService,
-              private toastService: ToastService) {
+              private toastService: ToastService,
+              public themeService: ThemeService,
+              public renderer: Renderer2) {
     this.userMenuOpened = false;
     route.url.subscribe(() => {
       this.pageName = route.snapshot.firstChild.data.name;
@@ -93,14 +96,20 @@ export class PageMemberBaseComponent implements OnInit {
 
 
   openMainNavigationOnSwipe(event) {
-
+    const documentWidth = window.innerWidth;
     const sourceX = event.center.x;
-    if (sourceX < 300) {
+    if (sourceX < 250) {
       this.mainNavigationOpened = true;
     }
   }
 
   closeMainNavigationOnSwipe(event) {
     this.mainNavigationOpened = false;
+  }
+
+  closeMainNavigationOnSwipeOutside(event) {
+    if (event.clientY > 64) {
+      this.closeMainNavigationOnSwipe(event);
+    }
   }
 }

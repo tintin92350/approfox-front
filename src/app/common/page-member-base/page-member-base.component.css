@@ -18,6 +18,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4f00bc",endColorstr="#29abe2",GradientType=1);
 }
 
+.Left-Panel.banner-present {
+  height: calc(100% - 32px);
+}
+
 .Right-Panel {
   width: calc(100% - 250px);
   position: relative;
@@ -38,9 +42,6 @@
   top: 0;
   width: 100%;
   height: 64px;
-  -webkit-box-shadow: 0px 0px 41px 13px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0px 0px 41px 13px rgba(0,0,0,0.1);
-  box-shadow: 0px 0px 41px 13px rgba(0,0,0,0.1);
 }
 
 .Top-Panel {
@@ -53,10 +54,13 @@
   background-color: #fff;
   height: 64px;
   align-items: center;
-  -webkit-box-shadow: 0px 0px 41px 13px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0px 0px 41px 13px rgba(0,0,0,0.1);
-  box-shadow: 0px 0px 41px 13px rgba(0,0,0,0.1);
   z-index: 2;
+}
+
+.top, .Top-Panel {
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
 }
 
 .Top-Panel .page-name {
@@ -106,11 +110,19 @@
   color: #3b57cf;
 }
 
+app-logo {
+  display: block;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+  height: 64px;
+  margin: auto;
+}
 
 .toast-group {
   display: block;
   position: absolute;
-  top: 0;
+  top: 64px;
   right: 1em;
   z-index: 3;
   width: 350px;
@@ -124,6 +136,23 @@
   margin-left: 1em;
 }
 
+#toogle-dark-mode {
+  border: 0;
+  padding: 1em;
+  border-radius: 50px;
+  background-color: #1e1e1e;
+  color: #FFFFFF;
+  height: 24px;
+  line-height: 0;
+  font-size: 14px;
+
+  position: absolute;
+  margin: auto;
+  width: 75%;
+  left: 12.5%;
+  bottom: 1em;
+}
+
 @media screen and (max-width: 800px) {
   .grid-container {
     display: block;
@@ -134,7 +163,9 @@
     left: 0;
     z-index: 2;
     grid-area: auto;
-    width: 100%;
+    width: 50%;
+    min-width: 250px;
+    max-width: 100%;
     height: calc(100% - 64px);
     transition: 150ms ease-in-out;
   }
@@ -146,5 +177,24 @@
   .Right-Panel {
     width: 100%;
     position: relative;
+  }
+
+  .top {
+    box-shadow: none;
+  }
+  .Top-Panel {
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
+  }
+
+  .toast-group {
+    display: block;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 1em;
+    z-index: 3;
+    width: calc(100% - 2em);
   }
 }

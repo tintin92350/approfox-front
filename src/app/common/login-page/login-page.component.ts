@@ -1,74 +1,92 @@
-import {Component, ElementRef, HostListener, Inject, Input, OnInit, ViewChild} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
-import {AuthService} from '../../services/auth.service';
-import {BannerService} from '../../services/banner.service';
+import {AfterViewChecked, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {BannerMessage} from '../../models/BannerMessage.model';
+import {AuthService} from '../../services/auth.service';
+import {ThemeService} from '../../services/theme.service';
+import {timeout} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css', '../logo/logo.component.css']
+  styleUrls: ['./login-page.component.css', './login-page.dark.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, AfterViewChecked {
 
-  document: any;
+  public loginForm: any;
+  private userid = '';
+  private password = '';
+  private loginStatus = 0;
+  private darkMode = false;
 
-  public username: string;
-  public password: string;
+  @ViewChild('loginFormElement') loginFormElement: ElementRef;
+  @ViewChild('logo') logoElement: ElementRef;
+  @ViewChild('authenticationFailedElement') authenticationFailedElement: ElementRef;
+  @ViewChild('authenticationSuccessElement') authenticationSuccessElement: ElementRef;
 
-  public emptyUsername = false;
-  public emptyPassword = false;
-
-  public badCredentials = false;
-
-  constructor(@Inject(DOCUMENT) document, private authService: AuthService, private bannerService: BannerService, private router: Router) {
-    this.document = document;
-    this.username = '';
-    this.password = '';
+  constructor(private formBuilder: FormBuilder,
+              private authenticationService: AuthService,
+              private router: Router,
+              public themeService: ThemeService,
+              public renderer: Renderer2) {
+    this.loginForm = this.formBuilder.group({
+      userid: new FormControl(this.userid, [
+        Validators.required
+      ]),
+      password: new FormControl(this.password, [
+        Validators.required
+      ])
+    });
   }
 
-  ngOnInit() {
-    this.bannerService.release();
-    this.setElementRightPlace();
+  ngAfterViewChecked(): void {
+    this.makeLoginBoxAtCenter();
+  }
+
+  ngOnInit(): void {
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.setElementRightPlace();
+    this.makeLoginBoxAtCenter();
   }
 
   @HostListener('window:load', ['$event'])
   onLoad(event) {
-    this.setElementRightPlace();
+    this.makeLoginBoxAtCenter();
   }
 
-  setElementRightPlace() {
-      const documentWidth = window.innerWidth;
+  public getUserid() { return this.loginForm.get('userid'); }
+
+  public getPassword() { return this.loginForm.get('password'); }
+
+  public getLoginStatus(): number { return this.loginStatus; }
+
+  makeLoginBoxAtCenter() {
+    const documentWidth = window.innerWidth;
+
+    if (documentWidth > 500) {
       const documentHeight = window.innerHeight;
+      const loginFormHeight = this.loginFormElement.nativeElement.offsetHeight;
+      const logoHeight = this.logoElement.nativeElement.getBoundingClientRect().height;
 
-      const imgWidth = this.document.getElementById('logo').width;
-      const imgHeight = this.document.getElementById('logo').height;
-      const loginHeight = this.document.getElementById('loginForm').clientHeight;
+      const loginFormMarginTop = documentHeight / 2.0 - loginFormHeight / 2.0 + 100;
+      this.loginFormElement.nativeElement.style.marginTop = loginFormMarginTop + 'px';
 
-      if (documentWidth >= 800) {
-        this.document.getElementById('loginForm').style.top = ((documentHeight / 2.0) - (loginHeight / 2.0)) + 'px';
-      } else {
-        this.document.getElementById('loginForm').style.top = '0';
-      }
+      const logoTop = documentHeight / 4.0 - logoHeight / 2.0;
+      this.logoElement.nativeElement.style.top = logoTop + 'px';
+    } else {
+      this.loginFormElement.nativeElement.style.marginTop = '0px';
+    }
   }
 
-  login() {
-
-    this.emptyUsername = (this.username === '');
-    this.emptyPassword = (this.password === '');
-
-    if (!this.emptyPassword && !this.emptyUsername) {
-      this.authService.login(this.username.toLocaleLowerCase(), this.password).subscribe(result => {
-        this.router.navigate(['/']);
-      }, error => {
-        this.badCredentials = true;
-      });
-    }
+  onSubmit(userCredentials) {
+    this.loginForm.reset();
+    this.authenticationService.login(userCredentials.userid, userCredentials.password).pipe(timeout(1000)).subscribe(t => {
+      this.loginStatus = 2;
+      this.router.navigate(['/dashboard']);
+      console.log('error');
+    }, error => {
+      this.loginStatus = 1;
+    });
   }
 }

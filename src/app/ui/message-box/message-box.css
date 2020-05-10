@@ -2,10 +2,9 @@
   display: flex;
   padding: 1em;
   background-color: #fff;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(200,200,200,1);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(200,200,200,1);
-  box-shadow: 0px 0px 20px 0px rgba(200,200,200,1);
-
+  -webkit-box-shadow: 5px 5px 10px 0px rgba(200,200,200,1);
+  -moz-box-shadow: 5px 5px 10px 0px rgba(200,200,200,1);
+  box-shadow: 5px 5px 10px 0px rgba(200,200,200,1);
   border-radius: 4px;
   border-left: 5px solid #999;
 }
@@ -31,4 +30,17 @@
   color: #999;
   line-height: 1.5;
   text-align: justify;
+}
+
+
+:host-context(.theme-dark) .box {
+  background-color: #111;
+  box-shadow: none;
+}
+
+:host-context(.theme-dark) .box .content h3 {
+  color: #FFFFFF;
+}
+.box .content p {
+  color: #999;
 }

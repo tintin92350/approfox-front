@@ -3,7 +3,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css']
+  styleUrls: ['./file-upload.component.css', './file-upload.dark.component.css']
 })
 export class FileUploadComponent implements OnInit {
 

@@ -1,31 +1,50 @@
-<div class="wrapper" >
+<!--
 
-  <svg id="logo" viewBox="250 450 2000 1" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo no-animated" preserveAspectRatio="xMinYMin meet">
-    <path d="M1141.59 1316.38L1143.97 1323H1151H1279.64C1368.9 1323 1447.69 1305.51 1515.7 1270.2C1584.48 1234.91 1637.5 1185.12 1674.49 1120.88C1712.27 1055.83 1731 980.332 1731 894.702C1731 809.092 1712.28 733.606 1674.51 668.573C1637.55 602.744 1584.53 552.118 1515.7 516.801C1447.69 481.491 1368.91 464 1279.64 464H849.8H835.585L840.388 477.379L1141.59 1316.38ZM1470.34 697.307L1470.37 697.337L1470.4 697.366C1516.07 743.9 1539.49 809.221 1539.49 894.702C1539.49 980.192 1516.06 1045.07 1470.45 1090.78C1424.86 1136.47 1359.76 1159.96 1273.64 1159.96H1164.91V625.837H1273.64C1359.67 625.837 1424.73 650.075 1470.34 697.307Z" stroke="#E6B22C" stroke-width="20"></path>
-    <path d="M455.4 1323H462.523L464.851 1316.27L520.051 1156.63L520.061 1156.6L520.07 1156.57L565.651 1022.2L565.67 1022.14L677.4 699.044L784.561 1008.93H677.4H670.232L667.93 1015.72L622.332 1150.15L617.851 1163.36H631.802H837.077L889.949 1316.27L892.277 1323H899.4H1077H1091.21L1086.41 1309.62L785.212 470.621L782.835 464H775.8H580.2H573.165L570.788 470.621L269.588 1309.62L264.785 1323H279H455.4Z" stroke="#042C79" stroke-width="20"></path>
+
+<div class="authentication-success-box" *ngIf="getLoginStatus() == 2" #authenticationSuccessElement>
+  <h1>- AUTHENTICATION SUCCESS -</h1>
+</div>
+-->
+<div class="page-wrapper">
+  <svg id="logo" viewBox="250 450 1500 938" fill="none" xmlns="http://www.w3.org/2000/svg" class="no-animated" preserveAspectRatio="xMinYMin meet" #logo>
+    <path d="M1141.59 1316.38L1143.97 1323H1151H1279.64C1368.9 1323 1447.69 1305.51 1515.7 1270.2C1584.48 1234.91 1637.5 1185.12 1674.49 1120.88C1712.27 1055.83 1731 980.332 1731 894.702C1731 809.092 1712.28 733.606 1674.51 668.573C1637.55 602.744 1584.53 552.118 1515.7 516.801C1447.69 481.491 1368.91 464 1279.64 464H849.8H835.585L840.388 477.379L1141.59 1316.38ZM1470.34 697.307L1470.37 697.337L1470.4 697.366C1516.07 743.9 1539.49 809.221 1539.49 894.702C1539.49 980.192 1516.06 1045.07 1470.45 1090.78C1424.86 1136.47 1359.76 1159.96 1273.64 1159.96H1164.91V625.837H1273.64C1359.67 625.837 1424.73 650.075 1470.34 697.307Z" stroke="#E6B22C" fill="#E6B22C" stroke-width="20"></path>
+    <path d="M455.4 1323H462.523L464.851 1316.27L520.051 1156.63L520.061 1156.6L520.07 1156.57L565.651 1022.2L565.67 1022.14L677.4 699.044L784.561 1008.93H677.4H670.232L667.93 1015.72L622.332 1150.15L617.851 1163.36H631.802H837.077L889.949 1316.27L892.277 1323H899.4H1077H1091.21L1086.41 1309.62L785.212 470.621L782.835 464H775.8H580.2H573.165L570.788 470.621L269.588 1309.62L264.785 1323H279H455.4Z" stroke="#fff" fill="#fff" stroke-width="20"></path>
   </svg>
 
-  <div class="login-space" id="loginForm">
-    <h1>Connexion</h1>
-    <p>Veuillez entrer vos informations de connexion afin de vous authentifier sur le serveur</p>
-
-    <br>
-    <br>
-    <div class="form">
-      <span class="error-text" *ngIf="badCredentials">Erreur : Mauvais nom d'utilisateur et/ou mot de passe</span>
-      <span class="error-text" *ngIf="emptyUsername">Erreur : Le nom d'utilisateur est vide</span>
-      <div class="input-group">
-        <label for="username">Nom d'utilisateur</label>
-        <input type="text" name="username" id="username" [(ngModel)]="username">
-      </div>
-      <br>
-      <span class="error-text" *ngIf="emptyPassword">Erreur : Le mot de passe est vide</span>
-      <div class="input-group">
-        <label for="password">mot de passe</label>
-        <input type="password" name="password" id="password" [(ngModel)]="password" (keyup.enter)=login()>
-      </div>
-      <br>
-      <input type="submit" value="Se connecter" (click)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" #loginFormElement >
+    <div class="authentication-failed-box" #authenticationFailedElement [class.active]="getLoginStatus() == 1">
+      <h1>- ECHEC DE L'AUTHENTIFICATION -</h1>
     </div>
-  </div>
+    <div class="input-group">
+      <label for="userid">
+        Nom d'utilisateur
+      </label>
+      <div class="input-wrapper">
+        <input id="userid" type="text" formControlName="userid" [class.error]="getUserid().invalid && (getUserid().dirty || getUserid().touched)">
+        <div class="error-box" *ngIf="getUserid().invalid && (getUserid().dirty || getUserid().touched)">
+          <span>Champs requis</span>
+          <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="password">
+        Mot de passe
+      </label>
+      <div class="input-wrapper">
+        <input id="password" type="password" formControlName="password" [class.error]="getPassword().invalid && (getPassword().dirty || getPassword().touched)" >
+        <div class="error-box" *ngIf="getPassword().invalid && (getPassword().dirty || getPassword().touched)">
+          <span>Champs requis</span>
+          <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+        </div>
+      </div>
+    </div>
+
+    <button class="button" type="submit">se connecter</button>
+  </form>
+
+  <img src="assets/img/UVSQ_IUT_VELIZY.jpg" alt="" id="uvsq_logo">
+
+  <button (click)="themeService.switch(renderer)" id="toogle-dark-mode">{{ themeService.isDarkModeActivated() ? 'Mode clair' : 'Mode sombre' }}</button>
 </div>

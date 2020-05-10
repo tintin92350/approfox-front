@@ -1,10 +1,17 @@
 <app-banner *ngIf="getLastBanner() !== null" [banner]="getLastBanner()"></app-banner>
+
+<div class="toast-group">
+  <app-toast *ngFor="let toast of getToasts()" [toastMessage]="toast"></app-toast>
+</div>
+
 <div class="grid-container" (swiperight)="openMainNavigationOnSwipe($event)" (swipeleft)="closeMainNavigationOnSwipe($event)">
-  <div class="Left-Panel" [class.collapsed]="!isMainNavigationOpened()">
+  <div class="Left-Panel" [class.collapsed]="!isMainNavigationOpened()" [class.banner-present]="getLastBanner() !== null" (clickOutside)="closeMainNavigationOnSwipeOutside($event)">
     <div class="top">
-      <app-logo [width]="100" [height]="100" [percentages]="true"></app-logo>
+      <app-logo width="24" height="100" percentages="true"></app-logo>
     </div>
     <app-navigation></app-navigation>
+
+    <button (click)="themeService.switch(renderer)" id="toogle-dark-mode">{{ themeService.isDarkModeActivated() ? 'Mode clair' : 'Mode sombre' }}</button>
   </div>
   <div class="Right-Panel">
     <div class="Top-Panel">
@@ -22,10 +29,6 @@
     </div>
     <div class="Center-Panel container-fluid">
 
-      <div class="toast-group">
-        <app-toast *ngFor="let toast of getToasts()" [toastMessage]="toast"></app-toast>
-      </div>
-      {{sourceX}}
       <router-outlet></router-outlet>
     </div>
   </div>

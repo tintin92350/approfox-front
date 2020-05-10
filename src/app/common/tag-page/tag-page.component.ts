@@ -6,7 +6,7 @@ import {Tag} from '../../models/tag.model';
 @Component({
   selector: 'app-tag-page',
   templateUrl: './tag-page.component.html',
-  styleUrls: ['./tag-page.component.css']
+  styleUrls: ['./tag-page.component.css', './tag-page.dark.component.css']
 })
 export class TagPageComponent implements OnInit {
 

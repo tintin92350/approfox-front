@@ -1,24 +1,66 @@
 <nav id="main-navigation" #mainNavigation >
   <div *ngIf="getRole() === 'etudiant'">
-    <a [routerLink]="['/etudiant/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
-    <a [routerLink]="['/etudiant/mon-cv']" [routerLinkActive]="['active']">Mon cv</a>
-    <a [routerLink]="['/etudiant/mes-tags']" [routerLinkActive]="['active']">Mes tags</a>
+    <a [routerLink]="['/etudiant/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-chart-line"></i>
+      dashboard
+    </a>
+    <a [routerLink]="['/etudiant/mon-cv']" [routerLinkActive]="['active']">
+      <i class="fa fa-file"></i>
+      Mon cv
+    </a>
+    <a [routerLink]="['/etudiant/mes-tags']" [routerLinkActive]="['active']">
+      <i class="fa fa-tags"></i>
+      Mes tags
+    </a>
   </div>
   <div *ngIf="getRole() === 'responsable'">
-    <a [routerLink]="['/responsable/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
-    <a [routerLink]="['/responsable/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >étudiants</a>
-    <a [routerLink]="['/responsable/offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >offres</a>
+    <a [routerLink]="['/responsable/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-chart-line"></i>
+      dashboard
+    </a>
+    <a [routerLink]="['/responsable/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-user-graduate"></i>
+      etudiants
+    </a>
+    <a [routerLink]="['/responsable/offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-briefcase"></i>
+      offres
+    </a>
   </div>
   <div *ngIf="getRole() === 'admin'">
-    <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
-    <a [routerLink]="['/admin/representants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >representants</a>
-    <a [routerLink]="['/admin/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >etudiants</a>
-    <a [routerLink]="['/admin/tags']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >tags</a>
-    <a [routerLink]="['/admin/outils-serveur']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Outils serveur</a>
+    <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-chart-line"></i>
+      dashboard
+    </a>
+    <a [routerLink]="['/admin/representants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-users-class"></i>
+      representants
+    </a>
+    <a [routerLink]="['/admin/etudiants']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-user-graduate"></i>
+      etudiants
+    </a>
+    <a [routerLink]="['/admin/tags']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-tags"></i>
+      tags
+    </a>
+    <a [routerLink]="['/admin/outils-serveur']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-tools"></i>
+      Outils serveur
+    </a>
   </div>
   <div *ngIf="getRole() === 'cfa'">
-    <a [routerLink]="['/cfa/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >dashboard</a>
-    <a [routerLink]="['/cfa/offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Offres</a>
-    <a [routerLink]="['/cfa/planning']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >Planning</a>
+    <a [routerLink]="['/cfa/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-chart-line"></i>
+      dashboard
+    </a>
+    <a [routerLink]="['/cfa/offres']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-briefcase"></i>
+      offres
+    </a>
+    <a [routerLink]="['/cfa/planning']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" >
+      <i class="fa fa-calendar-alt"></i>
+      Planning
+    </a>
   </div>
 </nav>

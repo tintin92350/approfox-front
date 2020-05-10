@@ -6,6 +6,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/User.model';
 import {Auth} from '../models/auth';
 import {map} from 'rxjs/operators';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class AuthService {
   private currentAuthInfoSubject: BehaviorSubject<Auth>;
   public currentAuthInfo: Observable<Auth>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private userService: UserService) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
 
@@ -43,6 +45,14 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
+    if (username === undefined || username === null) {
+      username = '';
+    }
+
+    if (password === undefined || password === null) {
+      password = '';
+    }
+
     return this.http.post<any>(environment.api + 'signin', { username, password })
       .pipe(map(auth => {
         // Object
@@ -53,8 +63,10 @@ export class AuthService {
           this.currentAuthInfoSubject.next(auth);
 
           // store real user information (all)
-          localStorage.setItem('currentUser', JSON.stringify(auth));
           this.currentUserSubject.next(auth);
+          this.userService.getMe().subscribe(user => {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+          });
         }
 
         return auth;
@@ -82,40 +94,4 @@ export class AuthService {
 
     return null;
   }
-
-  /*constructor(private router: Router, private httpClient: HttpClient) {
-    this.router = router;
-  }
-
-  public isLogged(): boolean {
-    const authValue = localStorage.getItem('auth');
-    return authValue !== null;
-  }
-
-  public auth(username: string, password: string) {
-    return this.httpClient.post(environment.api + 'signin', { username, password });
-  }
-
-  public logout() {
-    localStorage.removeItem('auth');
-    this.router.navigate(['/login']);
-  }
-
-  public roleApiToRoleFront(roleApi: string) {
-    if (roleApi === 'APPRENTICESHIP_MANAGER') {
-      return 'cfa';
-    } else if (roleApi === 'ADMINISTRATOR') {
-      return 'admin';
-    } else if (roleApi === 'DEPARTMENT_MANAGER') {
-      return 'responsable';
-    } else if (roleApi === 'STUDENT') {
-      return 'etudiant';
-    }
-
-    return null;
-  }
-
-  public getAuth(): string {
-    return localStorage.getItem('auth');
-  }*/
 }

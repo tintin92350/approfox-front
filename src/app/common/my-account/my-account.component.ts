@@ -7,7 +7,7 @@ import {User} from '../../models/User.model';
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
-  styleUrls: ['./my-account.component.css']
+  styleUrls: ['./my-account.component.css', './my-account.dark.component.css']
 })
 export class MyAccountComponent implements OnInit {
 

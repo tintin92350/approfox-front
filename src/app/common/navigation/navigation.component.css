@@ -2,7 +2,7 @@ nav#main-navigation div {
   min-width: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 128px;
+  margin-top: 96px;
   width: 100%;
   z-index: 30;
 }
@@ -11,27 +11,27 @@ nav#main-navigation div a {
   height: 48px;
   line-height: 48px;
   padding-left: 1em;
-  margin: 0.25em 0;
+  margin: 0 0;
   width: 100%;
   text-decoration: none;
   text-align: left;
   text-transform: uppercase;
   font-size: 18px;
+  font-weight: bold;
   color: #f4f7ff;
-  transition: 250ms ease-in-out;
+  transition: 150ms ease-in-out;
   cursor: pointer;
+  border-bottom: 2px solid rgba(120, 120, 120, 0.2);
 }
 
 nav#main-navigation div a.active {
   color: #29ABE2;
   background-color: #f4f7ff;
-  font-weight: bold;
 }
 
 nav#main-navigation div a:hover {
   color: #2087b2;
   background-color: #f4f7ff;
-  font-weight: bold;
 }
 
 @media screen and (max-width: 800px) {

@@ -32,9 +32,11 @@ html, body {
   font-size: 14px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  /*font-weight: bold;*/
+body.theme-dark {
+  background-color: #2a2a2a;
+  color: #FFFFFF;
 }
+
 
 h1 {
   font-size: 2em;
@@ -76,9 +78,133 @@ h4 {
 
 .section .section-content {
   padding: 1em 0;
+  max-width: 100%;
 }
 
-.section-content {
-  max-width: 100%;
-  overflow: auto;
+.theme-dark .section .section-header #page-title {
+  color: #FFF;
+}
+.theme-dark .section .section-header .section-title {
+  color: #FFF;
+}
+
+.theme-dark table {
+  color:#FFFFFF;
+}
+
+.button-tab {
+  display: flex;
+  justify-content: flex-end;
+}
+.button-tab app-button {
+  margin: 0 0.25em;
+}
+
+.form-group {
+  display: flex;
+}
+.form-group input[type="file"] {
+  height: 48px ;
+}
+
+
+.special {
+  background-color: #d8dce2;
+  margin-top: 0.5em;
+}
+
+.form-group {
+  display: flex;
+}
+.form-group > app-textbox {
+  width: 100%;
+  padding: 0.5em;
+}
+
+body.theme-dark .special {
+  background-color: #1e1e1e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+form .input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.25em 0.5em;
+  width: 100%;
+}
+
+form .input-group label {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0.1em 0.5em;
+}
+
+form .input-group input,
+form .input-group select {
+  font-size: 12px;
+  height: 32px;
+  border-radius: 5px;
+  text-align: left;
+  color: #141414;
+  border: 2px solid transparent;
+  width: 100%;
+  text-indent: 0.5em;
+
+  transition: 150ms ease-in-out;
+}
+
+
+form span.error {
+  color: #dc2850;
+  font-size: 11px;
+  background-color: #FFFFFF;
+  padding: 0.5em;
+}
+form .input-group input.error {
+  border-color: #dc2850;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper .error-box {
+  position: absolute;
+  bottom: 0;
+  right: 12px;
+  color: #dc2850;
+  height: 32px;
+  font-size: 12px;
+}
+.input-wrapper .error-box span {
+  display: inline-block;
+  margin-right: 0.5em;
+  line-height: 32px;
+  font-weight: bold;
+}
+.input-wrapper .error-box i {
+  display: inline-block;
+  line-height: 32px;
+}
+
+@media screen and (max-width: 800px) {
+  html, body {
+
+    min-height: 100%;
+    overflow: auto;
+  }
+
+  table {
+    overflow: auto;
+    max-width: 100%;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
 }
