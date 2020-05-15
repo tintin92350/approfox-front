@@ -1,0 +1,131 @@
+<div class="row">
+
+  <div class="col-sm-12">
+    <p>Liste de tous les représentants de filière enregistrés sur le site. Vous pouvez ici administrer leur compte, en ajouter ou en supprimer.</p>
+  </div>
+  <div class="col-sm-12 button-tab">
+    <app-button type="primary" (click)="startAddingApprenticeManager()"><i class="fas fa-plus"></i> Ajouter</app-button>
+  </div>
+  <div class="col-sm-12 special" *ngIf="isAddingApprenticeManager()">
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Ajouter un résponsable</h3>
+      </div>
+      <form class="section-content" [formGroup]="this.apprenticeManagerForm">
+        <div class="form-group">
+
+          <div class="input-group">
+            <label for="firstname">
+              Prénom
+            </label>
+            <div class="input-wrapper">
+              <input id="firstname" type="text" formControlName="firstname" [class.error]="firstname.invalid && (firstname.dirty || firstname.touched)" (input)="generateLogin()" >
+              <div class="error-box" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="lastname">
+              Nom de famille
+            </label>
+            <div class="input-wrapper">
+              <input id="lastname" type="text" formControlName="lastname" [class.error]="lastname.invalid && (lastname.dirty || lastname.touched)" (input)="generateLogin()"   >
+              <div class="error-box" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="login">
+              Nom d'utilisateur
+            </label>
+            <div class="input-wrapper">
+              <input id="login" type="text" formControlName="login" [class.error]="login.invalid && (login.dirty || login.touched)" >
+              <div class="error-box" *ngIf="login.invalid && (login.dirty || login.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <label for="mail">
+              Mail
+            </label>
+            <div class="input-wrapper">
+              <input id="mail" type="text" formControlName="mail" [class.error]="mail.invalid && (mail.dirty || mail.touched)" >
+              <div class="error-box" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="department">
+              Département
+            </label>
+            <div class="input-wrapper">
+              <select id="department" formControlName="department">
+                <option *ngFor="let department of getAllDepartments(); let i = index" value="{{i}}">{{department.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="button-tab">
+          <app-button type="normal" (click)="validAddingApprenticeManager()" >Valider</app-button>
+          <app-button type="danger-revert" (click)="cancelAddingApprenticeManager()" >Annuler</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-content">
+        <p>Vous pouvez filtrer les résultats en renseignant les champs ci-dessous :</p>
+        <div class="filter-box">
+          <div class="filter-group">
+            <input type="text" placeholder="nom d'utilisateur" [(ngModel)]="filterInputUsername" class="filterInput" id="filterInputUsername">
+          </div>
+          <div class="filter-group">
+            <input type="text" placeholder="prénom" [(ngModel)]="filterInputFirstname" class="filterInput" id="filterInputFirstname">
+          </div>
+          <div class="filter-group">
+            <input type="text" placeholder="nom" [(ngModel)]="filterInputLastname" class="filterInput" id="filterInputLastname">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-content section-table">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom d'utilisateur</th>
+            <th>Prénom NOM</th>
+            <th>email</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let apprenticeManager of filter(getApprenticeManagers())">
+            <td>{{apprenticeManager.userId}}</td>
+            <td><a [routerLink]="'/admin/utilisateurs/' + apprenticeManager.userId" >{{apprenticeManager.login}}</a></td>
+            <td>{{apprenticeManager.firstname}} {{apprenticeManager.lastname | uppercase}}</td>
+            <td><a href="mailto:{{apprenticeManager.mail}}">{{apprenticeManager.mail}}</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

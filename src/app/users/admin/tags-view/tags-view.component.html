@@ -1,1 +1,51 @@
-<p>Liste de tous les tags enregistrés dans l'application, vous pouvez modifier, ajouter ou supprimer des tags.</p>
+<div class="row">
+
+  <div class="col-sm-12">
+    <p>Liste de tous les tags enregistrés dans l'application, vous pouvez modifier, ajouter ou supprimer des tags.</p>
+  </div>
+  <div class="col-sm-12 button-tab">
+    <app-button type="primary" (click)="startAddingTag()"><i class="fas fa-plus"></i> Ajouter</app-button>
+  </div>
+  <div class="col-sm-12 special" *ngIf="isAddingTag()">
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Ajouter un tag</h3>
+      </div>
+      <form class="section-content" [formGroup]="this.tagForm">
+        <div class="form-group">
+
+          <div class="input-group">
+            <label for="name">
+              Nom du tag
+            </label>
+            <div class="input-wrapper">
+              <input id="name" type="text" formControlName="name" [class.error]="name.invalid && (name.dirty || name.touched)" >
+              <div class="error-box" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <span>Champs requis</span>
+                <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="button-tab">
+          <app-button type="normal" (click)="validAddingTag()" >Valider</app-button>
+          <app-button type="danger-revert" (click)="cancelAddingTag()" >Annuler</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-12">
+
+    <div class="section">
+      <div class="section-content">
+        <label for="filterInput">Filtrer par nom</label>
+        <input type="text" placeholder="Recherche" [(ngModel)]="filterName" class="filterInput" id="filterInput">
+        <div class="tags">
+          <app-tag-badge *ngFor="let tag of filtered(getTags())" [tag]="tag" (functionOnClick)="navigateToTag($event)"></app-tag-badge>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

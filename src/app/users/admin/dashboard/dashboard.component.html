@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col main" >
+    <div class="row mb-3">
+      <app-data-card [title]="'Administrateurs'" [number]="adminCount" icon="fas fa-user-graduate" status="success" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+      <app-data-card [title]="'Responsable'" [number]="responsiblesCount" (ClickOnCard)="navigateTo('responsables')" icon="fas fa-user-graduate" status="success" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+      <app-data-card [title]="'CFA'" [number]="apprenticeManagersCount" (ClickOnCard)="navigateTo('pole-alternance')" icon="fas fa-user-graduate" status="success" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+      <app-data-card [title]="'Etudiants'" [number]="studentCount" (ClickOnCard)="navigateTo('etudiants')" icon="fas fa-user-graduate" status="success" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+    </div>
+
+  </div>
+</div>

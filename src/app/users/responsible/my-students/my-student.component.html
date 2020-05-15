@@ -11,7 +11,7 @@
       <div class="section-content">
         Pour ajouter une liste d'étudiant veuillez importer un fichier de type CSV.
         <div class="form-group">
-          <input type="file" name="csvFile" id="studentCsvFile" class="form-control">
+          <input type="file" name="csvFile" id="studentCsvFile" class="form-control" #studentCsvFile (change)="fileChangeListener($event)">
         </div>
 
         <div class="button-tab">
@@ -27,42 +27,126 @@
         <h3 class="section-title">Ajouter un étudiant</h3>
       </div>
       <div class="section-content">
-        <div class="form-group">
-          <app-textbox label="Firstname" fullSize="true" [(inputModel)]="newUserInformation.firstname" #newUserFirstName (inputModelChange)="generateLogin()"></app-textbox>
-          <app-textbox label="Lastname" fullSize="true" [(inputModel)]="newUserInformation.lastname" (inputModelChange)="generateLogin()"></app-textbox>
-          <app-textbox label="login (auto-generated)" fullSize="true" [(inputModel)]="newUserInformation.login" disabled="true"></app-textbox>
-        </div>
-        <div class="form-group">
-          <app-textbox label="Mail" fullSize="true" [(inputModel)]="newUserInformation.mail"></app-textbox>
-        </div>
-        <div class="button-tab">
-          <app-button type="normal" (click)="validate()" >Valider</app-button>
-          <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
-        </div>
+
+        <form class="section-content" [formGroup]="this.studentForm">
+          <div class="form-group">
+
+            <div class="input-group">
+              <label for="firstname">
+                Prénom
+              </label>
+              <div class="input-wrapper">
+                <input id="firstname" type="text" formControlName="firstname" [class.error]="firstname.invalid && (firstname.dirty || firstname.touched)" (keydown)="generateLogin()" >
+                <div class="error-box" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="lastname">
+                Nom de famille
+              </label>
+              <div class="input-wrapper">
+                <input id="lastname" type="text" formControlName="lastname" [class.error]="lastname.invalid && (lastname.dirty || lastname.touched)" (keydown)="generateLogin()" >
+                <div class="error-box" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="login">
+                Nom d'utilisateur
+              </label>
+              <div class="input-wrapper">
+                <input id="login" type="text" formControlName="login" [class.error]="login.invalid && (login.dirty || login.touched)" >
+                <div class="error-box" *ngIf="login.invalid && (login.dirty || login.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <label for="mail">
+                Mail
+              </label>
+              <div class="input-wrapper">
+                <input id="mail" type="text" formControlName="mail" [class.error]="mail.invalid && (mail.dirty || mail.touched)" >
+                <div class="error-box" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-tab">
+            <app-button type="normal" (click)="validAddingStudent()" >Valider</app-button>
+            <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
   <div class="col-sm-12">
     <div class="section">
       <div class="section-content">
+        <div class="filter-box">
+          <div class="filter-group">
+            <label for="filterInputUsername">Filtrer par nom d'utilisateur</label>
+            <input type="text" placeholder="nom d'utilisateur" [(ngModel)]="filterInputUsername" class="filterInput" id="filterInputUsername">
+          </div>
+          <div class="filter-group">
+            <label for="filterInputFirstname">Filtrer par prénom</label>
+            <input type="text" placeholder="prénom" [(ngModel)]="filterInputFirstname" class="filterInput" id="filterInputFirstname">
+          </div>
+          <div class="filter-group">
+            <label for="filterInputLastname">Filtrer par nom</label>
+            <input type="text" placeholder="nom" [(ngModel)]="filterInputLastname" class="filterInput" id="filterInputLastname">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-content section-table">
         <table class="table">
           <thead>
           <tr>
             <th>#</th>
             <th>Etudiant</th>
-            <th>Date de soumission</th>
-            <th>Statut</th>
-            <th>Actions</th>
+            <th>email</th>
+            <th>État CV (date de soumission)  </th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let student of myStudents">
-            <td>{{student.userId}}</td>
-            <td><a [routerLink]="'/responsable/etudiants/' + student.userId" >{{student.firstname}} {{student.lastname | uppercase}}</a></td>
-            <td>-</td>
-            <td>En cours</td>
+          <tr *ngFor="let student of myStudents; let i = index">
+            <td>{{i}}</td>
+            <td><a [routerLink]="'/responsable/utilisateurs/' + student.userId" >{{student.firstname}} {{student.lastname | uppercase}}</a></td>
+            <td>{{student.mail}}</td>
             <td>
-              <app-button type="danger-revert" >Supprimer</app-button>
+              <span class="accepted" *ngIf="student.cv && student.cv.status === 2">
+                <i class="fa fa-check"></i>
+                OK (18/12/2020)
+              </span>
+              <span class="loading" *ngIf="student.cv && student.cv.status === 0">
+                <i class="fa fa-spinner"></i>
+                En cours (04/08/2020)
+              </span>
+              <span class="not-submited" *ngIf="!student.cv">
+                <i class="fa fa-exclamation-circle"></i>
+                Non soumis
+              </span>
+              <span class="rejected" *ngIf="student.cv && student.cv.status === 1">
+                <i class="fa fa-vote-nay"></i>
+                Rejeté (26/05/2021)
+              </span>
             </td>
           </tr>
           </tbody>

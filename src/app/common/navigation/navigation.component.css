@@ -11,17 +11,21 @@ nav#main-navigation div a {
   height: 48px;
   line-height: 48px;
   padding-left: 1em;
-  margin: 0 0;
+  text-align: left;
+  margin: 0;
   width: 100%;
   text-decoration: none;
-  text-align: left;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #f4f7ff;
   transition: 150ms ease-in-out;
   cursor: pointer;
-  border-bottom: 2px solid rgba(120, 120, 120, 0.2);
+  border-bottom: 2px solid rgba(200, 200, 200, 0.2);
+}
+
+nav#main-navigation div a i {
+  padding-right: 1em;
 }
 
 nav#main-navigation div a.active {
@@ -36,6 +40,6 @@ nav#main-navigation div a:hover {
 
 @media screen and (max-width: 800px) {
   nav#main-navigation div {
-    margin-top: 64px;
+    margin-top: 48px;
   }
 }

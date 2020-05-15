@@ -58,3 +58,12 @@
   margin-right: 0;
 }
 
+.actions {
+  margin: 0.5em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions > app-button {
+  margin: 0 0.5em;
+}

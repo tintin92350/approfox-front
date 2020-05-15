@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Tag} from '../../../models/tag.model';
+import {Tag} from '../../models/tag.model';
 
 @Component({
   selector: 'app-data-card',
   templateUrl: './data-card.component.html',
-  styleUrls: ['./data-card.component.css']
+  styleUrls: ['./data-card.component.css', './data-card.dark.component.css']
 })
 export class DataCardComponent implements OnInit {
 

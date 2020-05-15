@@ -1,0 +1,18 @@
+span {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #29ABE2;
+  color: #FFFFFF;
+  cursor: pointer;
+  margin: 0.25em;
+  padding: 0 0.75em;
+  height: 30px;
+  line-height: 30px;
+  min-width: 50px;
+  text-align: center;
+  font-weight: bold;
+  transition: 200ms ease-in-out;
+}
+span:hover {
+  background-color: #2d87cc;
+}

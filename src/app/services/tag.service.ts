@@ -26,4 +26,12 @@ export class TagService {
   getTags(): Observable<Tag[]> {
     return this.httpClient.get<Tag[]>(environment.api + 'tag/all').pipe(timeout(1500));
   }
+
+  /**
+   * Add a new tag to the database
+   * @param tag Tag to add
+   */
+  addTag(tag: Tag): Observable<Tag> {
+    return this.httpClient.post<Tag>(environment.api + 'tag', tag).pipe(timeout(1500));
+  }
 }

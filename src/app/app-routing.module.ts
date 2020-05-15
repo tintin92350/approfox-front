@@ -18,12 +18,14 @@ import {PageMemberBaseComponent} from './common/page-member-base/page-member-bas
 import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
 import {OffersComponent} from './users/responsible/offers/offers.component';
 import {ServerConfigurationComponent} from './users/admin/server-configuration/server-configuration.component';
-import {StudentViewComponent} from './users/responsible/student-view/student-view.component';
 import {OfferViewComponent} from './users/responsible/offer-view/offer-view.component';
 
 import * as AdminResponsiblesViewComponent from './users/admin/responsibles-view/responsibles-view.component';
 import * as AdminStudentsViewComponent from './users/admin/students-view/students-view.component';
 import * as AdminTagsViewComponent from './users/admin/tags-view/tags-view.component';
+import {ApprenticesShipManagersViewComponent} from './users/admin/apprentices-ship-managers-view/apprentices-ship-managers-view.component';
+import {UserProfileComponent} from './common/user-profile/user-profile.component';
+import {DepartmentViewComponent} from './users/admin/department-view/department-view.component';
 
 const routes: Routes = [
   {
@@ -100,10 +102,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'representants',
+        path: 'responsables',
         component: AdminResponsiblesViewComponent.ResponsiblesViewComponent,
         data: {
-          name: 'Représentants'
+          name: 'Responsables'
         }
       },
       {
@@ -114,10 +116,38 @@ const routes: Routes = [
         }
       },
       {
+        path: 'pole-alternance',
+        component: ApprenticesShipManagersViewComponent,
+        data: {
+          name: 'Pôle alternance'
+        }
+      },
+      {
+        path: 'utilisateurs/:id',
+        component: UserProfileComponent,
+        data: {
+          name: 'Profile utilisateur'
+        }
+      },
+      {
         path: 'tags',
         component: AdminTagsViewComponent.TagsViewComponent,
         data: {
           name: 'Tags'
+        }
+      },
+      {
+        path: 'tags/:id',
+        component: TagPageComponent,
+        data: {
+          name: 'Tag'
+        }
+      },
+      {
+        path: 'departments',
+        component: DepartmentViewComponent,
+        data: {
+          name: 'Département'
         }
       },
       {
@@ -173,10 +203,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'etudiants/:id',
-        component: StudentViewComponent,
+        path: 'utilisateurs/:id',
+        component: UserProfileComponent,
         data: {
-          name: 'Étudiant'
+          name: 'Profile utilisateur'
         }
       },
       {

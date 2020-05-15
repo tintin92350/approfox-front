@@ -20,7 +20,6 @@
 
 :host-context(.theme-dark)  .accountPanel {
   background-color: #1e1e1e;
-  box-shadow: none;
 }
 :host-context(.theme-dark)  .accountPanel a {
   color: #FFFFFF;
@@ -36,4 +35,8 @@
 :host-context(.theme-dark) #toogle-dark-mode {
   background-color: #FFFFFF;
   color: #1e1e1e;
+}
+
+:host-context(.theme-dark) .connection-time {
+  color: #FFFFFF;
 }

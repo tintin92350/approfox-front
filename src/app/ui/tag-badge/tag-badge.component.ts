@@ -4,7 +4,7 @@ import { Tag } from 'src/app/models/tag.model';
 @Component({
   selector: 'app-tag-badge',
   templateUrl: './tag-badge.component.html',
-  styleUrls: ['./tag-badge.component.css']
+  styleUrls: ['./tag-badge.component.css', './tag-badge.dark.component.css']
 })
 export class TagBadgeComponent implements OnInit {
 

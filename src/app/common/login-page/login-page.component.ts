@@ -80,13 +80,12 @@ export class LoginPageComponent implements OnInit, AfterViewChecked {
   }
 
   onSubmit(userCredentials) {
-    this.loginForm.reset();
-    this.authenticationService.login(userCredentials.userid, userCredentials.password).pipe(timeout(1000)).subscribe(t => {
+    this.authenticationService.login(userCredentials.userid, userCredentials.password).subscribe(t => {
       this.loginStatus = 2;
       this.router.navigate(['/dashboard']);
-      console.log('error');
     }, error => {
       this.loginStatus = 1;
+      this.loginForm.reset();
     });
   }
 }

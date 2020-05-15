@@ -1,13 +1,15 @@
 button {
   display: block;
-  height: 42px;
-  line-height: 40px;
+  min-height: 32px;
+  line-height: 30px;
   border: 0;
   border-radius: 4px;
   padding: 0 1.5em;
-  font-size: 1.1em;
+  font-size: 1.0em;
+  text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
+  width: 100%;
   transition: 200ms ease-in-out;
   -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
   -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
@@ -61,8 +63,8 @@ button.tertiary:hover {
 
 button.danger {
   color: #fff;
-  background-color: #dc2828;
-  border: 2px solid #dc2828;
+  background-color: #dc2850;
+  border: 2px solid #dc2850;
 }
 button.danger:hover {
   background-color: #d71a1a;
@@ -70,7 +72,7 @@ button.danger:hover {
 }
 
 button.danger-revert {
-  color: #dc2828;
+  color: #dc2850;
   background-color: #FFFFFF;
   border: 2px solid #FFFFFF;
 }

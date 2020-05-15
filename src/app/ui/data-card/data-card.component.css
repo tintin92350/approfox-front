@@ -14,3 +14,12 @@
   bottom: 16px;
   display: block;
 }
+
+.card {
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+
+.card:hover {
+  background-color: #EEEEEE;
+}

@@ -4,7 +4,8 @@
   <app-toast *ngFor="let toast of getToasts()" [toastMessage]="toast"></app-toast>
 </div>
 
-<div class="grid-container" (swiperight)="openMainNavigationOnSwipe($event)" (swipeleft)="closeMainNavigationOnSwipe($event)">
+<!--<div class="grid-container" (swiperight)="openMainNavigationOnSwipe($event)" (swipeleft)="closeMainNavigationOnSwipe($event)">-->
+<div class="grid-container">
   <div class="Left-Panel" [class.collapsed]="!isMainNavigationOpened()" [class.banner-present]="getLastBanner() !== null" (clickOutside)="closeMainNavigationOnSwipeOutside($event)">
     <div class="top">
       <app-logo width="24" height="100" percentages="true"></app-logo>
@@ -16,13 +17,20 @@
   <div class="Right-Panel">
     <div class="Top-Panel">
       <span (click)="openMainNavigation()" *ngIf="isSmallScreen()" class="collapse-menu-button"><i class="fas fa-bars"></i></span>
+      <div class="page-navigation">
+        <a (click)="back()"><i class="fa fa-chevron-left"></i></a>
+        <a (click)="forward()" *ngIf="this.routerCacheService.nextUrl()"><i class="fa fa-chevron-right"></i></a>
+      </div>
       <h3 class="page-name">
         {{ this.getPageName() ? this.getPageName(): '' }}
       </h3>
-      <a href="/account"><i class="fas fa-comments"></i></a>
-      <a href="/notifications"><i class="fas fa-bell"></i></a>
+      <!--<a ><i class="fas fa-comments"></i></a>
+      <a ><i class="fas fa-bell"></i></a>-->
       <a (click)="openUserMenu()" #accountMenuLink ><i class="fas fa-user-circle"></i></a>
       <div class="accountPanel" *ngIf="isUserMenuOpened()" (clickOutside)="closeUserMenu($event)" >
+        <span class="connection-time">
+          Temps avant déconnexion : {{ getSessionRemainingTime() }} min
+        </span>
         <a (click)="goToAccount()">Mon compte</a>
         <a (click)="logout()" >Se déconnecter</a>
       </div>

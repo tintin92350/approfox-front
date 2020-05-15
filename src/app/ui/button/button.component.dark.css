@@ -1,0 +1,81 @@
+:host-context(.theme-dark) button {
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+}
+
+:host-context(.theme-dark) button.primary {
+  color: #2d87cc;
+  background-color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+:host-context(.theme-dark) button.primary:hover {
+  color: #f4f7ff;
+  background-color: #359eec;
+  border-color: #359eec;
+}
+
+:host-context(.theme-dark) button.secondary {
+  color: #359eec;
+  background-color: #ffffff;
+  border: 2px solid #359eec;
+}
+:host-context(.theme-dark) button.secondary:hover {
+  color: #2d87cc;
+  border: 2px solid #2d87cc;
+}
+
+:host-context(.theme-dark) button.normal {
+  background-color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  color: #f4f7ff;
+}
+:host-context(.theme-dark) button.normal:hover {
+  border: 2px solid #2d87cc;
+}
+
+:host-context(.theme-dark) button.tertiary {
+  color: #359eec;
+  text-decoration: underline;
+  background-color: transparent;
+  padding: 0;
+  min-width: auto;
+}
+:host-context(.theme-dark) button.tertiary:hover {
+  color: #2d87cc;
+}
+
+:host-context(.theme-dark) button.danger {
+  color: #fff;
+  background-color: #dc2850;
+  border: 2px solid #dc2850;
+}
+:host-context(.theme-dark) button.danger:hover {
+  background-color: #d71a1a;
+  border-color: #d71a1a;
+}
+
+:host-context(.theme-dark) button.danger-revert {
+  color: #dc2850;
+  background-color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+:host-context(.theme-dark) button.danger-revert:hover {
+  background-color: #dc2850;
+  border-color: #dc2850;
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark) button.warning {
+  color: #fff;
+  background-color: #ffbd29;
+  border: 2px solid #ffbd29;
+}
+:host-context(.theme-dark) button.warning:hover {
+  background-color: #e5a825;
+  border-color: #e5a825;
+}
+
+:host-context(.theme-dark) button:focus, :host-context(.theme-dark) button:active {
+  outline: 0;
+}

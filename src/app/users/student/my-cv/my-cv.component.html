@@ -50,6 +50,7 @@
         </h2>
       </div>
       <div class="section-content">
+        <app-info-box *ngIf="getCvModel().status === 0" message="Votre CV a bien été soumis, il sera pris en charge dans les prochains jours."></app-info-box>
         <app-info-box *ngIf="getCvModel().status === 1" message="Votre CV est en cours de vérification par le pôle alternance"></app-info-box>
         <app-success-box *ngIf="getCvModel().status === 2" message="Votre CV a bien été validé par la pôle alternance en tant que CV final"></app-success-box>
       </div>
@@ -65,9 +66,9 @@
       </div>
       <div class="section-content">
         <div class="cv-information">
-          <app-textbox [fullSize]="true" [(ngModel)]="getCvModel().filename" [disabled]="true" ngDefaultControl></app-textbox>
+          <a [href]="downloadCvAsPDF()" download="cv.pdf">Télécharger</a>
           <app-button type="normal" >Aperçu</app-button>
-          <app-button type="danger-revert" *ngIf="getCvModel().status === 1">Supprimer</app-button>
+          <app-button type="danger-revert" *ngIf="getCvModel().status === 0">Supprimer</app-button>
         </div>
       </div>
     </div>

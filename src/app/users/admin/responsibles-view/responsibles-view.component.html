@@ -19,7 +19,7 @@
               Prénom
             </label>
             <div class="input-wrapper">
-              <input id="firstname" type="text" formControlName="firstname" [class.error]="firstname.invalid && (firstname.dirty || firstname.touched)" (keydown)="generateLogin()" >
+              <input id="firstname" type="text" formControlName="firstname" [class.error]="firstname.invalid && (firstname.dirty || firstname.touched)" (input)="generateLogin()" >
               <div class="error-box" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
                 <span>Champs requis</span>
                 <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
@@ -32,7 +32,7 @@
               Nom de famille
             </label>
             <div class="input-wrapper">
-              <input id="lastname" type="text" formControlName="lastname" [class.error]="lastname.invalid && (lastname.dirty || lastname.touched)" (keydown)="generateLogin()" >
+              <input id="lastname" type="text" formControlName="lastname" [class.error]="lastname.invalid && (lastname.dirty || lastname.touched)" (input)="generateLogin()"   >
               <div class="error-box" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
                 <span>Champs requis</span>
                 <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
@@ -86,26 +86,41 @@
     </div>
   </div>
   <div class="col-sm-12">
-
     <div class="section">
       <div class="section-content">
+        <p>Vous pouvez filtrer les résultats en renseignant les champs ci-dessous :</p>
+        <div class="filter-box">
+          <div class="filter-group">
+            <input type="text" placeholder="nom d'utilisateur" [(ngModel)]="filterInputUsername" class="filterInput" id="filterInputUsername">
+          </div>
+          <div class="filter-group">
+            <input type="text" placeholder="prénom" [(ngModel)]="filterInputFirstname" class="filterInput" id="filterInputFirstname">
+          </div>
+          <div class="filter-group">
+            <input type="text" placeholder="nom" [(ngModel)]="filterInputLastname" class="filterInput" id="filterInputLastname">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-content section-table">
         <table class="table">
           <thead>
           <tr>
             <th>#</th>
             <th>Nom d'utilisateur</th>
             <th>Prénom NOM</th>
-            <th>Actions</th>
+            <th>email</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let responsible of getResponsibles()">
+          <tr *ngFor="let responsible of filter(getResponsibles())">
             <td>{{responsible.userId}}</td>
-            <td><a [routerLink]="'/responsable/responsables/' + responsible.userId" >{{responsible.login}}</a></td>
+            <td><a [routerLink]="'/admin/utilisateurs/' + responsible.userId" >{{responsible.login}}</a></td>
             <td>{{responsible.firstname}} {{responsible.lastname | uppercase}}</td>
-            <td>
-              <app-button type="danger-revert" >Supprimer</app-button>
-            </td>
+            <td><a href="mailto:{{responsible.mail}}">{{responsible.mail}}</a></td>
           </tr>
           </tbody>
         </table>

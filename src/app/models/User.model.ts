@@ -1,5 +1,4 @@
 import {Department} from './Department.model';
-import {Role} from './Role.enum';
 
 export class User {
   public userId: number;

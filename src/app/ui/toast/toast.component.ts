@@ -50,10 +50,12 @@ export class ToastComponent implements OnInit, OnChanges {
   }
 
   public onLeave() {
-    this.timeoutFunction = setTimeout(() => {
-      setTimeout(() => {
-        this.close();
-      }, 900);
-    }, this.toastMessage.delay);
+    if (!this.toastMessage.infinite) {
+      this.timeoutFunction = setTimeout(() => {
+        setTimeout(() => {
+          this.close();
+        }, 900);
+      }, this.toastMessage.delay);
+    }
   }
 }

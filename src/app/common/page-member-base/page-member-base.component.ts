@@ -6,6 +6,8 @@ import {BannerMessage} from '../../models/BannerMessage.model';
 import {ToastService} from '../../services/toast.service';
 import {ToastMessage} from '../../models/ToastMessage.model';
 import {ThemeService} from '../../services/theme.service';
+import {RouterCacheService} from '../../services/router-cache.service';
+import {Time} from '@angular/common';
 
 @Component({
   selector: 'app-page-member-base',
@@ -18,8 +20,6 @@ export class PageMemberBaseComponent implements OnInit {
   private pageName: string;
   private mainNavigationOpened: boolean;
 
-  public sourceX: string;
-
   @ViewChild('accountMenuLink', { static: false }) element: ElementRef;
 
   constructor(protected router: Router,
@@ -28,10 +28,16 @@ export class PageMemberBaseComponent implements OnInit {
               private bannerService: BannerService,
               private toastService: ToastService,
               public themeService: ThemeService,
-              public renderer: Renderer2) {
+              public renderer: Renderer2,
+              public routerCacheService: RouterCacheService) {
     this.userMenuOpened = false;
     route.url.subscribe(() => {
-      this.pageName = route.snapshot.firstChild.data.name;
+      if (route.snapshot.firstChild) {
+        this.pageName = route.snapshot.firstChild.data.name;
+      } else {
+        const role = this.authService.roleApiToRoleFront(this.authService.getRole());
+        router.navigate(['/' + role + '/dashboard']);
+      }
     });
     this.mainNavigationOpened = false;
 
@@ -111,5 +117,18 @@ export class PageMemberBaseComponent implements OnInit {
     if (event.clientY > 64) {
       this.closeMainNavigationOnSwipe(event);
     }
+  }
+
+  back() {
+    this.routerCacheService.navigateToPreviousUrl();
+  }
+
+  forward() {
+    this.routerCacheService.navigateToNextUrl();
+  }
+
+  public getSessionRemainingTime(): number {
+    const now = new Date();
+    return Math.floor(60 - ((now.getTime() - this.authService.getConnectionDate().getTime()) / 60000));
   }
 }

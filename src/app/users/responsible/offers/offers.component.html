@@ -1,27 +1,73 @@
 <div class="row">
+  <div class="col-sm-12 button-tab">
+    <app-button type="primary" (click)="addOffer()"><i class="fas fa-plus"></i> Ajouter</app-button>
+  </div>
+  <div class="col-sm-12 special" *ngIf="isAddingOfferFile()">
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Importer une liste d'étudiants</h3>
+      </div>
+      <div class="section-content">
+        Pour ajouter une liste d'étudiant veuillez importer un fichier de type CSV.
+        <div class="form-group">
+          <input type="file" name="csvFile" id="offerCsvFile" class="form-control">
+        </div>
+
+        <div class="button-tab">
+          <app-button type="normal" (click)="validate()" >Valider</app-button>
+          <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 special" *ngIf="isAddingOffer()">
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Ajouter un étudiant</h3>
+      </div>
+      <div class="section-content">
+
+        <form class="section-content" [formGroup]="this.offerForm">
+          <div class="form-group">
+
+            <div class="input-group">
+              <label for="firstname">
+                Titre
+              </label>
+              <div class="input-wrapper">
+                <input id="firstname" type="text" formControlName="firstname" [class.error]="title.invalid && (title.dirty || title.touched)" >
+                <div class="error-box" *ngIf="title.invalid && (title.dirty || title.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-tab">
+            <app-button type="normal" (click)="validAddingOffer()" >Valider</app-button>
+            <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <div class="col-sm-12">
     <div class="section">
-      <div class="section-content">
+      <div class="section-content section-table">
         <table class="table">
           <thead>
           <tr>
-            <th>Entreprise (id)</th>
-            <th>Date de soumission</th>
-            <th>Statut</th>
-            <th>Actions</th>
+            <th>#</th>
+            <th>Titre</th>
+            <th>tags</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>---- ---- (<a href="#">1</a>)</td>
-            <td>22/06/2020 à 16H30</td>
-            <td>En cours</td>
+          <tr *ngFor="let offer of offers; let i = index">
+            <td>{{i}}</td>
+            <td><a [routerLink]="'/responsable/offers/' + offer.offerId" >{{offer.title}}</a></td>
             <td>
-              <div class="button-tab">
-                <app-button type="normal" >Rappel</app-button>
-                <app-button type="normal" (click)="viewOffer(1)" >Consulter</app-button>
-                <app-button type="danger-revert" >Supprimer</app-button>
-              </div>
+              <app-tag-badge *ngFor="let tag of offer.tags" [tag]="tag" ></app-tag-badge>
             </td>
           </tr>
           </tbody>

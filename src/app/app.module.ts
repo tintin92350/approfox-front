@@ -20,13 +20,13 @@ import { SuccessBoxComponent } from './ui/message-box/success-box/success-box.co
 import { WarningBoxComponent } from './ui/message-box/warning-box/warning-box.component';
 import { FileUploadComponent } from './ui/file-upload/file-upload.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { TagBadgeComponent } from './common/components/tag-badge/tag-badge.component';
+import { TagBadgeComponent } from './ui/tag-badge/tag-badge.component';
 import { TagPageComponent } from './common/tag-page/tag-page.component';
 import { MyTagsComponent } from './users/student/my-tags/my-tags.component';
 import { DragDropDirective } from './directives/drag-drop.directive';
 import { DashboardComponent } from './users/responsible/dashboard/dashboard.component';
 import { MyAccountComponent } from './common/my-account/my-account.component';
-import { DataCardComponent } from './common/components/data-card/data-card.component';
+import { DataCardComponent } from './ui/data-card/data-card.component';
 
 import * as StudentCv from './users/student/my-cv/my-cv.component';
 import {ClickOutsideModule} from 'ng-click-outside';
@@ -49,6 +49,11 @@ import { StudentsViewComponent } from './users/admin/students-view/students-view
 
 import * as Hammer from 'hammerjs';
 import 'hammer-timejs';
+import {RouterCacheService} from './services/router-cache.service';
+import { ApprenticesShipManagersViewComponent } from './users/admin/apprentices-ship-managers-view/apprentices-ship-managers-view.component';
+import { UserProfileComponent } from './common/user-profile/user-profile.component';
+import {NgxCsvParserModule} from 'ngx-csv-parser';
+import { DepartmentViewComponent } from './users/admin/department-view/department-view.component';
 
 export class HammerConfig extends HammerGestureConfig  {
   buildHammer(element: HTMLElement) {
@@ -99,7 +104,10 @@ export class HammerConfig extends HammerGestureConfig  {
     OfferViewComponent,
     TagsViewComponent,
     ResponsiblesViewComponent,
-    StudentsViewComponent
+    StudentsViewComponent,
+    ApprenticesShipManagersViewComponent,
+    UserProfileComponent,
+    DepartmentViewComponent
   ],
   imports: [
     BrowserModule,
@@ -107,13 +115,15 @@ export class HammerConfig extends HammerGestureConfig  {
     FormsModule,
     HttpClientModule,
     ClickOutsideModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCsvParserModule
   ],
   providers: [
     ToastService,
     BannerService,
     AnnouncementApiService,
     FormBuilder,
+    RouterCacheService,
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
@@ -121,7 +131,11 @@ export class HammerConfig extends HammerGestureConfig  {
     },
     [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }
-    ]
+    ],
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

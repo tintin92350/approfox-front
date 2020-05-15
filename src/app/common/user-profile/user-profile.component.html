@@ -1,0 +1,86 @@
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">
+      Mes informations personnelles
+      <p class="sub-title" *ngIf="!isEditing()">
+        <i class="fad fa-lock-alt" ></i>
+        Section bloqué par sécurité. Cliquez sur "editer" afin de le déverouiller.
+      </p>
+      <p class="sub-title" *ngIf="isEditing()">
+        <i class="fad fa-lock-open-alt" ></i>
+        Attention vous avez déverouillé le contenue, vous pouvez modifier le contenue et appliquer la mise à jour via le bouton "modifier".
+      </p>
+    </h2>
+    <div class="right">
+      <app-button type="normal" (click)="edit()" *ngIf="!isEditing()">
+        <i class="fa fa-edit"></i>
+        Editer</app-button>
+    </div>
+  </div>
+  <div class="section-content">
+    <div class="data-table" *ngIf="user">
+      <div class="data">
+        <div class="label">
+          Prénom
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="user.firstname" [disabled]="!canModify() || !isEditing()" ngDefaultControl></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          Nom
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="user.lastname" [disabled]="!canModify() || !isEditing()" ngDefaultControl></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          Mail
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="user.mail" [disabled]="!canModify() || !isEditing()" ngDefaultControl></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          Département
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [inputModel]="user.departmentNumber.name" ngDefaultControl disabled="true"></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <div class="label">
+          Type de compte
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [inputModel]="accountTypeString(user.role.toString())" disabled="true" ngDefaultControl></app-textbox>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions" *ngIf="canModify() && isEditing()">
+      <app-button type="primary" (click)="update()" >Modifier</app-button>
+      <app-button type="danger-revert" (click)="delete()" >Supprimer</app-button>
+      <app-button type="warning" (click)="cancel()" >Annuler</app-button>
+    </div>
+  </div>
+</div>
+<div class="section" *ngIf="user && user.role === 'STUDENT'">
+  <div class="section-header">
+    <h2 class="section-title">
+      Mon CV
+      <p class="sub-title" >
+        État du cv de l'étudiant. Seul vous pouvez voir cette section.
+      </p>
+    </h2>
+  </div>
+  <div class="section-content">
+    <app-warning-box *ngIf="!user.cv" message="L'étudiant n'a pas encore soumis son CV !"></app-warning-box>
+    <div *ngIf="user.cv && user.cv.status === 0" >
+      <app-info-box  message="Vous devez approuver ou rejeter le CV"></app-info-box>
+    </div>
+  </div>
+</div>

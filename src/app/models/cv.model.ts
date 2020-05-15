@@ -1,13 +1,15 @@
-export class CV {
-  public filename: string;
-  public data: any;
-  public dateOfUpload: Date;
-  public status: number;
+import {User} from './User.model';
 
-  constructor(filename: string, data: any, dateOfUpload: Date, status: number) {
-    this.data = data;
-    this.filename = filename;
-    this.dateOfUpload = dateOfUpload;
+export class CV {
+  public cvId: number;
+  public user: User;
+  public status: number;
+  public cvFile: string;
+
+  constructor(cvId: number, user: User, status: number, cvFile: string) {
+    this.cvId = cvId;
+    this.user = user;
     this.status = status;
+    this.cvFile = cvFile;
   }
 }

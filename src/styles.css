@@ -7,7 +7,7 @@
   touch-action: pan-x pan-y !important;
 }
 
-p, h1, h2, h3, h4, h5, h6, ul, li {
+h1, h2, h3, h4, h5, h6, ul, li {
   margin: 0;
   padding: 0;
 }
@@ -51,6 +51,10 @@ h4 {
   font-size: 1.4em;
 }
 
+p {
+  text-align: justify;
+}
+
 .col.main {
   margin: 1em 0;
 }
@@ -69,6 +73,14 @@ h4 {
 .section .section-header {
   border-bottom: 2px solid #e7e9ed;
   padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+}
+.section .section-header .right {
+  flex: 1 0;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .section .section-header .section-title {
@@ -122,7 +134,7 @@ h4 {
 }
 
 body.theme-dark .special {
-  background-color: #1e1e1e;
+  background-color: #3a3a3a;
 }
 
 form {
@@ -131,11 +143,16 @@ form {
   margin: auto;
 }
 
+.form-group {
+  display: flex;
+  justify-content: space-between;
+}
+
 form .input-group {
   display: flex;
   flex-direction: column;
   margin: 0.25em 0.5em;
-  width: 100%;
+  width: calc(100% - 1em);
 }
 
 form .input-group label {
@@ -192,6 +209,72 @@ form .input-group input.error {
   line-height: 32px;
 }
 
+.table thead,
+.table thead tr,
+.table thead tr th {
+  border: 0;
+}
+
+.table thead tr th {
+  border-bottom: 2px solid #DDDDDD;
+}
+
+.table tbody tr td {
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.table {
+  border: 0;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark .table thead tr th,
+.theme-dark .table tbody tr td {
+  border-bottom-color: #2a2a2a;
+}
+
+.theme-dark .table {
+  background-color: #3a3a3a;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.section-title .sub-title {
+  font-size: 12px;
+  text-transform: initial;
+}
+.section-title .sub-title i {
+  font-size: 14px;
+  padding: 0.25em;
+}
+
+.filter-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-box .filter-group {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 0.5em;
+}
+
+.filter-box .filter-group label {
+  font-size: smaller;
+  margin: 0;
+}
+
+.filterInput {
+  display: block;
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  height: 32px;
+}
+
 @media screen and (max-width: 800px) {
   html, body {
 
@@ -199,12 +282,34 @@ form .input-group input.error {
     overflow: auto;
   }
 
+  .form-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-box .filter-group,
+  .form-group .input-group,
+  .filterInput {
+    width: 100%;
+  }
+
+  .button-tab {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .button-tab app-button {
+    margin: 0 0.25em;
+    flex: 1 0;
+    width: 100%;
+  }
+
   table {
     overflow: auto;
     max-width: 100%;
   }
 
-  .form-group {
-    flex-direction: column;
+  .section-table {
+    overflow: auto;
+    max-width: 100%;
   }
 }
