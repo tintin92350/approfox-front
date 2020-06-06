@@ -80,6 +80,10 @@ export class OffersComponent implements OnInit {
     return this.offerForm.get('title');
   }
 
+  get offerFile(): any {
+    return this.offerForm.get('offerFile');
+  }
+
   public validAddingOffer() {
     if (this.offerForm.valid) {
     }

@@ -24,6 +24,8 @@ export class MyCvComponent implements OnInit {
     this.cv = undefined;
     this.authService.currentUser.subscribe(user => {
       if (user) {
+        console.log(user);
+        
         this.cvService.getCvOfUser(user.userId).subscribe(cv => {
           this.cv = cv;
         }, error1 => {

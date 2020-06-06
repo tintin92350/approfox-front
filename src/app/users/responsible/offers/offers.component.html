@@ -2,28 +2,10 @@
   <div class="col-sm-12 button-tab">
     <app-button type="primary" (click)="addOffer()"><i class="fas fa-plus"></i> Ajouter</app-button>
   </div>
-  <div class="col-sm-12 special" *ngIf="isAddingOfferFile()">
-    <div class="section">
-      <div class="section-header">
-        <h3 class="section-title">Importer une liste d'étudiants</h3>
-      </div>
-      <div class="section-content">
-        Pour ajouter une liste d'étudiant veuillez importer un fichier de type CSV.
-        <div class="form-group">
-          <input type="file" name="csvFile" id="offerCsvFile" class="form-control">
-        </div>
-
-        <div class="button-tab">
-          <app-button type="normal" (click)="validate()" >Valider</app-button>
-          <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="col-sm-12 special" *ngIf="isAddingOffer()">
     <div class="section">
       <div class="section-header">
-        <h3 class="section-title">Ajouter un étudiant</h3>
+        <h3 class="section-title">Ajouter une offre</h3>
       </div>
       <div class="section-content">
 
@@ -37,6 +19,18 @@
               <div class="input-wrapper">
                 <input id="firstname" type="text" formControlName="firstname" [class.error]="title.invalid && (title.dirty || title.touched)" >
                 <div class="error-box" *ngIf="title.invalid && (title.dirty || title.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="firstname">
+                Fichier offre
+              </label>
+              <div class="input-wrapper">
+                <input id="offerFile" type="file" formControlName="offerFile" [class.error]="offerFile.invalid && (offerFile.dirty || offerFile.touched)" >
+                <div class="error-box" *ngIf="offerFile.invalid && (offerFile.dirty || offerFile.touched)">
                   <span>Champs requis</span>
                   <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
                 </div>

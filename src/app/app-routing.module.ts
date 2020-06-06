@@ -174,7 +174,15 @@ const routes: Routes = [
         path: 'mon-compte',
         component: MyAccountComponent,
         data: { common: true, name: 'Mon compte' }
-      }
+      },
+      {
+        path: 'offres',
+        component: OffersComponent,
+        data: {
+          name: 'Offres'
+        }
+      },
+
     ]
   },
   {
