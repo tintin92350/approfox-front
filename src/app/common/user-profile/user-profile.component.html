@@ -4,7 +4,7 @@
       Mes informations personnelles
       <p class="sub-title" *ngIf="!isEditing()">
         <i class="fad fa-lock-alt" ></i>
-        Section bloqué par sécurité. Cliquez sur "editer" afin de le déverouiller.
+        Section bloquée par sécurité. Cliquez sur "editer" afin de le déverouiller.
       </p>
       <p class="sub-title" *ngIf="isEditing()">
         <i class="fad fa-lock-open-alt" ></i>
@@ -68,6 +68,37 @@
     </div>
   </div>
 </div>
+<div class="section" *ngIf="user && user.role === 'STUDENT'" id="tags">
+  <div class="section-header">
+    <h2 class="section-title">
+      Mes tags
+      <p class="sub-title" >
+        Tag attaché au profil de l'étudiant. Vous pouvez ajouter ou supprimer des tags.
+      </p>
+    </h2>
+  </div>
+  <div class="section-content">
+    <div class="tag-student-list">
+      <h2>Tag de l'étudiant</h2>
+      <div class="tag-list">
+        <app-tag-badge *ngFor="let tag of tags" [tag]="tag" selectable="true" (functionOnClick)="handleStudentTagSelection($event)" ></app-tag-badge>
+      </div>
+      <a class="add-tag-btn" (click)="deleteTagsFromStudent()">
+        <i class="fa fa-minus"></i> Retirer les tags sélectionnés
+      </a>
+    </div>
+    <div class="tag-all-list">
+      <h2>Liste des tags disponibles</h2>
+      <div class="tag-list">
+        <app-tag-badge *ngFor="let tag of allTags" [tag]="tag" selectable="true" (functionOnClick)="handleTagListSelection($event)"></app-tag-badge>
+      </div>
+      <a class="add-tag-btn" (click)="addTagstoStudent()">
+        <i class="fa fa-plus"></i> Ajouter les tags
+      </a>
+    </div>
+  </div>
+</div>
+
 <div class="section" *ngIf="user && user.role === 'STUDENT'">
   <div class="section-header">
     <h2 class="section-title">
@@ -81,6 +112,18 @@
     <app-warning-box *ngIf="!user.cv" message="L'étudiant n'a pas encore soumis son CV !"></app-warning-box>
     <div *ngIf="user.cv && user.cv.status === 0" >
       <app-info-box  message="Vous devez approuver ou rejeter le CV"></app-info-box>
+      <br>
+      <div class="actions full">
+        <app-button (functionClick)="downloadCvAsPdf()">Télécharger le CV</app-button>
+        <app-button (functionClick)="approveCv()" type="success">Approuver</app-button>
+        <app-button (functionClick)="rejectCv()" type="danger-revert">Rejeter</app-button>
+      </div>
+    </div>
+    <div *ngIf="user.cv && user.cv.status === 1" >
+      <app-error-box  message="vous avez rejeté le CV de cet étudiant"></app-error-box>
+    </div>
+    <div *ngIf="user.cv && user.cv.status === 2" >
+      <app-success-box  message="vous avez approuvé le CV de cet étudiant"></app-success-box>
     </div>
   </div>
 </div>

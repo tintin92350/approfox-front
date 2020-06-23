@@ -9,15 +9,21 @@ import { Tag } from 'src/app/models/tag.model';
 export class TagBadgeComponent implements OnInit {
 
   @Input() tag: Tag;
+  @Input() selectable: boolean;
   @Output() functionOnClick: EventEmitter<Tag> = new EventEmitter<any>();
 
-  constructor() { }
+  public isSelected: boolean;
+
+  constructor() {
+    this.isSelected = false;
+  }
 
   ngOnInit() {
   }
 
   clickOnBadge(event) {
     this.functionOnClick.emit(this.tag);
+    this.isSelected = !this.isSelected;
   }
 
 }

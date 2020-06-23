@@ -133,11 +133,11 @@
             <td>
               <span class="accepted" *ngIf="student.cv && student.cv.status === 2">
                 <i class="fa fa-check"></i>
-                OK (18/12/2020)
+                OK
               </span>
               <span class="loading" *ngIf="student.cv && student.cv.status === 0">
                 <i class="fa fa-spinner"></i>
-                En cours (04/08/2020)
+                En cours
               </span>
               <span class="not-submited" *ngIf="!student.cv">
                 <i class="fa fa-exclamation-circle"></i>
@@ -145,7 +145,7 @@
               </span>
               <span class="rejected" *ngIf="student.cv && student.cv.status === 1">
                 <i class="fa fa-vote-nay"></i>
-                Rejeté (26/05/2021)
+                Rejeté
               </span>
             </td>
           </tr>

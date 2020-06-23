@@ -23,7 +23,7 @@ export class MyTagsComponent implements OnInit {
                private userService: UserService,
                private apiResponseHandlerService: ApiResponseHandlerService) {
     this.tagService = tagService;
-    this.tagService.getTags().subscribe(tagCollection => {
+    this.userService.getMyTags().subscribe(tagCollection => {
       this.tags = tagCollection;
       this.tagServiceStatus = 1;
     }, (err) => { this.apiResponseHandlerService.handleError(err); });

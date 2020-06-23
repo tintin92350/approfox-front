@@ -83,6 +83,11 @@ p {
   justify-content: flex-end;
 }
 
+
+.theme-dark .section .section-header {
+  border-bottom-color: #3a3a3a;
+}
+
 .section .section-header .section-title {
   color: rgb(40, 40, 40);
   text-transform: uppercase;
@@ -266,6 +271,11 @@ form .input-group input.error {
   margin: 0;
 }
 
+.filter-box .action {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+}
 .filterInput {
   display: block;
   width: 100%;

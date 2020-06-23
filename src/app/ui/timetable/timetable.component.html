@@ -1,0 +1,22 @@
+<div class="timetable">
+  <div class="hours">
+    <div class="hour">9h00</div>
+    <div class="hour">10h00</div>
+    <div class="hour">11h00</div>
+    <div class="hour">12h00</div>
+    <div class="hour">13h00</div>
+    <div class="hour">14h00</div>
+    <div class="hour">15h00</div>
+    <div class="hour">16h00</div>
+    <div class="hour">17h00</div>
+    <div class="hour">18h00</div>
+  </div>
+  <div class="appointments">
+    <div class="appointment-hour" *ngFor="let i of [9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]">
+      <app-timetable-appointment *ngFor="let appointment of getAppointmentByHour(i)" [appointment]="appointment" (onCancel)="cancelAppointment()" ></app-timetable-appointment>
+      <div class="appointment-add" (click)="addAppointment(i)">
+        <i class="fa fa-plus"></i>
+      </div>
+    </div>
+  </div>
+</div>

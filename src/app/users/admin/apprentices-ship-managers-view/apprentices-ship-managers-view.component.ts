@@ -32,8 +32,8 @@ export class ApprenticesShipManagersViewComponent implements OnInit {
     this.apprenticeManagers = [];
     this.addingApprenticeManager = false;
 
-    this.userService.getAllStudentsByDepartment(0).subscribe(users => {
-      this.apprenticeManagers = users.filter(u => u.role.toString() === 'APPRENTICESHIP_MANAGER');
+    this.userService.getAllUsersByRole(Role.APPRENTICESHIP_MANAGER).subscribe(users => {
+      this.apprenticeManagers = users;
     });
 
     this.departmentService.getAllDepartments().subscribe(departments => {
@@ -60,7 +60,7 @@ export class ApprenticesShipManagersViewComponent implements OnInit {
       ]),
     });
 
-    this.filterInputUsername = ''
+    this.filterInputUsername = '';
     this.filterInputFirstname = '';
     this.filterInputLastname = '';
   }
@@ -140,25 +140,16 @@ export class ApprenticesShipManagersViewComponent implements OnInit {
     return this.departments;
   }
 
-  public filter(users: User[]) {
 
-    let normalizedFilterUsername = this.filterInputUsername.toLocaleLowerCase();
-    normalizedFilterUsername = normalizedFilterUsername.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
+  public filter() {
     let normalizedFilterFirstname = this.filterInputFirstname.toLocaleLowerCase();
     normalizedFilterFirstname = normalizedFilterFirstname.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
     let normalizedFilterLastname = this.filterInputLastname.toLocaleLowerCase();
     normalizedFilterLastname = normalizedFilterLastname.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    return users.filter(u => {
-      const login = u.login.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const firstname = u.firstname.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const lastname = u.lastname.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-      return login.includes(normalizedFilterUsername) &&
-        firstname.includes(normalizedFilterFirstname) &&
-        lastname.includes(normalizedFilterLastname);
+    this.userService.getUsersFiltered(undefined, Role.APPRENTICESHIP_MANAGER, normalizedFilterFirstname, normalizedFilterLastname, '').subscribe(users => {
+      this.apprenticeManagers = users;
     });
   }
 

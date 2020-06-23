@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DepartmentService} from '../../../services/department.service';
 import {ApiResponseHandlerService} from '../../../services/api-response-handler.service';
 import {UserService} from '../../../services/user.service';
+import {Role} from '../../../models/Role.enum';
 
 @Component({
   selector: 'app-department-view',
@@ -12,14 +13,10 @@ import {UserService} from '../../../services/user.service';
 })
 export class DepartmentViewComponent implements OnInit {
 
-  private departments: Department[];
+  private departments: any[];
   private addingDepartment: boolean;
 
   public departmentForm: FormGroup;
-
-  public filterInputUsername: string;
-  public filterInputFirstname: string;
-  public filterInputLastname: string;
 
   constructor(private formBuilder: FormBuilder,
               private departmentService: DepartmentService,
@@ -30,6 +27,12 @@ export class DepartmentViewComponent implements OnInit {
 
     this.departmentService.getAllDepartments().subscribe(departments => {
       this.departments = departments;
+
+      this.departments.forEach(department => {
+        this.userService.getAllUsersByDepartmentAndRole(department.departmentId, Role.STUDENT).subscribe(users => {
+          department.users = users.length;
+        });
+      });
     }, error => apiResponseHandlerService.handleError(error));
 
     this.departmentForm = this.formBuilder.group({

@@ -13,11 +13,11 @@
           <div class="form-group">
 
             <div class="input-group">
-              <label for="firstname">
+              <label for="title">
                 Titre
               </label>
               <div class="input-wrapper">
-                <input id="firstname" type="text" formControlName="firstname" [class.error]="title.invalid && (title.dirty || title.touched)" >
+                <input id="title" type="text" formControlName="title" [class.error]="title.invalid && (title.dirty || title.touched)" >
                 <div class="error-box" *ngIf="title.invalid && (title.dirty || title.touched)">
                   <span>Champs requis</span>
                   <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
@@ -25,11 +25,11 @@
               </div>
             </div>
             <div class="input-group">
-              <label for="firstname">
+              <label for="offerFile">
                 Fichier offre
               </label>
               <div class="input-wrapper">
-                <input id="offerFile" type="file" formControlName="offerFile" [class.error]="offerFile.invalid && (offerFile.dirty || offerFile.touched)" >
+                <input id="offerFile" type="file" (change)="offerFileUploaded($event)" formControlName="offerFile" [class.error]="offerFile.invalid && (offerFile.dirty || offerFile.touched)" >
                 <div class="error-box" *ngIf="offerFile.invalid && (offerFile.dirty || offerFile.touched)">
                   <span>Champs requis</span>
                   <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
@@ -53,15 +53,31 @@
           <tr>
             <th>#</th>
             <th>Titre</th>
-            <th>tags</th>
+            <th *ngFor="let department of departments">{{department.name}}</th>
+            <th *ngIf="role === 'responsable'">
+              État
+            </th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let offer of offers; let i = index">
             <td>{{i}}</td>
-            <td><a [routerLink]="'/responsable/offers/' + offer.offerId" >{{offer.title}}</a></td>
-            <td>
-              <app-tag-badge *ngFor="let tag of offer.tags" [tag]="tag" ></app-tag-badge>
+            <td><a [routerLink]="'/' + role + '/offres/' + offer.offerId" >{{offer.title}}</a></td>
+            <td *ngFor="let department of departments">
+              <span *ngIf="hasDepartmentAcceptedOffer(offer, department)">
+                Acceptée !
+              </span>
+              <span *ngIf="!hasDepartmentAcceptedOffer(offer, department)">
+                Pas acceptée
+              </span>
+            </td>
+            <td *ngIf="this.role === 'responsable'">
+              <span *ngIf="hasDepartmentAcceptedOffer(offer, me.departmentNumber)">
+                Acceptée !
+              </span>
+              <span *ngIf="!hasDepartmentAcceptedOffer(offer, me.departmentNumber)">
+                <app-button type="success" (functionClick)="acceptOffer(offer)">Accepter</app-button>
+              </span>
             </td>
           </tr>
           </tbody>

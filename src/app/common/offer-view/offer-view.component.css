@@ -44,16 +44,6 @@
   margin: 0 0.5em;
 }
 
-.actions.full {
-  width: 100%;
-  justify-content: center;
-}
-
-.actions.full > app-button {
-  flex: 1 0;
-  margin: 0 0.5em;
-}
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -96,10 +86,4 @@
 }
 
 #tags .section-content .tag-student-list a {
-}
-
-#tags .tag-student-list h2,
-#tags .tag-all-list h2 {
-  text-align: center;
-  padding: 1em;
 }

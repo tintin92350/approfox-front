@@ -14,7 +14,6 @@ export class MyAccountComponent implements OnInit {
   public user: User;
 
   constructor(private userService: UserService, private authService: AuthService) {
-    const id = this.authService.currentAuthInfoValue.id;
     this.userService.getMe().subscribe(user => {
       this.user = user;
     });
@@ -23,20 +22,6 @@ export class MyAccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  departmentString(department: number): string {
-    switch (department) {
-      case 1:
-        return 'INFO';
-      case 2:
-        return 'MMI';
-      case 3:
-        return 'R&T';
-      case 4:
-        return 'GEII';
-    }
-
-    return 'Aucun département de rattachement';
-  }
 
   accountTypeString(role: string): string {
     switch (role) {

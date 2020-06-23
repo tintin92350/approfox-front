@@ -7,6 +7,9 @@ import {CVService} from '../../../services/cv.service';
 import {AuthService} from '../../../services/auth.service';
 import {ApiResponseHandlerService} from '../../../services/api-response-handler.service';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import * as FileSaver from 'file-saver';
+import {UserService} from '../../../services/user.service';
+import {FileService} from '../../../services/file.service';
 
 @Component({
   selector: 'app-my-cv',
@@ -18,14 +21,15 @@ export class MyCvComponent implements OnInit {
   constructor(private toastService: ToastService,
               private cvService: CVService,
               private authService: AuthService,
+              private userService: UserService,
               private apiResponseHandlerService: ApiResponseHandlerService,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private fileService: FileService) {
 
     this.cv = undefined;
-    this.authService.currentUser.subscribe(user => {
+
+    this.userService.getMe().subscribe(user => {
       if (user) {
-        console.log(user);
-        
         this.cvService.getCvOfUser(user.userId).subscribe(cv => {
           this.cv = cv;
         }, error1 => {
@@ -37,22 +41,12 @@ export class MyCvComponent implements OnInit {
   }
 
   file: any;
-  fileName: string;
   error: number;
 
   private cv: CV;
   private url: SafeResourceUrl;
 
   @Input('app-file-upload') uploadFile: FileUploadComponent;
-
-  static blobToFile(blob: Blob, fileName: string): File {
-    const b: any = blob;
-    b.lastModified = new Date();
-    b.lastModifiedDate = new Date();
-    b.name = fileName;
-    b.webkitRelativePath = '';
-    return blob as File;
-  }
 
   public isCvUploaded() {
     return this.cv !== undefined;
@@ -64,8 +58,7 @@ export class MyCvComponent implements OnInit {
 
   changeOnUpload(file: any) {
     this.file = file;
-    this.fileName = file.file.name;
-    console.log(this.fileName);
+    this.file = file;
     this.error = null; // No error expected
 
     if (this.file.file.type !== 'application/pdf') {
@@ -98,14 +91,27 @@ export class MyCvComponent implements OnInit {
   }
 
   public downloadCvAsPDF() {
-    const blob = new Blob([this.cv.cvFile], { type: 'application/pdf' });
-    const newFile = MyCvComponent.blobToFile(blob, 'test');
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-    return this.url;
+    const byteArray = new Uint8Array(atob(this.cv.cvFile).split('').map(char => char.charCodeAt(0)));
+    const pdf = new Blob([byteArray], {type: 'application/pdf'});
+
+    FileSaver.saveAs(pdf, 'CV.pdf');
   }
 
-  public pdfUrl() {
-    return this.url;
-  }
+  reimport(event) {
+    const user = this.authService.currentUserValue;
+    this.cv.cvFile = this.file.content;
 
+    let base64 = this.cv.cvFile;
+    base64 = base64.replace(/\s/g, '');
+    this.cvService.updateCvFile(this.cv).subscribe(addedCv => {
+      this.toastService.pushToast(new ToastMessage('Votre CV a bien été re-importé', 'success'));
+      this.cv = addedCv;
+    }, error1 =>  {
+      this.apiResponseHandlerService.handleError(error1);
+    });
+
+  }
+  cancelReimport(event: MouseEvent) {
+    this.file = null;
+  }
 }

@@ -1,24 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../services/user.service';
+import {Tag} from '../../models/tag.model';
 import {AuthService} from '../../services/auth.service';
-import {User} from '../../models/User.model';
 import {ActivatedRoute} from '@angular/router';
 import {ApiResponseHandlerService} from '../../services/api-response-handler.service';
-import {ToastMessage} from '../../models/ToastMessage.model';
 import {ToastService} from '../../services/toast.service';
-import {CVService} from '../../services/cv.service';
-import {Tag} from '../../models/tag.model';
 import {TagService} from '../../services/tag.service';
-import {FileService} from '../../services/file.service';
+import {ToastMessage} from '../../models/ToastMessage.model';
+import {Offer} from '../../models/offer';
+import {OfferService} from '../../services/offer.service';
+import { saveAs } from 'file-saver';
+import * as FileSaver from 'file-saver';
+import {User} from '../../models/User.model';
+import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css', './user-profile.dark.component.css']
+  selector: 'app-offer-view',
+  templateUrl: './offer-view.component.html',
+  styleUrls: ['./offer-view.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class OfferViewComponent implements OnInit {
 
-  public user: any;
+  public me: User;
+  public role: string;
+
+  public offer: Offer;
   private editing: boolean;
   public tags: Tag[];
   public allTags: Tag[];
@@ -26,68 +31,55 @@ export class UserProfileComponent implements OnInit {
   private selectedStudentTags: Tag[];
   private selectedListTags: Tag[];
 
-  constructor(private userService: UserService, private authService: AuthService,
+  constructor(private offerService: OfferService, private authService: AuthService,
               private activatedRoute: ActivatedRoute,
               private apiResponseHandlerService: ApiResponseHandlerService,
               private toastService: ToastService,
-              private cvService: CVService,
               private tagService: TagService,
-              private fileService: FileService) {
+              private userService: UserService) {
     const id = activatedRoute.snapshot.paramMap.get('id');
-    this.userService.getUserById(parseInt(id, 10)).subscribe(user => {
-      this.user = user;
+    this.offerService.getOfferById(parseInt(id, 10)).subscribe(offer => {
+      this.offer = offer;
 
-      if (this.user.role === 'STUDENT') {
-        this.cvService.getCvOfUser(this.user.userId).subscribe(cv => {
-          this.user.cv = cv;
-        });
+      this.userService.getMe().subscribe(me => {
+        this.me = me;
+        if (me.role.toString() === 'APPRENTICESHIP_MANAGER') {
+          this.role = 'cfa';
+        } else if (me.role.toString() === 'DEPARTMENT_MANAGER') {
+          this.role = 'responsable';
+        }
 
-        this.userService.getTagOfUser(user.userId).subscribe(tags => {
-          this.tags = tags;
-          this.tagService.getTags().subscribe(allTags => {
-            this.allTags = allTags;
+        if (me.role.toString() === 'DEPARTMENT_MANAGER') {
+          this.offerService.getTagOfOffer(offer.offerId).subscribe(tags => {
+            this.tags = tags;
+            this.tagService.getTags().subscribe(allTags => {
+              this.allTags = allTags;
 
-            this.allTags = this.allTags.filter( ( el ) => {
-              for (const sTag of this.tags) {
-                if (sTag.tagId === el.tagId) {
-                  return false;
+              this.allTags = this.allTags.filter( ( el ) => {
+                for (const sTag of this.tags) {
+                  if (sTag.tagId === el.tagId) {
+                    return false;
+                  }
                 }
-              }
 
-              return true;
-            } );
+                return true;
+              } );
+            }, error => {
+              apiResponseHandlerService.handleError(error);
+            });
           }, error => {
             apiResponseHandlerService.handleError(error);
           });
-        }, error => {
-          apiResponseHandlerService.handleError(error);
-        });
-      }
-    }, error => apiResponseHandlerService.handleError(error));
+        }
+      }, error1 => apiResponseHandlerService.handleError(error1));
+    });
     this.editing = false;
-
-
 
     this.selectedStudentTags = [];
     this.selectedListTags = [];
   }
 
   ngOnInit() {
-  }
-
-  accountTypeString(role: string): string {
-    switch (role) {
-      case 'STUDENT':
-        return 'Étudiant';
-      case 'DEPARTMENT_MANAGER':
-        return 'Responsable de département';
-      case '1':
-        return 'Pôle alternance - CFA';
-      case 'ADMINISTRATOR':
-        return 'Administrateur';
-    }
-
-    return 'Aucun département de rattachement';
   }
 
 
@@ -101,14 +93,8 @@ export class UserProfileComponent implements OnInit {
 
   cancel() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userService.getUserById(parseInt(id, 10)).subscribe(user => {
-      this.user = user;
-
-      if (this.user.role === 'STUDENT') {
-        this.cvService.getCvOfUser(this.user.userId).subscribe(cv => {
-          this.user.cv = cv;
-        });
-      }
+    this.offerService.getOfferById(parseInt(id, 10)).subscribe(offer => {
+      this.offer = offer;
     }, error => this.apiResponseHandlerService.handleError(error));
     this.editing = false;
   }
@@ -122,8 +108,8 @@ export class UserProfileComponent implements OnInit {
     if (!this.isEditing()) {
       this.toastService.pushToast(new ToastMessage('Section verouillé', 'warning'));
     } else {
-      this.userService.addUser(this.user).subscribe(modifiedUser => {
-        const m = new ToastMessage('Profile mis à jour avec succès', 'success');
+      this.offerService.addOffers(this.offer).subscribe(modifiedUser => {
+        const m = new ToastMessage('Offre mise à jour avec succès', 'success');
         this.toastService.pushToast(m);
       }, error => this.apiResponseHandlerService.handleError(error));
     }
@@ -166,7 +152,7 @@ export class UserProfileComponent implements OnInit {
   public deleteTagsFromStudent() {
     this.tags = this.tags.filter( ( el ) => !this.selectedStudentTags.includes( el ) );
     this.selectedStudentTags = [];
-    this.userService.patchUserTags(this.user.userId, this.tags).subscribe(user => {
+    this.offerService.patchOfferTags(this.offer.offerId, this.tags).subscribe(user => {
 
     }, error => {
       this.apiResponseHandlerService.handleError(error);
@@ -194,7 +180,7 @@ export class UserProfileComponent implements OnInit {
       this.tags.push(tag);
     });
     this.selectedListTags = [];
-    this.userService.patchUserTags(this.user.userId, this.tags).subscribe(user => {
+    this.offerService.patchOfferTags(this.offer.offerId, this.tags).subscribe(user => {
 
     }, error => {
       this.apiResponseHandlerService.handleError(error);
@@ -218,29 +204,12 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  public downloadCvAsPdf() {
-    const cv = this.user.cv.cvFile;
-    const cvName = this.user.firstname + '.' + this.user.lastname + '.cv';
+  public dowloadOffer() {
 
-    this.fileService.downloadFileAsPDF(cv, cvName);
-  }
+    const byteArray = new Uint8Array(atob(this.offer.offerFile).split('').map(char => char.charCodeAt(0)));
+    const pdf = new Blob([byteArray], {type: 'application/pdf'});
 
-  public approveCv() {
-    this.user.cv.status = 2;
-    this.cvService.approveCv(this.user.cv).subscribe(approvedCv => {
-      this.user.cv = approvedCv;
-    }, error => {
-      this.apiResponseHandlerService.handleError(error);
-    });
-  }
-
-  public rejectCv() {
-    this.user.cv.status = 1;
-    this.cvService.rejectCv(this.user.cv).subscribe(rejectedCv => {
-      this.user.cv = rejectedCv;
-    }, error => {
-      this.apiResponseHandlerService.handleError(error);
-    });
+    FileSaver.saveAs(pdf, 'offre.pdf');
   }
 
 }

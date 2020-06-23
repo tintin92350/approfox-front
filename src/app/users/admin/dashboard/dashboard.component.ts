@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,
               private apiResponseHandlerService: ApiResponseHandlerService,
               private userService: UserService) {
-    userService.getAllStudentsByDepartment(0).subscribe(users => {
+    userService.getAllUsersByDepartment(0).subscribe(users => {
       const students = users.filter(u => u.role.toString() === 'STUDENT');
       this.studentCount = students.length;
 

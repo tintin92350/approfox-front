@@ -4,6 +4,8 @@ import {Tag} from '../../../models/tag.model';
 import {Router} from '@angular/router';
 import {ToastService} from '../../../services/toast.service';
 import {ToastMessage} from '../../../models/ToastMessage.model';
+import {UserService} from '../../../services/user.service';
+import {ApiResponseHandlerService} from '../../../services/api-response-handler.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,15 +17,16 @@ export class DashboardComponent implements OnInit {
   private tags: Tag[];
   private tagServiceStatus: number;
 
-  constructor(private router: Router, private tagService: TagService, private toastService: ToastService) {
+  constructor(private router: Router, private tagService: TagService, private toastService: ToastService,
+              private userService: UserService,
+              private apiResponseHandlerService: ApiResponseHandlerService) {
     this.tagService = tagService;
     this.tags = null;
-    this.tagService.getTags().subscribe(tagCollection => {
+
+    this.userService.getMyTags().subscribe(tagCollection => {
       this.tags = tagCollection;
       this.tagServiceStatus = 1;
-    }, error => {
-      this.tagServiceStatus = error.status;
-    });
+    }, (err) => { this.apiResponseHandlerService.handleError(err); });
   }
 
   ngOnInit() {

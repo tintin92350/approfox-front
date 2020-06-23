@@ -31,12 +31,12 @@
           <app-textbox [fullSize]="true" [(inputModel)]="user.mail" [disabled]="true" ngDefaultControl></app-textbox>
         </div>
       </div>
-      <div class="data">
+      <div class="data" *ngIf="user.departmentNumber">
         <div class="label">
           Département
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [inputModel]="departmentString(user.departmentNumber.departmentId)" ngDefaultControl [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [inputModel]="user.departmentNumber.name" ngDefaultControl [disabled]="true"></app-textbox>
         </div>
       </div>
       <div class="data">

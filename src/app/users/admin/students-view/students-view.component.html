@@ -90,16 +90,15 @@
       <div class="section-content">
         <div class="filter-box">
           <div class="filter-group">
-            <label for="filterInputUsername">Filtrer par nom d'utilisateur</label>
-            <input type="text" placeholder="nom d'utilisateur" [(ngModel)]="filterInputUsername" class="filterInput" id="filterInputUsername">
-          </div>
-          <div class="filter-group">
             <label for="filterInputFirstname">Filtrer par prénom</label>
             <input type="text" placeholder="prénom" [(ngModel)]="filterInputFirstname" class="filterInput" id="filterInputFirstname">
           </div>
           <div class="filter-group">
             <label for="filterInputLastname">Filtrer par nom</label>
             <input type="text" placeholder="nom" [(ngModel)]="filterInputLastname" class="filterInput" id="filterInputLastname">
+          </div>
+          <div class="action">
+          <app-button type="primary" (functionClick)="filter()">Rechercher</app-button>
           </div>
         </div>
       </div>
@@ -119,7 +118,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let student of filter(getStudents())">
+          <tr *ngFor="let student of getStudents()">
             <td>{{student.userId}}</td>
             <td><a [routerLink]="'/admin/utilisateurs/' + student.userId" >{{student.login}}</a></td>
             <td>{{student.firstname}} {{student.lastname | uppercase}}</td>

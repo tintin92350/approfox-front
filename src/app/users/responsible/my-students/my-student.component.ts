@@ -18,6 +18,8 @@ import {ToastService} from '../../../services/toast.service';
 })
 export class MyStudentComponent implements OnInit {
 
+  private me: User;
+
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private userService: UserService,
@@ -30,13 +32,19 @@ export class MyStudentComponent implements OnInit {
     this.newUserInformation = new User();
     this.newUserInformation.departmentNumber = new Department();
 
-    this.userService.getAllStudentsByDepartment(1).subscribe(users => {
-      this.myStudents = users.filter(user => {
-        return user.departmentNumber.departmentId === 1 && user.role.toString() === 'STUDENT';
-      });
+    this.userService.getMe().subscribe(me => {
+      this.me = me;
+      this.userService.getAllUsersByDepartment(me.departmentNumber.departmentId).subscribe(users => {
+        this.myStudents = users.filter(user => {
+          return user.departmentNumber.departmentId === me.departmentNumber.departmentId && user.role.toString() === 'STUDENT';
+        });
 
-      this.retrieveStudentsData(this.myStudents);
+        this.retrieveStudentsData(users);
+      }, error => {
+        apiResponseHandlerService.handleError(error);
+      });
     });
+
 
     this.studentForm = this.formBuilder.group({
       firstname: new FormControl('', [
@@ -139,9 +147,11 @@ export class MyStudentComponent implements OnInit {
   public validate() {
 
     if (this.isAddingStudent()) {
-      this.newUserInformation.departmentNumber.departmentId = 1;
+      this.newUserInformation.departmentNumber = this.me.departmentNumber;
       this.newUserInformation.role = Role.STUDENT;
       this.newUserInformation.password = 'azerty';
+      console.log('new student added : ');
+      console.log(this.newUserInformation);
 
       this.userService.addUser(this.newUserInformation).subscribe(addedUser => {
         this.myStudents.push(addedUser);
@@ -151,8 +161,7 @@ export class MyStudentComponent implements OnInit {
       const users = [] as User[];
       this.csvRecords.forEach(userArray => {
         const user = new User();
-        user.departmentNumber = new Department();
-        user.departmentNumber.departmentId = 1;
+        user.departmentNumber = this.me.departmentNumber;
         user.role = Role.STUDENT;
         user.password = 'azerty';
         user.login = userArray[0];
@@ -180,7 +189,7 @@ export class MyStudentComponent implements OnInit {
       user.lastname = userRaw.lastname;
       user.mail = userRaw.mail;
       user.password = 'azerty';
-      user.role = Role.DEPARTMENT_MANAGER;
+      user.role = Role.STUDENT;
       user.departmentNumber = new Department();
       user.departmentNumber.departmentId = 1;
       user.login = userRaw.login;

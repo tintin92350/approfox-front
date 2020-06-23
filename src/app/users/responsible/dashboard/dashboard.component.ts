@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
     this.cvCheckingCount = 0;
     this.cvRejected = 0;
 
-    this.userService.getAllStudentsByDepartment(0).subscribe(users => {
+    this.userService.getAllUsers().subscribe(users => {
       const students = users.filter(user => user.role.toString() === 'STUDENT');
       this.studentCount = students.length;
 

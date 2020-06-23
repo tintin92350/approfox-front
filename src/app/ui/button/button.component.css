@@ -95,3 +95,15 @@ button.warning:hover {
 button:focus, button:active {
   outline: 0;
 }
+
+
+button.success {
+  color: #47d664;
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+button.success:hover {
+  background-color: #47d664;
+  border-color: #47d664;
+  color: #FFFFFF;
+}

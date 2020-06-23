@@ -31,8 +31,8 @@ export class ResponsiblesViewComponent implements OnInit {
     this.responsibles = [];
     this.addingResponsible = false;
 
-    this.userService.getAllStudentsByDepartment(0).subscribe(users => {
-      this.responsibles = users.filter(u => u.role.toString() === 'DEPARTMENT_MANAGER');
+    this.userService.getAllUsersByRole(Role.DEPARTMENT_MANAGER).subscribe(users => {
+      this.responsibles = users;
     });
 
     this.departmentService.getAllDepartments().subscribe(departments => {
@@ -59,7 +59,7 @@ export class ResponsiblesViewComponent implements OnInit {
       ]),
     });
 
-    this.filterInputUsername = ''
+    this.filterInputUsername = '';
     this.filterInputFirstname = '';
     this.filterInputLastname = '';
   }
@@ -139,25 +139,16 @@ export class ResponsiblesViewComponent implements OnInit {
     return this.departments;
   }
 
-  public filter(users: User[]) {
 
-    let normalizedFilterUsername = this.filterInputUsername.toLocaleLowerCase();
-    normalizedFilterUsername = normalizedFilterUsername.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
+  public filter() {
     let normalizedFilterFirstname = this.filterInputFirstname.toLocaleLowerCase();
     normalizedFilterFirstname = normalizedFilterFirstname.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
     let normalizedFilterLastname = this.filterInputLastname.toLocaleLowerCase();
     normalizedFilterLastname = normalizedFilterLastname.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    return users.filter(u => {
-      const login = u.login.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const firstname = u.firstname.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const lastname = u.lastname.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-      return login.includes(normalizedFilterUsername) &&
-        firstname.includes(normalizedFilterFirstname) &&
-        lastname.includes(normalizedFilterLastname);
+    this.userService.getUsersFiltered(undefined, Role.DEPARTMENT_MANAGER, normalizedFilterFirstname, normalizedFilterLastname, '').subscribe(users => {
+      this.responsibles = users;
     });
   }
 

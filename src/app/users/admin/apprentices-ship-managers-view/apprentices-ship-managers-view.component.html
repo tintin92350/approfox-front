@@ -89,15 +89,18 @@
     <div class="section">
       <div class="section-content">
         <p>Vous pouvez filtrer les résultats en renseignant les champs ci-dessous :</p>
+
         <div class="filter-box">
           <div class="filter-group">
-            <input type="text" placeholder="nom d'utilisateur" [(ngModel)]="filterInputUsername" class="filterInput" id="filterInputUsername">
-          </div>
-          <div class="filter-group">
+            <label for="filterInputFirstname">Filtrer par prénom</label>
             <input type="text" placeholder="prénom" [(ngModel)]="filterInputFirstname" class="filterInput" id="filterInputFirstname">
           </div>
           <div class="filter-group">
+            <label for="filterInputLastname">Filtrer par nom</label>
             <input type="text" placeholder="nom" [(ngModel)]="filterInputLastname" class="filterInput" id="filterInputLastname">
+          </div>
+          <div class="action">
+            <app-button type="primary" (functionClick)="filter()">Rechercher</app-button>
           </div>
         </div>
       </div>
@@ -116,7 +119,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let apprenticeManager of filter(getApprenticeManagers())">
+          <tr *ngFor="let apprenticeManager of getApprenticeManagers()">
             <td>{{apprenticeManager.userId}}</td>
             <td><a [routerLink]="'/admin/utilisateurs/' + apprenticeManager.userId" >{{apprenticeManager.login}}</a></td>
             <td>{{apprenticeManager.firstname}} {{apprenticeManager.lastname | uppercase}}</td>

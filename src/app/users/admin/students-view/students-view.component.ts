@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/User.model';
 import {Department} from '../../../models/Department.model';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -31,8 +31,8 @@ export class StudentsViewComponent implements OnInit {
     this.students = [];
     this.addingStudent = false;
 
-    this.userService.getAllStudentsByDepartment(0).subscribe(users => {
-      this.students = users.filter(u => u.role.toString() === 'STUDENT');
+    this.userService.getAllUsersByRole(Role.STUDENT).subscribe(users => {
+      this.students = users;
     });
 
     this.departmentService.getAllDepartments().subscribe(departments => {
@@ -139,25 +139,15 @@ export class StudentsViewComponent implements OnInit {
     return this.departments;
   }
 
-  public filter(users: User[]) {
-
-    let normalizedFilterUsername = this.filterInputUsername.toLocaleLowerCase();
-    normalizedFilterUsername = normalizedFilterUsername.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
+  public filter() {
     let normalizedFilterFirstname = this.filterInputFirstname.toLocaleLowerCase();
     normalizedFilterFirstname = normalizedFilterFirstname.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
     let normalizedFilterLastname = this.filterInputLastname.toLocaleLowerCase();
     normalizedFilterLastname = normalizedFilterLastname.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    return users.filter(u => {
-      const login = u.login.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const firstname = u.firstname.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const lastname = u.lastname.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-      return login.includes(normalizedFilterUsername) &&
-        firstname.includes(normalizedFilterFirstname) &&
-        lastname.includes(normalizedFilterLastname);
+    this.userService.getStudentsFiltered(undefined, normalizedFilterFirstname, normalizedFilterLastname, '').subscribe(users => {
+      this.students = users;
     });
   }
 

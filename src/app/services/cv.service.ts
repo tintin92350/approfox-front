@@ -43,4 +43,28 @@ export class CVService {
   addCv(cv: CV): Observable<CV> {
     return this.httpClient.post<CV>(environment.api + 'cv', cv).pipe(timeout(1500));
   }
+
+  /**
+   * Approve a CV
+   * @param cv CV to approve
+   */
+  approveCv(cv: CV): Observable<CV> {
+    return this.httpClient.patch<CV>(environment.api + 'cv/' + cv.cvId + '/approve', cv).pipe(timeout(1500));
+  }
+
+  /**
+   * Reject a CV
+   * @param cv CV to reject
+   */
+  rejectCv(cv: CV): Observable<CV> {
+    return this.httpClient.patch<CV>(environment.api + 'cv/' + cv.cvId + '/reject', cv).pipe(timeout(1500));
+  }
+
+  /**
+   * Patch CV file
+   * @param cv CV to approve
+   */
+  updateCvFile(cv: CV): Observable<CV> {
+    return this.httpClient.patch<CV>(environment.api + 'cv/' + cv.cvId, cv.cvFile).pipe(timeout(1500));
+  }
 }

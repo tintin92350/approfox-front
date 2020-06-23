@@ -18,7 +18,6 @@ import {PageMemberBaseComponent} from './common/page-member-base/page-member-bas
 import {MyStudentComponent} from './users/responsible/my-students/my-student.component';
 import {OffersComponent} from './users/responsible/offers/offers.component';
 import {ServerConfigurationComponent} from './users/admin/server-configuration/server-configuration.component';
-import {OfferViewComponent} from './users/responsible/offer-view/offer-view.component';
 
 import * as AdminResponsiblesViewComponent from './users/admin/responsibles-view/responsibles-view.component';
 import * as AdminStudentsViewComponent from './users/admin/students-view/students-view.component';
@@ -26,6 +25,8 @@ import * as AdminTagsViewComponent from './users/admin/tags-view/tags-view.compo
 import {ApprenticesShipManagersViewComponent} from './users/admin/apprentices-ship-managers-view/apprentices-ship-managers-view.component';
 import {UserProfileComponent} from './common/user-profile/user-profile.component';
 import {DepartmentViewComponent} from './users/admin/department-view/department-view.component';
+import {OfferViewComponent} from './common/offer-view/offer-view.component';
+import {PlanningComponent} from './users/apprentice-training-center/planning/planning.component';
 
 const routes: Routes = [
   {
@@ -126,7 +127,7 @@ const routes: Routes = [
         path: 'utilisateurs/:id',
         component: UserProfileComponent,
         data: {
-          name: 'Profile utilisateur'
+          name: 'Profil utilisateur'
         }
       },
       {
@@ -182,7 +183,20 @@ const routes: Routes = [
           name: 'Offres'
         }
       },
-
+      {
+        path: 'offres/:id',
+        component: OfferViewComponent,
+        data: {
+          name: 'Offre'
+        }
+      },
+      {
+        path: 'planning',
+        component: PlanningComponent,
+        data: {
+          name: 'Planning'
+        }
+      }
     ]
   },
   {
@@ -214,7 +228,7 @@ const routes: Routes = [
         path: 'utilisateurs/:id',
         component: UserProfileComponent,
         data: {
-          name: 'Profile utilisateur'
+          name: 'Profil utilisateur'
         }
       },
       {
@@ -225,7 +239,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'offer/:id',
+        path: 'offres/:id',
         component: OfferViewComponent,
         data: {
           name: 'Offre'

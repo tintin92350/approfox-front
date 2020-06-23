@@ -16,3 +16,7 @@ span {
 span:hover {
   background-color: #2d87cc;
 }
+
+span.selected {
+  background-color: #E6B22C;
+}

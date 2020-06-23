@@ -41,7 +41,6 @@ import {BannerService} from './services/banner.service';
 import {AnnouncementApiService} from './services/announcement-api.service';
 import { ServerConfigurationComponent } from './users/admin/server-configuration/server-configuration.component';
 import { StudentViewComponent } from './users/responsible/student-view/student-view.component';
-import { OfferViewComponent } from './users/responsible/offer-view/offer-view.component';
 import {JwtInterceptorService} from './guards/jwt-interceptor.service';
 import { TagsViewComponent } from './users/admin/tags-view/tags-view.component';
 import { ResponsiblesViewComponent } from './users/admin/responsibles-view/responsibles-view.component';
@@ -54,6 +53,10 @@ import { ApprenticesShipManagersViewComponent } from './users/admin/apprentices-
 import { UserProfileComponent } from './common/user-profile/user-profile.component';
 import {NgxCsvParserModule} from 'ngx-csv-parser';
 import { DepartmentViewComponent } from './users/admin/department-view/department-view.component';
+import { OfferViewComponent } from './common/offer-view/offer-view.component';
+import { PlanningComponent } from './users/apprentice-training-center/planning/planning.component';
+import { TimetableComponent } from './ui/timetable/timetable.component';
+import { TimetableAppointmentComponent } from './ui/timetable-appointment/timetable-appointment.component';
 
 export class HammerConfig extends HammerGestureConfig  {
   buildHammer(element: HTMLElement) {
@@ -101,13 +104,16 @@ export class HammerConfig extends HammerGestureConfig  {
     BannerComponent,
     ServerConfigurationComponent,
     StudentViewComponent,
-    OfferViewComponent,
     TagsViewComponent,
     ResponsiblesViewComponent,
     StudentsViewComponent,
     ApprenticesShipManagersViewComponent,
     UserProfileComponent,
-    DepartmentViewComponent
+    DepartmentViewComponent,
+    OfferViewComponent,
+    PlanningComponent,
+    TimetableComponent,
+    TimetableAppointmentComponent
   ],
   imports: [
     BrowserModule,
