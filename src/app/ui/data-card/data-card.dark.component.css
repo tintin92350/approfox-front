@@ -1,0 +1,16 @@
+:host-context(.theme-dark) .card-body h6,
+:host-context(.theme-dark) .card-body h1 {
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark) .card-body i {
+  color: #AAAAAA;
+}
+
+:host-context(.theme-dark) .card {
+  background-color: #1e1e1e;
+}
+
+:host-context(.theme-dark) .card:hover {
+  background-color: #1a1a1a;
+}

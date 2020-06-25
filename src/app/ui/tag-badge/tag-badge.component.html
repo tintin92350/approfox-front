@@ -1,0 +1,4 @@
+<span (click)="clickOnBadge($event)" [class.selected]="selectable && isSelected">
+  <i class="fa fa-check" *ngIf="selectable && isSelected"></i>
+  {{tag.name}}
+</span>

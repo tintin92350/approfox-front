@@ -15,7 +15,8 @@ export class RedirectAuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (!this.auth.isAuthenticated()) {
+    if (!this.auth.isLogged()) {
+      this.router.navigate(['/login']);
       return false;
     }
 
@@ -23,12 +24,11 @@ export class RedirectAuthGuard implements CanActivate {
       return true;
     }
 
-    console.log('authenticated : ' + this.auth.isAuthenticated());
+    const role = this.auth.getRole();
 
     // check if route is restricted by role
-    if ((next.data.role && this.auth.getRole() && next.data.role !== this.auth.getRole()) || next.routeConfig.path === '') {
-      const roleDashboard = '/' + this.auth.getRole() + '/dashboard';
-      console.log('redirecting to role dashboard : ' + roleDashboard);
+    if ((next.data.role && role && next.data.role !== role) || next.routeConfig.path === '') {
+      const roleDashboard = '/' + role + '/dashboard';
 
       // role not authorised so redirect to home page
       this.router.navigate([roleDashboard]);

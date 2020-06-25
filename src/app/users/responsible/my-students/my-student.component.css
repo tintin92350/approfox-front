@@ -1,0 +1,23 @@
+table tbody tr td {
+  vertical-align: middle;
+}
+
+.accepted {
+  color: #47d664;
+  font-weight: bold;
+}
+
+.loading {
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.not-submited {
+  color: #E6B22C;
+  font-weight: bold;
+}
+
+.rejected {
+  color: #dc2850;
+  font-weight: bold;
+}

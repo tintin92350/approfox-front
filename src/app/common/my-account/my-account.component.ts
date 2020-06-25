@@ -1,53 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../services/user.service';
+import {AuthService} from '../../services/auth.service';
+import {Observable} from 'rxjs';
+import {User} from '../../models/User.model';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
-  styleUrls: ['./my-account.component.css']
+  styleUrls: ['./my-account.component.css', './my-account.dark.component.css']
 })
 export class MyAccountComponent implements OnInit {
 
-  public firstname: string;
-  public lastname: string;
-  public email: string;
-  public department: number;
-  public role: number;
+  public user: User;
 
-  constructor() {
-    this.firstname = 'Quentin';
-    this.lastname = 'Rodic';
-    this.email = 'quentin.rodic@ens.uvsq.fr';
-    this.department = 1;
-    this.role = 1;
+  constructor(private userService: UserService, private authService: AuthService) {
+    this.userService.getMe().subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit() {
   }
 
-  departmentString(): string {
-    switch (this.department) {
-      case 1:
-        return 'INFO';
-      case 2:
-        return 'MMI';
-      case 3:
-        return 'R&T';
-      case 4:
-        return 'GEII';
-    }
 
-    return 'Aucun département de rattachement';
-  }
-
-  accountTypeString(): string {
-    switch (this.role) {
-      case 1:
+  accountTypeString(role: string): string {
+    switch (role) {
+      case 'STUDENT':
         return 'Étudiant';
-      case 2:
+      case 'DEPARTMENT_MANAGER':
         return 'Responsable de département';
-      case 3:
+      case '1':
         return 'Pôle alternance - CFA';
-      case 4:
+      case 'ADMINISTRATOR':
         return 'Administrateur';
     }
 

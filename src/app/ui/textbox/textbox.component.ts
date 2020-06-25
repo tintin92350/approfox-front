@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-textbox',
@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TextboxComponent implements OnInit {
 
-  @Input() inputModel: string;
+  @Input() inputModel: any;
   @Input() valueString: string;
   @Input() maxLength: number;
   @Input() isNumeric: boolean;
@@ -43,9 +43,7 @@ export class TextboxComponent implements OnInit {
     }
 
     const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46 ) {
-      return false;
-    }
-    return true;
+    return !(charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46);
+
   }
 }

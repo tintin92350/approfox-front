@@ -1,0 +1,42 @@
+:host-context(.theme-dark)  .Left-Panel {
+  background: #1a1a1a;
+}
+
+:host-context(.theme-dark)  .Top-Panel {
+  background: #1e1e1e;
+}
+
+:host-context(.theme-dark) .top, :host-context(.theme-dark).Top-Panel {
+  box-shadow: none;
+}
+
+:host-context(.theme-dark)  .Top-Panel .page-name {
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark) .Top-Panel> a {
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark)  .accountPanel {
+  background-color: #1e1e1e;
+}
+:host-context(.theme-dark)  .accountPanel a {
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark) .accountPanel a:hover {
+  color: #2d87cc;
+}
+
+:host-context(.theme-dark) .collapse-menu-button {
+  color: #FFFFFF;
+}
+:host-context(.theme-dark) #toogle-dark-mode {
+  background-color: #FFFFFF;
+  color: #1e1e1e;
+}
+
+:host-context(.theme-dark) .connection-time {
+  color: #FFFFFF;
+}

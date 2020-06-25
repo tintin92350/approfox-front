@@ -1,0 +1,35 @@
+:host-context(.theme-dark) .page-wrapper {
+  background: #1e1e1e;
+}
+:host-context(.theme-dark) form .input-group label {
+  color: #FFFFFF;
+}
+
+:host-context(.theme-dark) form .input-group input {
+  border: 3px solid transparent;
+}
+
+:host-context(.theme-dark) form .button {
+  color: #ffffff;
+  background-color: #2d87cc;
+}
+
+:host-context(.theme-dark) form span.error {
+  color: #dc2850;
+  background-color: transparent;
+}
+:host-context(.theme-dark) form .input-group input.error {
+  border-color: #dc2850;
+}
+
+:host-context(.theme-dark) .authentication-failed-box
+{
+  background-color: #dc2850;
+  color: #1e1e1e;
+  border-color: transparent;
+}
+
+:host-context(.theme-dark) #toogle-dark-mode {
+  background-color: #FFFFFF;
+  color: #1e1e1e;
+}

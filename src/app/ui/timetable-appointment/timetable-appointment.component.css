@@ -1,0 +1,66 @@
+.appointment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 96px;
+  background-color: #2d87cc;
+  width: 250px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: initial;
+}
+.appointment-form {
+  display: flex;
+  flex-direction: row;
+  height: 96px;
+  width: 250px;
+  color: #FFFFFF;
+  background-color: #2d87cc;
+  line-height: initial;
+}
+.data {
+  flex: 1 0;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+.start-time {
+  width: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+select {
+  width: 100%;
+  border: 0;
+  margin: 0.25em auto;
+  border-radius: 4px;
+}
+
+.validate, .cancel {
+  background-color: #FFFFFF;
+  color: #2d87cc;
+  padding: 0.25em;
+  border-radius: 4px;
+  flex: 1 0;
+  cursor: pointer;
+  width: 100%;
+  margin: 0.125em;
+}
+.cancel {
+  color: #dc2850;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+
+:host-context(.theme-dark) .appointment,
+:host-context(.theme-dark) .appointment-form{
+  background-color: #4b4b4b;
+}

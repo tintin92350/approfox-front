@@ -1,0 +1,7 @@
+:host-context(.theme-dark) .data-table .data {
+  border-bottom: 1px solid #3a3a3a;
+}
+
+:host-context(.theme-dark) .data-table .label {
+  color: #FFFFFF;
+}

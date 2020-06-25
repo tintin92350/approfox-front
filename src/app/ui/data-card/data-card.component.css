@@ -1,0 +1,25 @@
+.card-body h6, .card-body h1, .card-body i {
+  color: #1e1e1e;
+}
+.card-body .rotate {
+  z-index: 8;
+  float: right;
+  height: 100%;
+}
+.card-body .rotate i {
+  color: rgba(20, 20, 20, 0.15);
+  position: absolute;
+  left: auto;
+  right: 16px;
+  bottom: 16px;
+  display: block;
+}
+
+.card {
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+
+.card:hover {
+  background-color: #EEEEEE;
+}

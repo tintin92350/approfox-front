@@ -1,7 +1,3 @@
-<h1 id="page-title">
-  Mon compte
-</h1>
-
 <div class="section">
   <div class="section-header">
     <h2 class="section-title">
@@ -10,13 +6,13 @@
   </div>
   <div class="section-content">
     <br>
-    <div class="data-table">
+    <div class="data-table" *ngIf="user">
       <div class="data">
         <div class="label">
           Prénom
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [(inputModel)]="firstname" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [(inputModel)]="user.firstname" [disabled]="true" ngDefaultControl></app-textbox>
         </div>
       </div>
       <div class="data">
@@ -24,7 +20,7 @@
           Nom
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [(inputModel)]="lastname" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [(inputModel)]="user.lastname" [disabled]="true" ngDefaultControl></app-textbox>
         </div>
       </div>
       <div class="data">
@@ -32,15 +28,15 @@
           Mail
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [(inputModel)]="email" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [(inputModel)]="user.mail" [disabled]="true" ngDefaultControl></app-textbox>
         </div>
       </div>
-      <div class="data">
+      <div class="data" *ngIf="user.departmentNumber">
         <div class="label">
           Département
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [valueString]="departmentString()" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [inputModel]="user.departmentNumber.name" ngDefaultControl [disabled]="true"></app-textbox>
         </div>
       </div>
       <div class="data">
@@ -48,7 +44,7 @@
           Type de compte
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [valueString]="accountTypeString()" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [inputModel]="accountTypeString(user.role.toString())" [disabled]="true" ngDefaultControl></app-textbox>
         </div>
       </div>
     </div>

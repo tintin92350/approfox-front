@@ -1,0 +1,8 @@
+:host-context(.theme-dark) .uploadfilecontainer {
+  background-color: #3a3a3a;
+  border: 3px dashed #1a1a1a;
+}
+
+:host-context(.theme-dark) .uploadfilecontainer:hover {
+  background-color: #3e3e3e !important;
+}

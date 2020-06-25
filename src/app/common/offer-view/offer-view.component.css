@@ -1,0 +1,89 @@
+.data-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.data-table .data {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 1em;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.data-table .data:last-of-type {
+  border-bottom: none;
+}
+
+.data-table .data .label {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.data-table .data .content {
+  width: 100%;
+  vertical-align: middle;
+  margin-right: 2em;
+}
+
+.data-table .data .content:last-child {
+  margin-right: 0;
+}
+
+.actions {
+  margin: 0.5em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions > app-button {
+  margin: 0 0.5em;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 250px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.add-tag-btn {
+  display: block;
+  border-radius: 5px;
+  background-color: #3a3a3a;
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 0 0.75em;
+  height: auto;
+  line-height: 30px;
+  min-width: 50px;
+  width: 50%;
+  margin: 1em auto;
+  text-align: center;
+  font-weight: bold;
+  transition: 200ms ease-in-out;
+  text-decoration: none;
+}
+.add-tag-btn:hover {
+  color: #FFFFFF;
+  background-color: #1a1a1a;
+}
+
+#tags .section-content {
+  display: flex;
+}
+
+#tags .section-content > div {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#tags .section-content .tag-student-list a {
+}

@@ -16,9 +16,14 @@
           Nom du tag
         </div>
         <div class="content">
-          <app-textbox [fullSize]="true" [valueString]="getTag().name" [disabled]="true"></app-textbox>
+          <app-textbox [fullSize]="true" [(inputModel)]="getTag().name" [disabled]="!canModify()" ngDefaultControl></app-textbox>
         </div>
       </div>
+    </div>
+
+    <div class="actions" *ngIf="canModify()">
+      <app-button type="primary" *ngIf="isDifferent()" (click)="update()" >Modifier</app-button>
+      <app-button type="danger-revert" >Supprimer</app-button>
     </div>
   </div>
 </div>

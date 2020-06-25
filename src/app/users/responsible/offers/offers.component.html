@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-sm-12 button-tab">
+    <app-button type="primary" (click)="addOffer()"><i class="fas fa-plus"></i> Ajouter</app-button>
+  </div>
+  <div class="col-sm-12 special" *ngIf="isAddingOffer()">
+    <div class="section">
+      <div class="section-header">
+        <h3 class="section-title">Ajouter une offre</h3>
+      </div>
+      <div class="section-content">
+
+        <form class="section-content" [formGroup]="this.offerForm">
+          <div class="form-group">
+
+            <div class="input-group">
+              <label for="title">
+                Titre
+              </label>
+              <div class="input-wrapper">
+                <input id="title" type="text" formControlName="title" [class.error]="title.invalid && (title.dirty || title.touched)" >
+                <div class="error-box" *ngIf="title.invalid && (title.dirty || title.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="offerFile">
+                Fichier offre
+              </label>
+              <div class="input-wrapper">
+                <input id="offerFile" type="file" (change)="offerFileUploaded($event)" formControlName="offerFile" [class.error]="offerFile.invalid && (offerFile.dirty || offerFile.touched)" >
+                <div class="error-box" *ngIf="offerFile.invalid && (offerFile.dirty || offerFile.touched)">
+                  <span>Champs requis</span>
+                  <i class="fa fa-exclamation-circle" title="Champ requis !"  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-tab">
+            <app-button type="normal" (click)="validAddingOffer()" >Valider</app-button>
+            <app-button type="danger-revert" (click)="cancel()" >Annuler</app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="section">
+      <div class="section-content section-table">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th *ngFor="let department of departments">{{department.name}}</th>
+            <th *ngIf="role === 'responsable'">
+              État
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let offer of offers; let i = index">
+            <td>{{i}}</td>
+            <td><a [routerLink]="'/' + role + '/offres/' + offer.offerId" >{{offer.title}}</a></td>
+            <td *ngFor="let department of departments">
+              <span *ngIf="hasDepartmentAcceptedOffer(offer, department)">
+                Acceptée !
+              </span>
+              <span *ngIf="!hasDepartmentAcceptedOffer(offer, department)">
+                Pas acceptée
+              </span>
+            </td>
+            <td *ngIf="this.role === 'responsable'">
+              <span *ngIf="hasDepartmentAcceptedOffer(offer, me.departmentNumber)">
+                Acceptée !
+              </span>
+              <span *ngIf="!hasDepartmentAcceptedOffer(offer, me.departmentNumber)">
+                <app-button type="success" (functionClick)="acceptOffer(offer)">Accepter</app-button>
+              </span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

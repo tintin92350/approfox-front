@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col main" >
+    <div class="row mb-3">
+      <app-data-card [title]="'Etudiants'" [number]="getStudentCount()" icon="fas fa-user-graduate" status="success" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+      <app-data-card [title]="'CV non soumis'" [number]="getCvNotSubmited()" icon="fas fa-file-exclamation" status="danger" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+      <app-data-card [title]="'CV en cours'" [number]="getCvChecking()" icon="fas fa-file-signature" status="info" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+      <app-data-card [title]="'Offres rejetées'" [number]="getCvRejected()" icon="fas fa-file-times" status="warning" class="col-xl-3 col-sm-6 py-2"></app-data-card>
+    </div>
+
+  </div>
+</div>

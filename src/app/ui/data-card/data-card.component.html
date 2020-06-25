@@ -1,0 +1,9 @@
+<div class="card text-white h-100" (click)="clickOnCard($event)" >
+  <div class="card-body" >
+    <div class="rotate">
+      <i [ngClass]="icon != null ? icon + ' fa-4x' : ''"></i>
+    </div>
+    <h6 class="text-uppercase">{{title}}</h6>
+    <h1 class="display-4">{{number}}</h1>
+  </div>
+</div>

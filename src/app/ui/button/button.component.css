@@ -1,13 +1,19 @@
 button {
   display: block;
-  padding: 0.75em 2em;
+  min-height: 32px;
+  line-height: 30px;
   border: 0;
   border-radius: 4px;
-  min-width: 120px;
-  font-size: 16px;
+  padding: 0 1.5em;
+  font-size: 1.0em;
+  text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
-  transition: 250ms ease-in-out;
+  width: 100%;
+  transition: 200ms ease-in-out;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);
 }
 button.block {
   display: block;
@@ -21,6 +27,7 @@ button.primary {
 }
 button.primary:hover {
   background-color: #2d87cc;
+  border-color: #2d87cc;
 }
 
 button.secondary {
@@ -29,6 +36,16 @@ button.secondary {
   border: 2px solid #359eec;
 }
 button.secondary:hover {
+  color: #2d87cc;
+  border: 2px solid #2d87cc;
+}
+
+button.normal {
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  color: #2d87cc;
+}
+button.normal:hover {
   color: #2d87cc;
   border: 2px solid #2d87cc;
 }
@@ -46,12 +63,23 @@ button.tertiary:hover {
 
 button.danger {
   color: #fff;
-  background-color: #dc2828;
-  border: 2px solid #dc2828;
+  background-color: #dc2850;
+  border: 2px solid #dc2850;
 }
 button.danger:hover {
   background-color: #d71a1a;
   border-color: #d71a1a;
+}
+
+button.danger-revert {
+  color: #dc2850;
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+button.danger-revert:hover {
+  background-color: #d71a1a;
+  border-color: #d71a1a;
+  color: #FFFFFF;
 }
 
 button.warning {
@@ -66,4 +94,16 @@ button.warning:hover {
 
 button:focus, button:active {
   outline: 0;
+}
+
+
+button.success {
+  color: #47d664;
+  background-color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+button.success:hover {
+  background-color: #47d664;
+  border-color: #47d664;
+  color: #FFFFFF;
 }

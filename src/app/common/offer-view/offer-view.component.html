@@ -1,0 +1,75 @@
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">
+      Informations sur l'offre
+      <p class="sub-title" *ngIf="!isEditing()">
+        <i class="fad fa-lock-alt" ></i>
+        Section bloquée par sécurité. Cliquez sur "editer" afin de le déverouiller.
+      </p>
+      <p class="sub-title" *ngIf="isEditing()">
+        <i class="fad fa-lock-open-alt" ></i>
+        Attention vous avez déverouillé le contenue, vous pouvez modifier le contenue et appliquer la mise à jour via le bouton "modifier".
+      </p>
+    </h2>
+    <div class="right">
+      <app-button type="normal" (click)="edit()" *ngIf="!isEditing()">
+        <i class="fa fa-edit"></i>
+        Editer</app-button>
+    </div>
+  </div>
+  <div class="section-content">
+    <div class="data-table" *ngIf="offer">
+      <div class="data">
+        <div class="label">
+          Titre
+        </div>
+        <div class="content">
+          <app-textbox [fullSize]="true" [(inputModel)]="offer.title" [disabled]="!canModify() || !isEditing()" ngDefaultControl></app-textbox>
+        </div>
+      </div>
+      <div class="data">
+        <app-button type="primary" (click)="dowloadOffer()" >Consulter l'offre (PDF)</app-button>
+      </div>
+    </div>
+
+    <div class="actions" *ngIf="canModify() && isEditing()">
+      <app-button type="primary" (click)="update()" >Modifier</app-button>
+      <app-button type="danger-revert" (click)="delete()" >Supprimer</app-button>
+      <app-button type="warning" (click)="cancel()" >Annuler</app-button>
+    </div>
+  </div>
+</div>
+<div class="section" id="tags" *ngIf="this.role && this.role === 'responsable'">
+  <div class="section-header">
+    <h2 class="section-title">
+      Tags de l'offre
+      <p class="sub-title" >
+        Tag attaché à l'offre. Vous pouvez ajouter ou supprimer des tags.
+      </p>
+    </h2>
+  </div>
+  <div class="section-content">
+    <div class="tag-student-list">
+      <div class="tag-list">
+        <app-tag-badge *ngFor="let tag of tags" [tag]="tag" selectable="true" (functionOnClick)="handleStudentTagSelection($event)" ></app-tag-badge>
+      </div>
+      <a class="add-tag-btn" (click)="deleteTagsFromStudent()">
+        <i class="fa fa-minus"></i> Supprimer les tags sélectionés
+      </a>
+    </div>
+    <div class="tag-all-list">
+      <div class="tag-list">
+        <app-tag-badge *ngFor="let tag of allTags" [tag]="tag" selectable="true" (functionOnClick)="handleTagListSelection($event)"></app-tag-badge>
+      </div>
+      <a class="add-tag-btn" (click)="addTagstoStudent()">
+        <i class="fa fa-plus"></i> Ajouter les tags
+      </a>
+    </div>
+  </div>
+
+  <div class="actions" *ngIf="canModify() && isEditing()">
+    <app-button type="primary" (click)="update()" >Modifier</app-button>
+    <app-button type="danger-revert" (click)="delete()" >Supprimer</app-button>
+    <app-button type="warning" (click)="cancel()" >Annuler</app-button>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="appointment" *ngIf="appointment.offer && appointment.user">
+  <b>{{ appointment.offer.title}}</b>
+  <span>attaché à</span>
+  <b>{{appointment.user.firstname}} {{appointment.user.lastname}}</b>
+</div>
+<div class="appointment-form" *ngIf="!appointment.offer || !appointment.user">
+  <div class="data">
+    <select name="" id="students" (change)="matchOffers($event.target.value)" [(ngModel)]="selectedUser">
+      <option *ngFor="let student of students" [ngValue]="student">{{student.firstname + ' ' + student.lastname}}</option>
+    </select>
+    <select name="" id="offers" [(ngModel)]="selectedOffer" >
+      <option *ngFor="let offer of offers" [ngValue]="offer">{{offer.title}}</option>
+    </select>
+    <div class="actions">
+    <span class="validate" (click)="validate()">
+      Valider
+    </span>
+      <span class="cancel" (click)="cancel()">
+      Annuler
+    </span>
+    </div>
+  </div>
+  <div class="start-time">
+    <div class="up" (click)="up()">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+    <div class="down" (click)="down()">
+      <i class="fa fa-arrow-down"></i>
+    </div>
+  </div>
+</div>
