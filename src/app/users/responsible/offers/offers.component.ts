@@ -125,11 +125,9 @@ export class OffersComponent implements OnInit {
 
   public validAddingOffer() {
     if (this.offerForm.valid) {
-      console.log('test');
       const offer = new Offer();
       offer.title = this.offerForm.getRawValue().title;
       offer.offerFile = this.offerFileFile.content;
-      console.log(offer);
       this.offerService.addOffers(offer).subscribe(addedOffer => {
         this.offers.push(addedOffer);
         this.addingOffer = false;

@@ -18,7 +18,6 @@ export class FileUploadComponent implements OnInit {
   }
 
   uploadFile(event) {
-    console.log(event);
     for (const element of event) {
       this.file = element.name;
       this.size = Math.floor(element.size / 1000.0);

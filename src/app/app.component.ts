@@ -27,14 +27,9 @@ export class AppComponent {
     }, 25);
 
     const date = new Date();
-
-    /*if (date.getHours() > 20 || date.getHours() < 6) {
+    if (date.getHours() > 20 || date.getHours() < 6) {
       themeService.switchNoUpdate(true);
-    }*/
-
-    setInterval(() => {
-      this.test();
-    }, 1000);
+    }
 
     themeService.update(renderer);
   }

@@ -46,10 +46,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  test() {
-    console.log('test');
-  }
-
   getStudentCount(): number {
     return this.studentCount;
   }

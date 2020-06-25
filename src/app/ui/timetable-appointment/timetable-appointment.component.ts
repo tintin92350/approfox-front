@@ -70,7 +70,7 @@ export class TimetableAppointmentComponent implements OnInit {
   validate() {
     this.appointment.offer = this.selectedOffer;
     this.appointment.user = this.selectedUser;
-    console.log(this.appointment);
+
     this.appointmentService.addAppointment2(this.selectedUser.userId, this.selectedOffer.offerId, this.appointment.startTime).subscribe(app => {
 
     }, error => {

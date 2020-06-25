@@ -150,8 +150,6 @@ export class MyStudentComponent implements OnInit {
       this.newUserInformation.departmentNumber = this.me.departmentNumber;
       this.newUserInformation.role = Role.STUDENT;
       this.newUserInformation.password = 'azerty';
-      console.log('new student added : ');
-      console.log(this.newUserInformation);
 
       this.userService.addUser(this.newUserInformation).subscribe(addedUser => {
         this.myStudents.push(addedUser);
@@ -250,10 +248,9 @@ export class MyStudentComponent implements OnInit {
     this.ngxCsvParser.parse(files[0], { header: this.header, delimiter: ';' })
       .pipe().subscribe((result: Array<any>) => {
 
-      console.log('Result', result);
       this.csvRecords = result;
     }, (error: NgxCSVParserError) => {
-      console.log('Error', error);
+        this.apiResponseHandlerService.handleError(error);
     });
 
   }

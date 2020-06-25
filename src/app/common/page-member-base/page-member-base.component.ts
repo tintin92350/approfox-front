@@ -66,7 +66,6 @@ export class PageMemberBaseComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
     this.mainNavigationOpened = false;
-    console.log('logged out');
   }
 
   public goToAccount() {
